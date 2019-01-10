@@ -14,6 +14,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import com.xzit.ar.common.base.BaseMapper;
+import com.xzit.ar.common.exception.UtilException;
 import com.xzit.ar.common.mapper.image.ImageMapper;
 import com.xzit.ar.common.po.image.Image;
 import com.xzit.ar.common.po.user.User;
@@ -79,6 +80,13 @@ public class LoginServiceImpl implements LoginService {
 	public int signUser(String account, String password, String trueName, String email) {
 		User user = new User();
 		user.setAccount(account);
+		try {
+			password = CommonUtil.md5(password);
+			System.out.println(password);
+		} catch (UtilException e) {
+			System.out.println("密码加密失败");
+			e.printStackTrace();
+		}
 		user.setPassword(password);
 		user.setTrueName(trueName);
 		user.setEmail(email);
