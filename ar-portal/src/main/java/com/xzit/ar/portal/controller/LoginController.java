@@ -30,12 +30,7 @@ import com.xzit.ar.common.exception.UtilException;
 import com.xzit.ar.common.util.CommonUtil;
 import com.xzit.ar.portal.service.LoginService;
 
-/**
- * @ClassName: LoginController
- * @Description: TODO
- * @author Mr.Black
- * @date 2016年1月15日 下午6:23:27
- */
+
 @Controller
 @RequestMapping("/login")
 public class LoginController extends BaseController {
