@@ -151,6 +151,7 @@ public class LoginController extends BaseController {
 			return "portal-main/sign";
 		}
 		// 返回登录
+		model.addAttribute("error", "注册成功请登陆。");
 		return "portal-main/login";
 	}
 

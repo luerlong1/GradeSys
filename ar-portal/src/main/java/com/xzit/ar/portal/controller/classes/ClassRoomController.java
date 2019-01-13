@@ -41,12 +41,7 @@ import com.xzit.ar.common.po.user.UserOrigin;
 import com.xzit.ar.common.util.CommonUtil;
 import com.xzit.ar.portal.service.classes.ClassRoomService;
 
-/**
- * @author Mr.Black
- * @ClassName: ClassRoomController
- * @Description: TODO 班级空间
- * @date 2016年2月20日 下午3:05:30
- */
+
 @Controller
 @RequestMapping("/classroom")
 public class ClassRoomController extends BaseController {

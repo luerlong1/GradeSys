@@ -26,12 +26,7 @@ import com.xzit.ar.common.po.origin.Grade;
 import com.xzit.ar.common.util.CommonUtil;
 import com.xzit.ar.portal.service.classes.ClassService;
 
-/**
- * @author Mr.Black
- * @ClassName: ClassController
- * @Description: TODO
- * @date 2016年2月14日 下午11:42:54
- */
+
 @Controller
 @RequestMapping("/class")
 public class ClassController extends BaseController {

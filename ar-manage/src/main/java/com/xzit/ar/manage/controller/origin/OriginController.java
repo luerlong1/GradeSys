@@ -127,20 +127,55 @@ public class OriginController extends BaseController {
     @RequestMapping("/update")
     public String update(Model model, Origin origin) throws ServiceException {
         // 关键参数校验
-        System.out.println(origin.getOriginId());
         if (origin != null && CommonUtil.isNotEmpty(origin.getOriginId())) {
-            System.out.println(origin.getState()+"1111111111111");
             if (originService.updateOrigin(origin)>0) {
                 setMessage(model, "操作成功");
-                origin.setState("");//定向到查询所有列表，状态设为默认值
             }else {
                 setMessage(model, "操作失败");
             }
         }
-        System.out.println(origin.getState()+"2222222222222");
-        return "forward:/origin/queryOrigin.action";
+        return "redirect:/origin/queryOrigin.action";
     }
 
+
+    /**
+     * TODO 批量删除组织
+     * @param originId
+     * @return
+     */
+    @RequestMapping("/delete")
+    public String delete(@RequestParam("originId") String originId) {
+        System.out.println(originId);
+        String[] ids = originId.split("-");
+        if (ids.length==1){
+            try {
+                int row = originService.delete(Integer.valueOf(originId));
+            } catch (ServiceException e) {
+                e.printStackTrace();
+            }
+        }
+        Origin origin = new Origin();
+        for (int i=0; i<ids.length; i++){
+            origin.setOriginId(Integer.valueOf(ids[i]));
+            origin.setState("X");
+            try {
+                originService.updateOrigin(origin);
+            } catch (ServiceException e) {
+                System.out.println("批量更新失败");
+                e.printStackTrace();
+            }
+        }
+//        if (originId != null) {
+//            try {
+//                int a = originService.delete(Integer.valueOf(originId));
+//            } catch (ServiceException e) {
+//                e.printStackTrace();
+//            }
+//
+//        }
+
+        return "redirect:/origin/queryOrigin.action";
+    }
     /**
      * TODO 查询组织详情
      * @param model

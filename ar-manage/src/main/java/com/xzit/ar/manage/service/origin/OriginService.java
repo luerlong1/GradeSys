@@ -40,6 +40,14 @@ public interface OriginService {
      */
     Integer updateOrigin(Origin origin) throws ServiceException;
 
+
+    /**
+     * TODO 彻底删除组织
+     * @param originId
+     * @return
+     * @throws ServiceException
+     */
+    Integer delete(Integer originId) throws ServiceException;
     /**
      * TODO 通过 originId 获取origin信息
      * @param originId

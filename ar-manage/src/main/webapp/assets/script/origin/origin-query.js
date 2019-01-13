@@ -72,8 +72,8 @@ function removeInfos() {
     if (isValid(infoIds)) {
         if (window.confirm("您，确定删除这些数据？")) {
             $.AMUI.progress.start();
-            $.post('info/removeJobs.action', {
-                'infoIds': infoIds
+            $.post('origin/delete.action', {
+                'originId': infoIds
             }, function (data) {
                 $.AMUI.progress.done();
                 $("#admin-content").html(data);
@@ -86,8 +86,8 @@ function deleteInfo(infoId) {
     if (isValid(infoId)) {
         if (window.confirm("您，确定要彻底删除这条数据？")) {
             $.AMUI.progress.start();
-            $.post("info/delete.action", {
-                "infoId": infoId
+            $.post("origin/delete.action", {
+                "originId": infoId
             }, function (data) {
                 $.AMUI.progress.done();
                 $("#admin-content").html(data);

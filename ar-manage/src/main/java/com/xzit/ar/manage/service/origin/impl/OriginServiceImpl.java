@@ -89,6 +89,23 @@ public class OriginServiceImpl implements OriginService {
     }
 
     /**
+     * TODO 彻产出组织信息
+     *
+     * @param originId
+     * @return
+     * @throws ServiceException
+     */
+    @Override
+    public Integer delete(Integer originId) {
+        int a = 0;
+        try {
+            a = originMapper.delete(originId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return a;
+    }
+    /**
      * TODO 通过 originId 获取origin信息
      *
      * @param originId

@@ -64,7 +64,7 @@
 							</div>
 						</form>
 						<span><span>
-								<a href="#" >-</a></span><a
+								<a href="#" >.</a></span><a
 								href="findPassword" class="pull-right">找回密码</a></span>
 					</div>
 				</div>

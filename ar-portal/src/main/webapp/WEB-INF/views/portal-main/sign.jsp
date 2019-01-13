@@ -134,7 +134,7 @@ input:-webkit-autofill {
 			var email = document.getElementById("email").value;
 			document.getElementById("emailTip").innerHTML = "";
 			if (email != "") {
-				var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+				var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-10]+((\.|-)[A-Za-z0-10]+)*\.[A-Za-z0-9]+$/;
 				isok = reg.test(email);
 				if (isok) {
 					document.getElementById("emailTip").innerHTML = "";
