@@ -42,10 +42,10 @@
         <div class="am-fr">
             <div class="am-input-group am-input-group-sm">
                 <input type="text" id="query" class="am-form-field"
-                       placeholder="标题/作者" value="${query}"
+                       placeholder="名称" value="${query}"
                        onkeypress="if(event.keyCode==13){'#queryBtn'.click();return false;}">
                 <span class="am-input-group-btn">
-					<button class="am-btn am-btn-default dll-query" type="button"
+					<button class="am-btn am-btn-default dll-query" type="button" onclick="queryOrigin(1,10)"
                             id="queryBtn">搜索</button>
 				</span>
             </div>
@@ -88,7 +88,7 @@
                                         <button type="button"
                                                 onclick="javascript:removeInfo('${origin.originId}')"
                                                 class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
-                                            <span class="am-icon-trash-o"></span> 删除${origin.originId}
+                                            <span class="am-icon-trash-o"></span> 禁用${origin.originId}
                                         </button>
                                     </c:if>
                                     <c:if test="${origin.state=='X'}">
@@ -97,11 +97,11 @@
                                                 class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
                                             <i class="am-icon-recycle"></i> 恢复
                                         </button>
-                                        <button type="button"
-                                                onclick="javascript:deleteInfo('${origin.originId}')"
-                                                class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
-                                            <span class="am-icon-trash-o"></span> 彻底删除
-                                        </button>
+                                        <%--<button type="button"--%>
+                                                <%--onclick="javascript:deleteInfo('${origin.originId}')"--%>
+                                                <%--class="am-btn am-btn-default am-btn-xs am-text-danger confirm">--%>
+                                            <%--<span class="am-icon-trash-o"></span> 彻底删除--%>
+                                        <%--</button>--%>
                                     </c:if>
                                 </div>
                             </div>

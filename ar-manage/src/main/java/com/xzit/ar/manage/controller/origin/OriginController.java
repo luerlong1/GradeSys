@@ -44,11 +44,10 @@ public class OriginController extends BaseController {
      * @throws ServiceException
      */
     @RequestMapping("/queryOrigin")
-    public String queryOrigin(Model model, @RequestParam(defaultValue = "") String query, @RequestParam(defaultValue = "") String originGrade,
+    public String queryOrigin(Model model, @RequestParam(defaultValue = "") String query, @RequestParam(defaultValue = "") String originGrade, @RequestParam(defaultValue = "") String queryStr,
                               @RequestParam(defaultValue = "") String state, @RequestParam(defaultValue = "") String originType) throws ServiceException {
         Page<Map<String, Object>> page = new Page<>(getPageIndex(), getPageSize());
         // 校验查询条件
-        System.out.println(query+"---"+originGrade+"---"+originType+"---state="+state);
         Map<String, Object> origin = new HashMap<>();
         if (CommonUtil.isNotEmpty(query)) {
             origin.put("query", query);
@@ -61,6 +60,10 @@ public class OriginController extends BaseController {
         }
         if (CommonUtil.isNotEmpty(originType)) {
             origin.put("originType", originType);
+        }
+        System.out.println(queryStr);
+        if (CommonUtil.isNotEmpty(queryStr)) {
+            origin.put("queryStr", queryStr);
         }
         page.setQueryMap(origin);
         // 执行查询
@@ -165,14 +168,6 @@ public class OriginController extends BaseController {
                 e.printStackTrace();
             }
         }
-//        if (originId != null) {
-//            try {
-//                int a = originService.delete(Integer.valueOf(originId));
-//            } catch (ServiceException e) {
-//                e.printStackTrace();
-//            }
-//
-//        }
 
         return "redirect:/origin/queryOrigin.action";
     }

@@ -173,6 +173,9 @@
             <if test="queryMap != null and queryMap.state != null">
                 AND o.state=#{queryMap.state}
             </if>
+            <if test="queryMap != null and queryMap.queryStr != null">
+                AND o.origin_name like '%${queryMap.queryStr}%'
+            </if>
         </where>
         ORDER BY
         o.state_time DESC

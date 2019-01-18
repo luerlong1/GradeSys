@@ -12,13 +12,15 @@ function queryOrigin(pageIndex, pageSize) {
     var state = $("#state").val();
     var originGrade = $('#originGrade').val();
     var originType = $('#originType').val();
+    var queryStr = $('#queryBtn').val();
     $.post("origin/queryOrigin.action", {
         "pageIndex": pageIndex,
         "pageSize": pageSize,
         "query": query,
         "state": state,
         'originGrade': originGrade,
-        'originType': originType
+        'originType': originType,
+        'queryStr' : queryStr
     }, function (data) {
         $.AMUI.progress.done();
         $("#admin-content").html(data);
@@ -53,7 +55,7 @@ function queryOrigin(pageIndex, pageSize) {
 
 /* 单个删除 */
 function removeInfo(infoId) {
-    if (window.confirm("您确定删除这条数据吗？")) {
+    if (window.confirm("您确定禁用这条组织吗？")) {
         $.AMUI.progress.start();
         $.post("origin/update.action", {
             'originId': infoId,
@@ -96,21 +98,7 @@ function deleteInfo(infoId) {
     }
 }
 
-/* 批量删除 */
-function deleteInfos() {
-    var infoIds = getIds();
-    if (isValid(infoIds)) {
-        if (window.confirm("您，确定彻底删除这些数据？")) {
-            $.AMUI.progress.start();
-            $.post("info/deleteInfos.action", {
-                "infoIds": infoIds
-            }, function (data) {
-                $.AMUI.progress.done();
-                $("#admin-content").html(data);
-            });
-        }
-    }
-}
+
 
 /* 恢复删除数据 */
 function recoverInfo(infoId) {
