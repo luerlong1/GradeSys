@@ -12,7 +12,7 @@ function queryOrigin(pageIndex, pageSize) {
     var state = $("#state").val();
     var originGrade = $('#originGrade').val();
     var originType = $('#originType').val();
-    var queryStr = $('#queryBtn').val();
+    var queryStr = $('#query').val();
     $.post("origin/queryOrigin.action", {
         "pageIndex": pageIndex,
         "pageSize": pageSize,

@@ -44,14 +44,11 @@ public class OriginController extends BaseController {
      * @throws ServiceException
      */
     @RequestMapping("/queryOrigin")
-    public String queryOrigin(Model model, @RequestParam(defaultValue = "") String query, @RequestParam(defaultValue = "") String originGrade, @RequestParam(defaultValue = "") String queryStr,
+    public String queryOrigin(Model model, @RequestParam(defaultValue = "") String originGrade, @RequestParam(defaultValue = "") String queryStr,
                               @RequestParam(defaultValue = "") String state, @RequestParam(defaultValue = "") String originType) throws ServiceException {
         Page<Map<String, Object>> page = new Page<>(getPageIndex(), getPageSize());
         // 校验查询条件
         Map<String, Object> origin = new HashMap<>();
-        if (CommonUtil.isNotEmpty(query)) {
-            origin.put("query", query);
-        }
         if (CommonUtil.isNotEmpty(originGrade)) {
             origin.put("originGrade", originGrade);
         }
@@ -73,7 +70,6 @@ public class OriginController extends BaseController {
         model.addAttribute("grades", ARContext.originGrade);
         model.addAttribute("types", ARContext.originType);
         // 查询条件返回
-        model.addAttribute("query", query);
         model.addAttribute("originGrade", originGrade);
         model.addAttribute("originType", originType);
         model.addAttribute("state", state);
