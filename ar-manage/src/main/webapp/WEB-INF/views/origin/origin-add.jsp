@@ -18,11 +18,9 @@
 
     <!-- 内容区域 content start -->
     <div class="admin-content" id="admin-content">
-        <div class="am-cf am-padding">
-            <div class="am-fl am-cf">
-                <strong class="am-text-primary am-text-lg">班级 / 校友组织</strong> /
-                <small>新建组织</small>
-            </div>
+        <div class="layui-elem-quote overh" style="overflow: hidden;">
+            <div class="fl" style="float: left;">添加组织</div>
+            <a href="javascript:history.back(-1)" class="layui-btn layui-btn-normal fr" style="margin-left: 10px;"><img src="${pageContext.request.contextPath }/images/back.png">返回</a>
         </div>
         <div class="am-tabs  am-margin" data-am-tabs>
             <ul class="am-tabs-nav am-nav am-nav-tabs">

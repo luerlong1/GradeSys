@@ -74,7 +74,7 @@
                     <tr>
                         <td><input type="checkbox" value="${origin.originId}"/></td>
                         <td>
-                            <a href="origin/home.action?originId=${origin.originId}">${origin.originName}</a>
+                            <a href="origin/member.action?originId=${origin.originId}">${origin.originName}</a>
                         </td>
                         <td><ar:dictdata dictdata="${origin.originType}" dict="ot"></ar:dictdata></td>
                         <td>${origin.members}</td>
@@ -88,8 +88,13 @@
                                         <button type="button"
                                                 onclick="javascript:removeInfo('${origin.originId}')"
                                                 class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
-                                            <span class="am-icon-trash-o"></span> 禁用${origin.originId}
-                                        </button>
+                                            <span class="am-icon-trash-o"></span> 禁用
+                                        </button>&nbsp;&nbsp;
+                                        <button type="button"
+                                                onclick="window.location.href='origin/home.action?originId=${origin.originId}'"
+                                                class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
+                                            <span class="am-icon-edit"></span> 编辑
+                                        </button>&nbsp;&nbsp;
                                     </c:if>
                                     <c:if test="${origin.state=='X'}">
                                         <button type="button"

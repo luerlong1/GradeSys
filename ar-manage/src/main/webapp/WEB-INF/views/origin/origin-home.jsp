@@ -24,54 +24,53 @@
     <!-- 内容区域 content start -->
     <div class="admin-content" id="admin-content">
         <div class="am-cf am-padding">
-            <div class="am-fl am-cf">
-                <strong class="am-text-primary am-text-lg">班级 / 校友组织 </strong>
-                <small><a href="origin.action"> / 组织管理</a></small>
-                <small> / 组织主页</small>
+            <div class="layui-elem-quote overh" style="overflow: hidden;">
+                <div class="fl" style="float: left;">组织管理</div>
+                <a href="javascript:history.back(-1)" class="layui-btn layui-btn-normal fr" style="margin-left: 10px;"><img src="${pageContext.request.contextPath }/images/back.png">返回</a>
             </div>
         </div>
-        <hr/>
+
         <div class="am-tabs am-margin">
-            <ul class="am-tabs-nav am-nav am-nav-tabs">
-                <li class="am-active"><a href="javascript:;">主页</a></li>
-                <li><a href="origin/member.action?originId=${origin.originId}">成员</a></li>
-            </ul>
-            <br>
+            <%--<ul class="am-tabs-nav am-nav am-nav-tabs">--%>
+                <%--<li class="am-active"><a href="javascript:;">主页</a></li>--%>
+                <%--<li><a href="origin/member.action?originId=${origin.originId}">成员</a></li>--%>
+            <%--</ul>--%>
+            <%--<br>--%>
 
             <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8">
-                <div class="am-panel am-panel-default">
-                    <div class="am-panel-bd">
-                        <div class="am-g">
-                            <div class="am-u-md-4">
-                                <img class="am-img-circle" src="${origin.mgrPortrait}"/>
-                            </div>
-                            <div class="am-u-md-8">
-                                <p>管理员：<a href="user/detail.action?userId=${origin.mgrId}">${origin.mgrName}</a></p>
-                                <p class="am-form-help">${origin.mgrIntroduce}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <%--<div class="am-panel am-panel-default">--%>
+                    <%--<div class="am-panel-bd">--%>
+                        <%--<div class="am-g">--%>
+                            <%--<div class="am-u-md-4">--%>
+                                <%--<img class="am-img-circle" src="${origin.mgrPortrait}"/>--%>
+                            <%--</div>--%>
+                            <%--<div class="am-u-md-8">--%>
+                                <%--<p>管理员：<a href="user/detail.action?userId=${origin.mgrId}">${origin.mgrName}</a></p>--%>
+                                <%--<p class="am-form-help">${origin.mgrIntroduce}</p>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
 
-                <div class="am-panel am-panel-default">
-                    <div class="am-panel-bd">
-                        <div class="user-info">
-                            <p>等级信息</p>
-                            <div class="am-progress am-progress-sm">
-                                <div class="am-progress-bar" style="width: 60%"></div>
-                            </div>
-                            <p class="user-info-order">当前等级：<strong>LV8</strong> 活跃天数：<strong>587</strong>
-                                距离下一级别：<strong>160</strong></p>
-                        </div>
-                        <div class="user-info">
-                            <p>信用信息</p>
-                            <div class="am-progress am-progress-sm">
-                                <div class="am-progress-bar am-progress-bar-success" style="width: 80%"></div>
-                            </div>
-                            <p class="user-info-order">信用等级：正常当前 信用积分：<strong>80</strong></p>
-                        </div>
-                    </div>
-                </div>
+                <%--<div class="am-panel am-panel-default">--%>
+                    <%--&lt;%&ndash;<div class="am-panel-bd">&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<div class="user-info">&ndash;%&gt;--%>
+                            <%--&lt;%&ndash;<p>等级信息</p>&ndash;%&gt;--%>
+                            <%--&lt;%&ndash;<div class="am-progress am-progress-sm">&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;<div class="am-progress-bar" style="width: 60%"></div>&ndash;%&gt;--%>
+                            <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
+                            <%--&lt;%&ndash;<p class="user-info-order">当前等级：<strong>LV8</strong> 活跃天数：<strong>587</strong>&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;距离下一级别：<strong>160</strong></p>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<div class="user-info">&ndash;%&gt;--%>
+                            <%--&lt;%&ndash;<p>信用信息</p>&ndash;%&gt;--%>
+                            <%--&lt;%&ndash;<div class="am-progress am-progress-sm">&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;<div class="am-progress-bar am-progress-bar-success" style="width: 80%"></div>&ndash;%&gt;--%>
+                            <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
+                            <%--&lt;%&ndash;<p class="user-info-order">信用等级：正常当前 信用积分：<strong>80</strong></p>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
+                <%--</div>--%>
 
             </div>
 

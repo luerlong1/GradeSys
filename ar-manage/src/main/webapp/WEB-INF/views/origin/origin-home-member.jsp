@@ -11,34 +11,30 @@
 </head>
 <body>
 <!-- header -->
-<%@ include file="/WEB-INF/views/global/header.jsp" %>
+<%--<%@ include file="/WEB-INF/views/global/header.jsp" %>--%>
 
 <!-- 主管理区域 admin-main -->
 <div class="am-cf admin-main">
     <!-- 侧边栏 side bar start -->
-    <div class="admin-sidebar">
-        <%@ include file="/WEB-INF/views/global/sidebar.jsp" %>
-    </div>
+    <%--<div class="admin-sidebar">--%>
+        <%--<%@ include file="/WEB-INF/views/global/sidebar.jsp" %>--%>
+    <%--</div>--%>
     <!-- side bar end -->
 
     <!-- 内容区域 content start -->
     <div class="admin-content" id="admin-content">
 
-        <div class="am-cf am-padding">
-            <div class="am-fl am-cf">
-                <strong class="am-text-primary am-text-lg">班级 / 校友组织 </strong>
-                <small><a href="origin.action"> / 组织管理</a></small>
-                <small> / 组织成员</small>
-            </div>
+        <div class="layui-elem-quote overh" style="overflow: hidden;">
+            <div class="fl" style="float: left;">成员列表</div>
+            <a href="javascript:history.back(-1)" class="layui-btn layui-btn-normal fr" style="margin-left: 10px;"><img src="${pageContext.request.contextPath }/images/back.png">返回</a>
         </div>
-        <hr/>
 
         <div class="am-tabs am-margin">
-            <ul class="am-tabs-nav am-nav am-nav-tabs">
-                <li><a href="origin/home.action?originId=${origin.originId}">主页</a></li>
-                <li class="am-active"><a href="javascript:;">成员</a></li>
-            </ul>
-            <br>
+            <%--<ul class="am-tabs-nav am-nav am-nav-tabs">--%>
+                <%--<li><a href="origin/home.action?originId=${origin.originId}">主页</a></li>--%>
+                <%--<li class="am-active"><a href="javascript:;">成员</a></li>--%>
+            <%--</ul>--%>
+            <%--<br>--%>
 
             <div class="am-g">
                 <form class="am-form">
