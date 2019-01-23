@@ -3,7 +3,7 @@
 <%@ include file="/WEB-INF/views/global/common-taglib.jsp" %>
 <div class="layui-elem-quote overh" style="overflow: hidden;">
     <div class="fl" style="float: left;">组织管理</div>
-        <button class="layui-btn layui-btn-normal2 fr" style="float: right;" onclick="window.location.href='origin/add.action'"><img src="${pageContext.request.contextPath }/images/add.png">创建组织</button>
+        <%--<button class="layui-btn layui-btn-normal2 fr" style="float: right;" onclick="window.location.href='origin/add.action'"><img src="${pageContext.request.contextPath }/images/add.png">创建组织</button>--%>
 </div>
 <div class="am-g">
     <div class="am-u-md-9 am-cf">
@@ -33,7 +33,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;
                     <button class="am-btn am-btn-default" type="button"
                             onclick="removeInfos()">
-                        <span class="am-icon-trash-o"></span> 批量删除
+                        <span class="am-icon-trash-o"></span> 批量禁用
                     </button>
 
         </div>
@@ -80,7 +80,8 @@
                         <td>${origin.members}</td>
                         <td><a href="user/account.action?userId=${origin.mgrId}">${origin.mgrName}</a></td>
                         <td><fmt:formatDate value="${origin.stateTime}" pattern="YYYY-MM-dd HH:mm"></fmt:formatDate></td>
-                        <td><ar:dictdata dictdata="${origin.state}" dict="state"/></td>
+                        <%--<td><ar:dictdata dictdata="${origin.state}" dict="state"/></td>--%>
+                        <td><c:if test="${origin.state=='A'}">正常</c:if><c:if test="${origin.state=='X'}">已禁用</c:if></td>
                         <td>
                             <div class="am-btn-toolbar">
                                 <div class="am-btn-group am-btn-group-xs">
@@ -126,8 +127,8 @@
             <%@ include file="/WEB-INF/views/global/operate-remarks.jsp" %>
         </form>
     </div>
-    <!-- 操作说明 -->
-    <%@ include file="/WEB-INF/views/global/operate-message.jsp" %>
+    <%--<!-- 操作说明 -->--%>
+    <%--<%@ include file="/WEB-INF/views/global/operate-message.jsp" %>--%>
     <!-- 控制 js -->
     <script src="../../assets/script/origin/origin-query.js"></script>
     <script src="../../lib/layui/layui.all.js" charset="utf-8"></script>

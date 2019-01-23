@@ -66,14 +66,14 @@ function updateInfo() {
             'originGrade': originGrade,
             'originDesc': originDesc,
             'originName': originName,
-
         }, function (data) {
+            _alert_messgae('修改成功', 100, 1);
             $.AMUI.progress.done();
             queryOrigin(1, 10);
         });
     }
 }
-/* 单个删除 */
+/* 单个禁用 */
 function removeInfo(infoId) {
     if (window.confirm("您确定禁用这条组织吗？")) {
         $.AMUI.progress.start();
@@ -81,69 +81,71 @@ function removeInfo(infoId) {
             'originId': infoId,
             'state': 'X'
         }, function (data) {
-            queryOrigin(1, 10);
+            _alert_messgae('禁用成功', 100, 1);
             $.AMUI.progress.done();
-
+            queryOrigin(1, 10);
         });
     }
 }
 
-/* 批量删除 */
+/* 批量禁用 */
 function removeInfos() {
     var infoIds = getIds();
     if (isValid(infoIds)) {
-        if (window.confirm("您，确定删除这些数据？")) {
+        if (window.confirm("您确定删除这些数据？")) {
             $.AMUI.progress.start();
             $.post('origin/delete.action', {
                 'originId': infoIds
             }, function (data) {
-                queryOrigin(1, 10);
+                _alert_messgae('批量禁用成功', 100, 1);
                 $.AMUI.progress.done();
+                queryOrigin(1, 10);
             });
         }
     }
 }
-/* 彻底删除 */
-function deleteInfo(infoId) {
-    if (isValid(infoId)) {
-        if (window.confirm("您，确定要彻底删除这条数据？")) {
-            $.AMUI.progress.start();
-            $.post("origin/delete.action", {
-                "originId": infoId
-            }, function (data) {
-                queryOrigin(1, 10);
-                $.AMUI.progress.done();
-            });
-        }
-    }
-}
+// /* 彻底删除 */
+// function deleteInfo(infoId) {
+//     if (isValid(infoId)) {
+//         if (window.confirm("您，确定要彻底删除这条数据？")) {
+//             $.AMUI.progress.start();
+//             $.post("origin/delete.action", {
+//                 "originId": infoId
+//             }, function (data) {
+//                 queryOrigin(1, 10);
+//                 $.AMUI.progress.done();
+//             });
+//         }
+//     }
+// }
 
 /* 恢复删除数据 */
 function recoverInfo(infoId) {
-    if (window.confirm("您，确定恢复这条数据吗？")) {
+    if (window.confirm("您确定恢复这条数据吗？")) {
         $.AMUI.progress.start();
         $.post("origin/update.action", {
             "originId": infoId,
             'state': 'A'
         }, function (data) {
-            queryOrigin(1, 10);
+            _alert_messgae('恢复成功', 100, 1);
             $.AMUI.progress.done();
+            queryOrigin(1, 10);
         });
     }
 }
 
-/* 恢复删除数据 */
-function recoverInfos() {
-    var infoIds = getIds();
-    if (isValid(infoIds)) {
-        if (confirm("您，确定恢复这些数据吗？")) {
-            $.AMUI.progress.start();
-            $.post("info/recoverInfos.action", {
-                "infoIds": infoIds
-            }, function (data) {
-                queryOrigin(1, 10);
-                $.AMUI.progress.done();
-            });
-        }
-    }
-}
+// /* 批量恢复删除数据 */
+// function recoverInfos() {
+//     var infoIds = getIds();
+//     if (isValid(infoIds)) {
+//         if (confirm("您，确定恢复这些数据吗？")) {
+//             $.AMUI.progress.start();
+//             $.post("info/recoverInfos.action", {
+//                 "infoIds": infoIds
+//             }, function (data) {
+//                 queryOrigin(1, 10);
+//                 $.AMUI.progress.done();
+//             });
+//         }
+//     }
+// }
