@@ -3,10 +3,13 @@ package com.xzit.ar.manage.controller.origin;
 import com.xzit.ar.common.base.BaseController;
 import com.xzit.ar.common.exception.ServiceException;
 import com.xzit.ar.common.init.context.ARContext;
+import com.xzit.ar.common.mapper.user.UserOriginMapper;
 import com.xzit.ar.common.page.Page;
 import com.xzit.ar.common.po.origin.Origin;
+import com.xzit.ar.common.po.user.UserOrigin;
 import com.xzit.ar.common.util.CommonUtil;
 import com.xzit.ar.manage.service.origin.OriginService;
+import com.xzit.ar.manage.service.user.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +27,9 @@ public class OriginController extends BaseController {
 
     @Resource
     private OriginService originService;
+
+    @Resource
+    private UserOriginMapper UserOriginMapper;
 
     /**
      * TODO 加载组织管理界面
@@ -99,8 +105,26 @@ public class OriginController extends BaseController {
      * @throws ServiceException
      */
     @RequestMapping("/save")
-    public String save(Origin origin) throws ServiceException {
-        // 参数校验
+    public String save(Origin origin, Model model) throws Exception {
+        //
+        String originName = null;
+        String originType = null;
+        String originGrade = null;
+        if (CommonUtil.isNotEmpty(origin.getOriginName())) {
+            originName = origin.getOriginName();
+        }
+        if (CommonUtil.isNotEmpty(origin.getOriginType())) {
+            originType = origin.getOriginType();
+        }
+        if (CommonUtil.isNotEmpty(origin.getOriginGrade())) {
+            originGrade = origin.getOriginGrade();
+        }
+        System.out.println(originName + "====" + originType + "====" + originGrade);
+        String originName1 = originService.getOriginByName(originName, originType, originGrade);
+        if (originName1 != null) {
+            model.addAttribute("error", "该组织已被创建");
+            return "origin/origin-add";
+        }
         if (origin != null && CommonUtil.isNotEmpty(origin.getOriginName())
                 && CommonUtil.isNotEmpty(origin.getOriginType())) {
             // 设置关键参数
@@ -109,8 +133,16 @@ public class OriginController extends BaseController {
             origin.setCreateTime(new Date());
             origin.setState("A");
             origin.setStateTime(new Date());
+            origin.setMembers(1);
 
-            originService.saveOrigin(origin);
+            int originId = originService.saveOrigin(origin);
+            UserOrigin userOrigin = new UserOrigin();
+            userOrigin.setUserId(getCurrentUserId());
+            userOrigin.setOriginId(origin.getOriginId());
+            userOrigin.setCreateTime(new Date());
+            userOrigin.setStateTime(new Date());
+            userOrigin.setState("A");
+            UserOriginMapper.save(userOrigin);
         }
 
         return "redirect:/origin.action";
@@ -125,6 +157,12 @@ public class OriginController extends BaseController {
     @RequestMapping("/update")
     public String update(Model model, Origin origin) throws ServiceException {
         // 关键参数校验
+        if (origin.getMgrId() != null) {//组织设置管理员
+            if (originService.updateOrigin(origin)>0) {
+                model.addAttribute("originId", origin.getOriginId());
+            }
+            return "redirect:/origin/member.action";
+        }
         if (origin != null && CommonUtil.isNotEmpty(origin.getOriginId())) {
             if (originService.updateOrigin(origin)>0) {
                 setMessage(model, "操作成功");
@@ -134,7 +172,23 @@ public class OriginController extends BaseController {
         }
         return "origin/origin-index";
     }
-
+    /**
+     * TODO 编辑组织信息
+     * @param origin
+     * @return
+     * @throws ServiceException
+     */
+    @RequestMapping("/edit")
+    public String edit(Model model, Origin origin) throws ServiceException {
+        if (origin != null && CommonUtil.isNotEmpty(origin.getOriginId())) {
+            if (originService.updateOrigin(origin)>0) {
+                setMessage(model, "操作成功");
+            }else {
+                setMessage(model, "操作失败");
+            }
+        }
+        return "origin/origin-index";
+    }
 
     /**
      * TODO 批量删除组织
@@ -195,6 +249,20 @@ public class OriginController extends BaseController {
         }
         model.addAttribute("origin", originService.getOriginById(originId));
 
+        return "origin/origin-home-member";
+    }
+
+    @RequestMapping("/updateMember")
+    public String updateMember(Model model, UserOrigin userOrigin) throws Exception {
+        // 参数校验
+        userOrigin.setStateTime(new Date());
+        if (userOrigin != null && CommonUtil.isNotEmpty(userOrigin.getOriginId()) && CommonUtil.isNotEmpty(userOrigin.getUserId())) {
+            if (UserOriginMapper.update(userOrigin)>0) {
+                setMessage(model, "操作成功");
+            }else {
+                setMessage(model, "操作失败");
+            }
+        }
         return "origin/origin-home-member";
     }
 }

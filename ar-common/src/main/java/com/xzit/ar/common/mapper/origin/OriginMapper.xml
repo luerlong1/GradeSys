@@ -29,6 +29,20 @@
         where origin_id = #{originId,jdbcType=INTEGER}
     </select>
 
+    <select id="getOriginByName" resultType="string">
+        SELECT origin_name originName FROM origin
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="originName!=null and originName!=''">
+                AND origin_name = #{originName}
+            </if>
+            <if test="originType!=null and originType!=''">
+                AND origin_type =#{originType}
+            </if>
+            <if test="originGrade!=null and originGrade!=''">
+                AND origin_grade =#{originGrade}
+            </if>
+        </trim>
+    </select>
     <!--按id查询组织详情-->
     <select id="getOriginById" resultType="map" parameterType="java.lang.Integer">
         SELECT
@@ -186,7 +200,7 @@
     <delete id="delete" parameterType="java.lang.Integer">delete from origin
     where origin_id = #{originId,jdbcType=INTEGER}</delete>
 
-    <insert id="save" parameterType="com.xzit.ar.common.po.origin.Origin">
+    <insert id="save" useGeneratedKeys="true" keyProperty="originId" parameterType="com.xzit.ar.common.po.origin.Origin">
         insert into origin
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="originId != null">origin_id,</if>

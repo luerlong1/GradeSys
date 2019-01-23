@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ include file="/WEB-INF/views/global/common-taglib.jsp" %>
 <!DOCTYPE HTML>
 <html>
@@ -51,41 +52,49 @@
                             <th class="table-set">操作</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <c:forEach items="${page.beanList}" var="member">
-                            <tr>
-                                <td><input type="checkbox" value="${member.userId}"/></td>
-                                <td>
-                                    <a href="origin/home.action?originId=${member.userId}"
-                                       target="blank">${member.trueName}</a>
-                                    <c:if test="${member.userId == origin.mgrId}">
-                                        &nbsp;<span class="am-badge am-badge-success">管理员</span>
-                                    </c:if>
-                                </td>
-                                <td><fmt:formatDate value="${origin.stateTime}"
-                                                    pattern="YYYY-M-d HH:mm"></fmt:formatDate></td>
-                                <td><ar:dictdata dictdata="${origin.state}" dict="state"/></td>
-                                <td>
-                                    <div class="am-btn-toolbar">
-                                        <div class="am-btn-group am-btn-group-xs">
-                                            <c:if test="${member.userId != origin.mgrId && member.state=='A'}">
-                                                <button type="button"
-                                                        onclick="javascript:removeMember('${member.userId}')"
-                                                        class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
-                                                    <span class="am-icon-trash-o"></span> 踢出
-                                                </button>
-                                            </c:if>
-                                            <c:if test="${member.userId != origin.mgrId}">
-                                                <a href="origin/update.action?mgrId=${member.userId}&originId=${origin.originId}"
-                                                   class="am-btn am-btn-default am-btn-xs">
-                                                    <i class="am-icon-recycle"></i> 设为管理员
-                                                </a>
-                                            </c:if>
+                 <tbody>
+                        <c:if test="${page.beanList != null}">
+                            <c:forEach items="${page.beanList}" var="member">
+                                <tr>
+                                    <td><input type="checkbox" value="${member.userId}"/></td>
+                                    <td>
+                                        <a href="origin/home.action?originId=${member.userId}"
+                                           target="blank">${member.trueName}</a>
+                                        <c:if test="${member.userId == origin.mgrId}">
+                                            &nbsp;<span class="am-badge am-badge-success">管理员</span>
+                                        </c:if>
+                                    </td>
+                                    <td><fmt:formatDate value="${origin.stateTime}"
+                                                        pattern="YYYY-M-d HH:mm"></fmt:formatDate></td>
+                                    <td><ar:dictdata dictdata="${origin.state}" dict="state"/></td>
+                                    <td>
+                                        <div class="am-btn-toolbar">
+                                            <div class="am-btn-group am-btn-group-xs">
+                                                <c:if test="${member.userId != origin.mgrId && member.state=='A'}">
+                                                    <button type="button"
+                                                            onclick="javascript:removeMember('${member.userId}')"
+                                                            class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
+                                                        <span class="am-icon-trash-o"></span> 移除
+                                                    </button>
+                                                </c:if>
+                                                <c:if test="${member.userId != origin.mgrId}">
+                                                    <button type="button"
+                                                            onclick="javascript:setManager('${member.userId}')"
+                                                            class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
+                                                        <span class="am-icon-recycle"></span> 设为管理员
+                                                    </button>
+                                                </c:if>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </c:forEach>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </c:if>
+                         <c:if test="${ empty page.beanList}">
+                             <tr>
+                                 <td colspan="5" align="center">暂无信息</td>
+                             </tr>
+                         </c:if>
                         </tbody>
                     </table>
                     <!-- 页码 -->
@@ -99,8 +108,9 @@
     </div>
 </div>
 
-<!-- footer -->
-<%@ include file="/WEB-INF/views/global/footer.jsp" %>
+<%--<!-- footer -->--%>
+<%--<%@ include file="/WEB-INF/views/global/footer.jsp" %>--%>
+<%@ include file="/WEB-INF/views/global/operate-message.jsp" %>
 <!-- 控制js -->
 <%@ include file="/WEB-INF/views/global/common-js.jsp" %>
 <script src="assets/script/origin/origin-home-member.js"></script>

@@ -143,4 +143,6 @@ public interface OriginMapper extends BaseMapper {
 	 * @throws Exception
 	 */
 	Map<String, Object> getOriginById(@Param("originId") Integer originId) throws Exception;
+
+	String getOriginByName(Map<String, String> map);
 }

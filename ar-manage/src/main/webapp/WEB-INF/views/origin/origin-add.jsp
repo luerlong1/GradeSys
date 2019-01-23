@@ -28,6 +28,7 @@
             </ul>
             <div class="am-tabs-bd">
                 <div class="am-tab-panel am-fade am-in am-active">
+                    <span style="color: red">${error}</span>
                     <form class="am-form" id="origin-form" method="post" action="origin/save.action">
 
                         <div class="am-g am-margin-top-sm">

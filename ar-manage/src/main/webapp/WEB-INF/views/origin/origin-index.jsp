@@ -28,9 +28,10 @@
 	</div>
 	<!-- footer -->
 	<%--<%@ include file="/WEB-INF/views/global/footer.jsp"%>--%>
-
+    <%@ include file="/WEB-INF/views/global/operate-message.jsp" %>
 	<!-- 控制js -->
 	<%@ include file="/WEB-INF/views/global/common-js.jsp"%>
 	<script src="assets/script/origin/origin-index.js"></script>
+    <script src="../../assets/script/origin/origin-query.js"></script>
 </body>
 </html>

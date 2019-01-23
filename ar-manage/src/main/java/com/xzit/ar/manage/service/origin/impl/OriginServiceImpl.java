@@ -11,6 +11,7 @@ import com.xzit.ar.manage.service.origin.OriginService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -88,6 +89,14 @@ public class OriginServiceImpl implements OriginService {
         return 0;
     }
 
+    @Override
+    public String getOriginByName(String originName, String originType, String originGrade) {
+        Map<String,String> map = new HashMap<>();
+        map.put("originName",originName);
+        map.put("originType",originType);
+        map.put("originGrade",originGrade);
+        return originMapper.getOriginByName(map);
+    }
     /**
      * TODO 彻产出组织信息
      *

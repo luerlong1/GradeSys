@@ -32,6 +32,7 @@ public interface OriginService {
      */
     Integer saveOrigin(Origin origin) throws ServiceException;
 
+    String getOriginByName(String originName, String originType, String originGrade);
     /**
      * TODO 更新组织信息
      * @param origin
