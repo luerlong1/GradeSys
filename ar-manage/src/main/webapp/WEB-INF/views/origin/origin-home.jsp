@@ -75,7 +75,7 @@
             </div>
 
             <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
-                <form class="am-form am-form-horizontal" method="post" action="origin/update.action">
+                <form class="am-form am-form-horizontal" method="get" action="origin/update.action">
 
                     <div class="am-form-group">
                         <label for="originName" class="am-u-sm-3 am-form-label">名称 </label>
@@ -121,11 +121,12 @@
                         </div>
                     </div>
 
-                    <input hidden name="originId" value="${origin.originId}">
+                    <input hidden name="originId" id="originId" value="${origin.originId}">
 
                     <div class="am-form-group">
                         <div class="am-u-sm-9 am-u-sm-push-3">
-                            <button type="submit" class="am-btn am-btn-primary am-btn-xs">提交修改</button>
+                            <button type="" onclick="javascript:updateInfo()"
+                                    class="am-btn am-btn-primary am-btn-xs">提交修改</button>
                         </div>
                     </div>
                 </form>
@@ -140,7 +141,8 @@
 <%--<%@ include file="/WEB-INF/views/global/footer.jsp" %>--%>
 <!-- 控制js -->
 <%@ include file="/WEB-INF/views/global/common-js.jsp" %>
-<script src="assets/script/origin/origin-home.js"></script>
+<script src="../../assets/script/origin/origin-home.js"></script>
+<script src="../../assets/script/origin/origin-query.js"></script>
 </body>
 </html>
 

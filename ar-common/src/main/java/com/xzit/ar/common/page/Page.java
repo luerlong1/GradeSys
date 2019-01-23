@@ -12,14 +12,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @ClassName: Page <br>
- * @Description: TODO 分页Bean<br>
- * @author Mr.Black <br>
- * @date 2015年12月23日 下午8:08:26 <br>
- * @version V1.2 <br>
- * @param <T><br>
- */
+
 public class Page<T> implements Serializable {
 
 	/**
@@ -69,38 +62,16 @@ public class Page<T> implements Serializable {
 
 	private T queryMap;
 
-	/**
-	 * Title: <br>
-	 * Description:TODO <br>
-	 * <br>
-	 */
 	public Page() {
 		super();
 	}
 
-	/**
-	 * Title: <br>
-	 * Description:TODO <br>
-	 * 
-	 * @param pageIndex
-	 * @param pageSize
-	 *            <br>
-	 */
 	public Page(int pageIndex, int pageSize) {
 		super();
 		this.pageIndex = pageIndex;
 		this.pageSize = pageSize;
 	}
 
-	/**
-	 * Title: <br>
-	 * Description:TODO <br>
-	 * 
-	 * @param pageIndex
-	 * @param pageSize
-	 * @param codeRange
-	 *            <br>
-	 */
 	public Page(int pageIndex, int pageSize, int codeRange) {
 		super();
 		this.pageIndex = pageIndex;
@@ -136,11 +107,7 @@ public class Page<T> implements Serializable {
 		return codeList;
 	}
 
-	/**
-	 * @Description: TODO 设置页码集合<br>
-	 * @author Mr.Black <br>
-	 * @date 2015年12月23日 下午8:30:04 <br>
-	 */
+
 	public void setCodeList() {
 
 		/**

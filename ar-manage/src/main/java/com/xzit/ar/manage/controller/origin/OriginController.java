@@ -58,7 +58,6 @@ public class OriginController extends BaseController {
         if (CommonUtil.isNotEmpty(originType)) {
             origin.put("originType", originType);
         }
-        System.out.println(queryStr);
         if (CommonUtil.isNotEmpty(queryStr)) {
             origin.put("queryStr", queryStr);
         }
@@ -133,7 +132,7 @@ public class OriginController extends BaseController {
                 setMessage(model, "操作失败");
             }
         }
-        return "redirect:/origin/queryOrigin.action";
+        return "origin/origin-index";
     }
 
 

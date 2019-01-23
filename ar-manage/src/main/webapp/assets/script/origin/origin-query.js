@@ -51,8 +51,28 @@ function queryOrigin(pageIndex, pageSize) {
 //     });
 // }
 
+/*bianji*/
+function updateInfo() {
+    var originName = $("#originName").val();
+    var originType = $("#originType").val();
+    var originGrade = $('#originGrade').val();
+    var originDesc = $('#originDesc').val();
+    var originId = $('#originId').val();
+    if (window.confirm("您确定提交吗？")) {
+        $.AMUI.progress.start();
+        $.post("origin/update.action", {
+            'originId': originId,
+            'originType': originType,
+            'originGrade': originGrade,
+            'originDesc': originDesc,
+            'originName': originName,
 
-
+        }, function (data) {
+            $.AMUI.progress.done();
+            queryOrigin(1, 10);
+        });
+    }
+}
 /* 单个删除 */
 function removeInfo(infoId) {
     if (window.confirm("您确定禁用这条组织吗？")) {
@@ -61,9 +81,9 @@ function removeInfo(infoId) {
             'originId': infoId,
             'state': 'X'
         }, function (data) {
+            queryOrigin(1, 10);
             $.AMUI.progress.done();
 
-            $("#admin-content").html(data);
         });
     }
 }
@@ -77,8 +97,8 @@ function removeInfos() {
             $.post('origin/delete.action', {
                 'originId': infoIds
             }, function (data) {
+                queryOrigin(1, 10);
                 $.AMUI.progress.done();
-                $("#admin-content").html(data);
             });
         }
     }
@@ -91,14 +111,12 @@ function deleteInfo(infoId) {
             $.post("origin/delete.action", {
                 "originId": infoId
             }, function (data) {
+                queryOrigin(1, 10);
                 $.AMUI.progress.done();
-                $("#admin-content").html(data);
             });
         }
     }
 }
-
-
 
 /* 恢复删除数据 */
 function recoverInfo(infoId) {
@@ -108,9 +126,8 @@ function recoverInfo(infoId) {
             "originId": infoId,
             'state': 'A'
         }, function (data) {
+            queryOrigin(1, 10);
             $.AMUI.progress.done();
-            $("#admin-content").html(data);
-
         });
     }
 }
@@ -124,8 +141,8 @@ function recoverInfos() {
             $.post("info/recoverInfos.action", {
                 "infoIds": infoIds
             }, function (data) {
+                queryOrigin(1, 10);
                 $.AMUI.progress.done();
-                $("#admin-content").html(data);
             });
         }
     }
