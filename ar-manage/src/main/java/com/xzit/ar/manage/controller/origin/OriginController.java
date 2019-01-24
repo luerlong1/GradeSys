@@ -252,6 +252,7 @@ public class OriginController extends BaseController {
         return "origin/origin-home-member";
     }
 
+    //移除成员
     @RequestMapping("/updateMember")
     public String updateMember(Model model, UserOrigin userOrigin) throws Exception {
         // 参数校验
@@ -259,6 +260,12 @@ public class OriginController extends BaseController {
         if (userOrigin != null && CommonUtil.isNotEmpty(userOrigin.getOriginId()) && CommonUtil.isNotEmpty(userOrigin.getUserId())) {
             if (UserOriginMapper.update(userOrigin)>0) {
                 setMessage(model, "操作成功");
+                Map<String, Object> originMap = originService.getOriginById(userOrigin.getOriginId());
+                Origin origin = new Origin();
+                Integer memberNum = (Integer)originMap.get("members")-1;//成员数减1
+                origin.setMembers(memberNum);
+                origin.setOriginId(userOrigin.getOriginId());
+                int a = originService.updateOrigin(origin);
             }else {
                 setMessage(model, "操作失败");
             }
