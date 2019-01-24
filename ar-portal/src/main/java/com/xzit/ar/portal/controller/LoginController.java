@@ -62,7 +62,12 @@ public class LoginController extends BaseController {
 		System.out.println(password);
 		// 登录校验
 		user = loginService.validateUser(account, password);
+		if ("X".equals(user.get("state"))) {
+			session.setAttribute("error", "该用户已被禁用！");
+			return new ModelAndView("redirect:/index.action");
+		}
 		if (user != null) {
+			System.out.println(user);
 			if (user.get("password") != null) {
 				// 填充登录信息
 				session.setAttribute(WebConstant.SESSION_LOGIN_FLAG, WebConstant.SESSION_LOGIN_FLAG);
@@ -81,13 +86,13 @@ public class LoginController extends BaseController {
 				}
 			} else {
 				session.setAttribute("error", "密码错误");
+				return new ModelAndView("redirect:/index.action");
 			}
 		} else {
 			session.setAttribute("error", "用户名不存在");
-			System.out.println(account);
+			return new ModelAndView("redirect:/index.action");
 		}
 		// 返回登录
-		return new ModelAndView("redirect:/index.action");
 //		return new ModelAndView("portal-main/login");
 	}
 
@@ -142,7 +147,6 @@ public class LoginController extends BaseController {
 	 */
 	@RequestMapping(value = "/doSign", method = RequestMethod.POST)
 	public String doSign(Model model, String account, String password, String trueName, String email) {
-		System.out.println(account+"asdffasdfa");
 		Map<String, Object> user = loginService.validateAccount(account);
 		if (user == null) {
             int id = loginService.signUser(account, password, trueName, email);

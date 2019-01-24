@@ -2,6 +2,7 @@ package com.xzit.ar.manage.service.user.impl;
 
 import com.xzit.ar.common.mapper.user.UserMapper;
 import com.xzit.ar.common.page.Page;
+import com.xzit.ar.common.po.user.User;
 import com.xzit.ar.manage.service.user.UserService;
 import org.springframework.stereotype.Service;
 
@@ -31,5 +32,16 @@ public class UserServiceImpl implements UserService{
     public List<Map<String, Object>> queryUser(Page<Map<String, Object>> page) {
         userMapper.queryUser(page);
         return null;
+    }
+
+    @Override
+    public int updateUser(User user) {
+        int a = 0;
+        try {
+            a = userMapper.update(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return a;
     }
 }

@@ -2,42 +2,40 @@
          pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ include file="/WEB-INF/views/global/common-taglib.jsp" %>
 
-<div class="am-cf am-padding">
-    <div class="am-fl am-cf">
-        <strong class="am-text-primary am-text-lg">用户管理</strong> /
-        <small>用户列表</small>
-    </div>
+<div class="layui-elem-quote overh" style="overflow: hidden;">
+    <div class="fl" style="float: left;">用户管理</div>
+    <%--<button class="layui-btn layui-btn-normal2 fr" style="float: right;" onclick="window.location.href='origin/add.action'"><img src="${pageContext.request.contextPath }/images/add.png">创建组织</button>--%>
 </div>
 
 <div class="am-g">
     <div class="am-u-md-9 am-cf">
         <div class="am-btn-group am-btn-group-xs">
-            <a class="am-btn am-btn-default" href="info/add.action">
-                <span class="am-icon-plus"></span> 添加用户
-            </a>
-            <c:if test="${state=='D'}">
-                <button class="am-btn am-btn-default" type="button" onclick="auditInfos()">
-                    <span class="am-icon-archive"></span> 批量审核
-                </button>
-            </c:if>
-            <c:if test="${state!='X'}">
+            <%--<a class="am-btn am-btn-default" href="info/add.action">--%>
+                <%--<span class="am-icon-plus"></span> 添加用户--%>
+            <%--</a>--%>
+            <%--<c:if test="${state=='D'}">--%>
+                <%--<button class="am-btn am-btn-default" type="button" onclick="auditInfos()">--%>
+                    <%--<span class="am-icon-archive"></span> 批量审核--%>
+                <%--</button>--%>
+            <%--</c:if>--%>
+            <%--<c:if test="${state!='X'}">--%>
+                <%--<button class="am-btn am-btn-default" type="button"--%>
+                        <%--onclick="removeInfos()">--%>
+                    <%--<span class="am-icon-trash-o"></span> 批量删除--%>
+                <%--</button>--%>
+            <%--</c:if>--%>
+            <%--<c:if test="${state=='X'}">--%>
                 <button class="am-btn am-btn-default" type="button"
                         onclick="removeInfos()">
-                    <span class="am-icon-trash-o"></span> 批量删除
+                    <i class="am-icon-trash-o"></i> 批量禁用
                 </button>
-            </c:if>
-            <c:if test="${state=='X'}">
-                <button class="am-btn am-btn-default" type="button"
-                        onclick="recoverInfos()">
-                    <i class="am-icon-recycle"></i> 批量恢复
-                </button>
-                <button class="am-btn am-btn-default" type="button"
-                        onclick="deleteInfos()">
-                    <span class="am-icon-trash-o"></span> 彻底删除
-                </button>
-            </c:if>
+                <%--<button class="am-btn am-btn-default" type="button"--%>
+                        <%--onclick="deleteInfos()">--%>
+                    <%--<span class="am-icon-trash-o"></span> 彻底删除--%>
+                <%--</button>--%>
+            <%--</c:if>--%>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <%@ include file="/WEB-INF/views/global/page-size.jsp" %>
+
             &nbsp;&nbsp;状态：
             <select id="state" class="dll-query">
                 <option value="" name="state" <c:if test="${state==''}">selected</c:if>>全部</option>
@@ -101,37 +99,42 @@
                             <c:if test="${user.isAdmin == 1}">管理员</c:if>
                         </td>
                         <td>${user.trueName}</td>
-                        <td>${user.email}</td>
+                        <td><c:if test="${user.email !=null}">${user.email}</c:if><c:if test="${user.email ==null}">暂无</c:if></td>
                         <td><fmt:formatDate value="${user.stateTime}" pattern="YYYY-M-d"></fmt:formatDate></td>
-                        <td><ar:dictdata dictdata="${user.state}" dict="state"/></td>
+                        <td><c:if test="${user.state=='A'}">正常</c:if><c:if test="${user.state=='X'}">已禁用</c:if></td>
                         <td>
                             <div class="am-btn-toolbar">
                                 <div class="am-btn-group am-btn-group-xs">
                                     <c:if test="${user.state == 'A'}">
+                                        <%--<button type="button"--%>
+                                                <%--onclick="javascript:cancelTopInfo('${user.infoId}')"--%>
+                                                <%--class="am-btn am-btn-default am-btn-xs am-text-danger">--%>
+                                            <%--<span class="am-icon-pencil-square-o"></span> 删除--%>
+                                        <%--</button>--%>
                                         <button type="button"
-                                                onclick="javascript:cancelTopInfo('${user.infoId}')"
-                                                class="am-btn am-btn-default am-btn-xs am-text-danger">
-                                            <span class="am-icon-pencil-square-o"></span> 删除
-                                        </button>
-                                        <button type="button"
-                                                onclick="javascript:setTopInfo('${info.infoId}')"
+                                                onclick="javascript:removeInfo('${user.userId}')"
                                                 class="am-btn am-btn-default am-btn-xs am-text-primary">
-                                            <span class="am-icon-pencil-square-o"></span> 冻结
+                                            <span class="am-icon-pencil-square-o"></span> 禁用${user.userId}
                                         </button>
+                                        <button type="button"
+                                                onclick="window.location.href='origin/home.action?originId=${origin.originId}'"
+                                                class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
+                                            <span class="am-icon-edit"></span> 编辑
+                                        </button>&nbsp;&nbsp;
                                     </c:if>
                                     <c:if test="${user.state != 'A'}">
                                         <button type="button"
-                                                onclick="javascript:recoverInfo('${info.infoId}')"
+                                                onclick="javascript:recoverInfo('${user.userId}')"
                                                 class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
                                             <i class="am-icon-recycle"></i> 恢复
                                         </button>
                                     </c:if>
                                     <c:if test="${user.state == 'X'}">
-                                        <button type="button"
-                                                onclick="javascript:deleteInfo('${info.infoId}')"
-                                                class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
-                                            <span class="am-icon-trash-o"></span> 彻底删除
-                                        </button>
+                                        <%--<button type="button"--%>
+                                                <%--onclick="javascript:deleteInfo('${info.infoId}')"--%>
+                                                <%--class="am-btn am-btn-default am-btn-xs am-text-danger confirm">--%>
+                                            <%--<span class="am-icon-trash-o"></span> 彻底删除--%>
+                                        <%--</button>--%>
                                     </c:if>
                                 </div>
                             </div>

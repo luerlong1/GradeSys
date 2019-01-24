@@ -90,21 +90,21 @@ function removeInfo(infoId) {
 }
 
 // /* 批量禁用 */
-// function removeInfos() {
-//     var infoIds = getIds();
-//     if (isValid(infoIds)) {
-//         if (window.confirm("您确定删除这些数据？")) {
-//             $.AMUI.progress.start();
-//             $.post('origin/delete.action', {
-//                 'originId': infoIds
-//             }, function (data) {
-//                 _alert_messgae('批量禁用成功', 100, 1);
-//                 $.AMUI.progress.done();
-//                 queryOrigin(1, 10);
-//             });
-//         }
-//     }
-// }
+function removeInfos() {
+    var infoIds = getIds();
+    if (isValid(infoIds)) {
+        if (window.confirm("您确定删除这些数据？")) {
+            $.AMUI.progress.start();
+            $.post('origin/delete.action', {
+                'originId': infoIds
+            }, function (data) {
+                $.AMUI.progress.done();
+                _alert_messgae('批量禁用成功', 100, 1);
+                queryOrigin(1, 10);
+            });
+        }
+    }
+}
 // /* 彻底删除 */
 // function deleteInfo(infoId) {
 //     if (isValid(infoId)) {
