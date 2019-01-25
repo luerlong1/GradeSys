@@ -119,7 +119,7 @@
 							</li>
 
 							<li>
-								<a _href="info/add.action">
+								<a _href="user/add.action">
 									<i class="iconfont">&#xe6a7;</i>
 									<cite>添加用户？</cite>
 								</a>

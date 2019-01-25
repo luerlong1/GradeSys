@@ -2,6 +2,7 @@ package com.xzit.ar.manage.controller.user;
 
 import com.xzit.ar.common.base.BaseController;
 import com.xzit.ar.common.exception.ServiceException;
+import com.xzit.ar.common.init.context.ARContext;
 import com.xzit.ar.common.page.Page;
 import com.xzit.ar.common.po.origin.Origin;
 import com.xzit.ar.common.po.user.User;
@@ -34,7 +35,28 @@ public class UserController extends BaseController {
 
         return "user/user-index";
     }
+    /**
+     * TODO 加载信息发布界面
+     *
+     * @param model
+     * @return
+     */
+    @RequestMapping("/add")
+    public String add(Model model) {
+        return "user/user_add";
+    }
 
+    /**
+     * TODO 加载信息发布界面
+     *
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/addUser", method = RequestMethod.POST)
+    public String addUser(Model model, User user) {
+        System.out.println(user);
+        return "user/user_add";
+    }
     /**
      * TODO 查询用户列表
      * @param model
