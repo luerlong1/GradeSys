@@ -80,18 +80,18 @@
         `user` u
         <where>
             1=1
-            <if test="queryMap.state != null">
+            <if test="queryMap.state != null and queryMap.state != null">
                 AND u.state = #{queryMap.state}
             </if>
-            <if test="queryMap.query != null">
-                u.true_name LIKE #{queryMap.query}
+            <if test="queryMap.query != null and queryMap.query != null">
+                AND u.true_name LIKE '%${queryMap.query}%'
             </if>
-            <if test="queryMap.isAdmin != null">
-                u.is_admin = #{queryMap.isAdmin}
+            <if test="queryMap.isAdmin != null and queryMap.isAdmin != null" >
+                AND u.is_admin = #{queryMap.isAdmin}
             </if>
         </where>
         ORDER BY
-        u.state_time DESC
+        u.create_time DESC
 
 
     </select>

@@ -30,8 +30,8 @@ public class UserServiceImpl implements UserService{
      */
     @Override
     public List<Map<String, Object>> queryUser(Page<Map<String, Object>> page) {
-        userMapper.queryUser(page);
-        return null;
+
+        return userMapper.queryUser(page);
     }
 
     @Override

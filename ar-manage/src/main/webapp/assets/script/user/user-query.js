@@ -10,13 +10,13 @@ function queryUser(pageIndex, pageSize) {
     $.AMUI.progress.start();
     var query = $("#query").val();
     var state = $("#state").val();
-    var infoType = $('#infoType').val();
+    var isAdmin = $('#isAdmin').val();
     $.post('user/queryUser.action', {
         "pageIndex": pageIndex,
         "pageSize": pageSize,
         "query": query,
         "state": state,
-        "infoType": infoType
+        "isAdmin": isAdmin
     }, function (data) {
         $.AMUI.progress.done();
         $("#admin-content").html(data);
@@ -103,7 +103,7 @@ function removeInfos() {
             });
         }
     }
-
+}
 /*添加用户*/
 function addUser() {
     var account = $("#account").val();

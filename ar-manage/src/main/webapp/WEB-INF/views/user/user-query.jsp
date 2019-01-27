@@ -58,8 +58,8 @@
                        placeholder="用户名" value="${query}"
                        onkeypress="if(event.keyCode==13){queryBtn.click();return false;}">
                 <span class="am-input-group-btn">
-					<button class="am-btn am-btn-default dll-query" type="button"
-                            id="queryBtn">搜索</button>
+					<button class="am-btn am-btn-default dll-query" type="button" name="queryBtn"
+                            onclick="javascript:queryUser()" id="queryBtn">搜索</button>
 				</span>
             </div>
         </div>
