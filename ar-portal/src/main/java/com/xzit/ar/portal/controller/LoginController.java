@@ -8,6 +8,7 @@
  */
 package com.xzit.ar.portal.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,6 +16,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import com.xzit.ar.common.po.user.User;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -71,6 +73,9 @@ public class LoginController extends BaseController {
 			if (user.get("password") != null) {
 				// 填充登录信息
 				session.setAttribute(WebConstant.SESSION_LOGIN_FLAG, WebConstant.SESSION_LOGIN_FLAG);
+				User userLoginTime = new User();
+				userLoginTime.setStateTime(new Date());	//设置登录时间
+				user.get("userId");//暂时没做更新登录时间
 				// 登录成功跳转
 				if (user.get("isAdmin").toString().equals("1")) {
 					// 管理员登录
