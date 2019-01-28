@@ -145,7 +145,6 @@ public class UserController extends BaseController {
      */
     @RequestMapping("/delete")
     public String delete(@RequestParam("userIds") String userIds) {
-        System.out.println(userIds);
         String[] ids = userIds.split("-");
         User user = new User();
         for (int i=0; i<ids.length; i++){
@@ -159,5 +158,17 @@ public class UserController extends BaseController {
             }
         }
         return "user/user-query";
+    }
+
+    @RequestMapping("/userOrigin")
+    public String userOrigin(Model model, @RequestParam("userId") Integer userId)  throws Exception{
+        if (CommonUtil.isNotEmpty(userId)){
+            Page<Map<String, Object>> page = new Page<>(getPageIndex(), getPageSize());
+            // 查询成员
+            userService.queryUserOrigin(page, userId);
+            // 数据返回
+            model.addAttribute("page", page);
+        }
+        return "user/user-origin";
     }
 }
