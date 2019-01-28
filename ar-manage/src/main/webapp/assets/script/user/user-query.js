@@ -105,28 +105,28 @@ function removeInfos() {
     }
 }
 /*添加用户*/
-function addUser() {
-    var account = $("#account").val();
-    var email = $("#email").val();
-    var introduce = $('#introduce').val();
-    var isAdmin = $('#isAdmin').val();
-    var trueName = $('#trueName').val();
-    if (window.confirm("您，确定恢复这条数据吗？")) {
-        $.AMUI.progress.start();
-        $.post("user/addUser.action", {
-            "account": account,
-            "introduce": introduce,
-            "isAdmin": isAdmin,
-            "trueName": trueName,
-            "password": 'zzuli123456',
-            'email': email
-        }, function (data) {
-            $.AMUI.progress.done();
-            _alert_messgae('添加成功', 100, 2);
-            queryUser(1,10);
-        });
-    }
-}
+// function addUser() {
+//     var account = $("#account").val();
+//     var email = $("#email").val();
+//     var introduce = $('#introduce').val();
+//     var isAdmin = $('#isAdmin').val();
+//     var trueName = $('#trueName').val();
+//     if (window.confirm("您，确定提交吗？")) {
+//         $.AMUI.progress.start();
+//         $.post('user/addUser.action', {
+//             "account": account,
+//             "introduce": introduce,
+//             "isAdmin": isAdmin,
+//             "trueName": trueName,
+//             "password": 'zzuli123456',
+//             'email': email
+//         }, function (data) {
+//             $.AMUI.progress.done();
+//             _alert_messgae('添加成功', 100, 2);
+//             // queryUser(1,10);
+//         });
+//     }
+// }
 /* 恢复删除数据 */
 function recoverInfo(infoId) {
     if (window.confirm("您，确定恢复这条数据吗？")) {

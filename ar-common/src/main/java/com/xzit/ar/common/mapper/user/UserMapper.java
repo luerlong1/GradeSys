@@ -34,6 +34,10 @@ public interface UserMapper extends BaseMapper {
 	 */
 	List<Map<String, Object>> queryUser(Page<Map<String, Object>> page);
 
-
-
+	/**
+	 *	根据账号查找用户
+	 * @param account 账号
+	 * @return user
+	 */
+	Map<String,Object> validateAccount(String account);
 }

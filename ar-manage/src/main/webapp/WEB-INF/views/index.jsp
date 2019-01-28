@@ -121,7 +121,7 @@
 							<li>
 								<a _href="user/add.action">
 									<i class="iconfont">&#xe6a7;</i>
-									<cite>添加用户？</cite>
+									<cite>添加用户</cite>
 								</a>
 							</li>
 						</ul>

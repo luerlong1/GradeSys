@@ -66,6 +66,19 @@
 		AND u.user_id = #{userId}
 	</select>
 
+    <select id="validateAccount" parameterType="string" resultType="map">
+		SELECT
+		u.user_id userId,
+		u.account account,
+		u.true_name trueName,
+		u.introduce introduce
+
+
+		FROM
+		`user` u
+		WHERE u.account = #{account}
+	</select>
+
     <select id="queryUser" resultType="map">
         SELECT
         u.user_id userId,
@@ -122,7 +135,7 @@
             <if test="password != null">#{password,jdbcType=VARCHAR},</if>
             <if test="email != null">#{email,jdbcType=VARCHAR},</if>
             <if test="trueName != null">#{trueName,jdbcType=VARCHAR},</if>
-            <if test="introduce != null">introduce,</if>
+            <if test="introduce != null">#{introduce,jdbcType=VARCHAR},</if>
             <if test="isAdmin != null">#{isAdmin,jdbcType=CHAR},</if>
             <if test="imageId != null">#{image_id,jdbcType=INTEGER},</if>
             <if test="createTime != null">#{createTime,jdbcType=TIMESTAMP},</if>

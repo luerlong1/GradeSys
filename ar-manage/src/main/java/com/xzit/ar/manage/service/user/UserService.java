@@ -26,4 +26,11 @@ public interface UserService {
      * @return
      */
     int updateUser(User user);
+    /**
+     *根据账号查询用户
+     *
+     */
+    Map<String, Object> validateAccount(String account);
+
+    int save(User user);
 }

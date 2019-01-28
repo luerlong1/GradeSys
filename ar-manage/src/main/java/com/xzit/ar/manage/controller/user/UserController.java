@@ -2,6 +2,7 @@ package com.xzit.ar.manage.controller.user;
 
 import com.xzit.ar.common.base.BaseController;
 import com.xzit.ar.common.exception.ServiceException;
+import com.xzit.ar.common.exception.UtilException;
 import com.xzit.ar.common.init.context.ARContext;
 import com.xzit.ar.common.page.Page;
 import com.xzit.ar.common.po.origin.Origin;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,7 +56,27 @@ public class UserController extends BaseController {
      */
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)
     public String addUser(Model model, User user) {
-        System.out.println(user);
+        Map<String, Object> userMap = userService.validateAccount(user.getAccount());
+        if (userMap == null) {
+            //int id = userService.addUser(user);
+            Map<String, Object> addUser = new HashMap<>();
+            try {
+                System.out.println(user.getPassword()+"````````````````````````````"+user.getIntroduce());
+                user.setPassword(CommonUtil.md5(user.getPassword()));
+            } catch (UtilException e) {
+                System.out.println("密码加密失败");
+                e.printStackTrace();
+            }
+            user.setCreateTime(new Date());
+            user.setState("A");
+            // 添加用户
+            userService.save(user);
+        }else {
+            model.addAttribute("accountError", "该账号已存在。");
+            return "user/user_add";
+        }
+        // 返回登录
+        setMessage(model, "添加成功,密码默认为：zzuli123456");
         return "user/user_add";
     }
     /**
@@ -71,7 +93,7 @@ public class UserController extends BaseController {
         Map<String, Object> user = new HashMap<>();
         // 参数校验
         if (CommonUtil.isNotEmpty(query)) {
-            user.put("query", "%" + query + "%");
+            user.put("query", query);
         }
         if (CommonUtil.isNotEmpty(state)) {
             user.put("state", state);

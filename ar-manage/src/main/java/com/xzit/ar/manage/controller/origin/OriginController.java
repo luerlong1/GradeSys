@@ -119,7 +119,6 @@ public class OriginController extends BaseController {
         if (CommonUtil.isNotEmpty(origin.getOriginGrade())) {
             originGrade = origin.getOriginGrade();
         }
-        System.out.println(originName + "====" + originType + "====" + originGrade);
         String originName1 = originService.getOriginByName(originName, originType, originGrade);
         if (originName1 != null) {
             model.addAttribute("error", "该组织已被创建");

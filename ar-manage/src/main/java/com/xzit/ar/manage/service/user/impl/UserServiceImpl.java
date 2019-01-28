@@ -44,4 +44,19 @@ public class UserServiceImpl implements UserService{
         }
         return a;
     }
+
+    @Override
+    public Map<String, Object> validateAccount(String account) {
+        return userMapper.validateAccount(account);
+    }
+
+    @Override
+    public int save(User user) {
+        try {
+            return userMapper.save(user);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

@@ -77,7 +77,7 @@
                     <th class="table-type">类型</th>
                     <th class="table-detail">用户名</th>
                     <th class="table-detail">邮箱</th>
-                    <th class="table-detail">最近活动</th>
+                    <th class="table-detail">最后登录时间</th>
                     <th class="table-detail">状态</th>
                     <th class="table-set">操作</th>
                 </tr>
@@ -88,7 +88,7 @@
                         <td><input type="checkbox" value="${user.userId}"/></td>
                         <td>
                             <a href="job/detailJob.action?recruitId=${user.userId}" target="blank">
-                                    ${user.trueName}
+                                    ${user.account}
                             </a>
                             <c:if test="${user.isAdmin == 1}">
                                 &nbsp;<span class="am-badge am-badge-success">管理员</span>

@@ -47,7 +47,7 @@ input:-webkit-autofill {
 								   id="errorTip">${error}</p>
 							</div>
 							<div class="form-group col-xs-12"><label class="sr-only" >userName</label><input
-									style="font-weight: bold" type="text" name="account" placeholder="请输入账号(6-30位)"
+									style="font-weight: bold" type="text" name="account" placeholder="请输入账号(6-15位)"
 									id="account" class="form-username form-control" onkeyup="isCheckAccount()" required /><span id="accountTip" style="color: #fc3a3a"></span>
 							</div>
 							<div class="form-group col-xs-12">
@@ -134,7 +134,7 @@ input:-webkit-autofill {
 			var email = document.getElementById("email").value;
 			document.getElementById("emailTip").innerHTML = "";
 			if (email != "") {
-				var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-10]+((\.|-)[A-Za-z0-10]+)*\.[A-Za-z0-9]+$/;
+				var reg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
 				isok = reg.test(email);
 				if (isok) {
 					document.getElementById("emailTip").innerHTML = "";
@@ -171,20 +171,20 @@ input:-webkit-autofill {
 
 	<script type="text/javascript">
         function isCheckAccount() {
-            var password = document.getElementById("password").value;
-            document.getElementById("passwordTip").innerHTML = "";
-            if (password != "") {
-                var reg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/;
-                isok = reg.test(password);
+            var account = document.getElementById("account").value;
+            document.getElementById("accountTip").innerHTML = "";
+            if (account != "") {
+                var reg = /^[A-Za-z0-9]{6,15}$/;
+                isok = reg.test(account);
                 if (isok) {
-                    document.getElementById("passwordTip").innerHTML = "";
+                    document.getElementById("accountTip").innerHTML = "";
                     document.getElementById("btn").disabled = false;
                 } else {
                     document.getElementById("btn").disabled = true;
-                    document.getElementById("passwordTip").innerHTML = "密码8-16位字母、数字组成!";
+                    document.getElementById("accountTip").innerHTML = "账号由6-15位字母、数字组成!";
                 }
             } else {
-                document.getElementById("passwordTip").innerHTML = "";
+                document.getElementById("accountTip").innerHTML = "";
             }
         }
 	</script>
