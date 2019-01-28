@@ -35,14 +35,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * @ClassName: PageInterceptor <br>
- * @Description: TODO <br>
- * @author Mr.Black <br>
- * @date 2015年12月25日 下午11:08:13 <br>
- * @version V1.0 <br>
- *          <br>
- */
+
 @Intercepts({ @Signature(method = "prepare", type = StatementHandler.class, args = { Connection.class }),
 		@Signature(method = "query", type = Executor.class, args = { MappedStatement.class, Object.class,
 				RowBounds.class, ResultHandler.class }) })

@@ -40,8 +40,7 @@
             <select id="state" class="dll-query">
                 <option value="" name="state" <c:if test="${state==''}">selected</c:if>>全部</option>
                 <option value="A" name="state" <c:if test="${state=='A'}">selected</c:if>>正常</option>
-                <option value="E" name="state" <c:if test="${state=='D'}">selected</c:if>>冻结</option>
-                <option value="X" name="state" <c:if test="${state=='X'}">selected</c:if>>已删除</option>
+                <option value="X" name="state" <c:if test="${state=='X'}">selected</c:if>>已禁用</option>
             </select>
             &nbsp;&nbsp;&nbsp;&nbsp;分类：
             <select id="isAdmin" class="dll-query">
@@ -87,7 +86,7 @@
                     <tr>
                         <td><input type="checkbox" value="${user.userId}"/></td>
                         <td>
-                            <a href="job/detailJob.action?recruitId=${user.userId}" target="blank">
+                            <a href="user/userOrigin.action?userId=${user.userId}">
                                     ${user.account}
                             </a>
                             <c:if test="${user.isAdmin == 1}">

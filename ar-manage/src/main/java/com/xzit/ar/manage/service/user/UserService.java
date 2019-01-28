@@ -33,4 +33,6 @@ public interface UserService {
     Map<String, Object> validateAccount(String account);
 
     int save(User user);
+
+    List<Map<String, Object>> queryUserOrigin(Page<Map<String, Object>> page, Integer userId);
 }

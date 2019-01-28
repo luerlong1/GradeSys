@@ -128,7 +128,6 @@ public class UserController extends BaseController {
 //            }
 //            return "redirect:/origin/member.action";
 //        }
-        System.out.println(user.getUserId()+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         if (user != null && CommonUtil.isNotEmpty(user.getUserId())) {
             if (userService.updateUser(user)>0) {
                 setMessage(model, "操作成功");

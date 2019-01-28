@@ -1,6 +1,7 @@
 package com.xzit.ar.manage.service.user.impl;
 
 import com.xzit.ar.common.mapper.user.UserMapper;
+import com.xzit.ar.common.mapper.user.UserOriginMapper;
 import com.xzit.ar.common.page.Page;
 import com.xzit.ar.common.po.user.User;
 import com.xzit.ar.manage.service.user.UserService;
@@ -21,6 +22,9 @@ public class UserServiceImpl implements UserService{
 
     @Resource
     private UserMapper userMapper;
+
+    @Resource
+    private UserOriginMapper userOriginMapper;
 
     /**
      * TODO 查询用户列表
@@ -58,5 +62,11 @@ public class UserServiceImpl implements UserService{
             e.printStackTrace();
         }
         return 0;
+    }
+
+    //根据用户id查询加入的组织
+    @Override
+    public List<Map<String, Object>> queryUserOrigin(Page<Map<String, Object>> page, Integer userId) {
+        return userOriginMapper.queryUserOrigin(page, userId);
     }
 }
