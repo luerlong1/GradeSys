@@ -100,7 +100,7 @@
                         </td>
                         <td>${user.trueName}</td>
                         <td><c:if test="${user.email !=null}">${user.email}</c:if><c:if test="${user.email ==null}">暂无</c:if></td>
-                        <td><fmt:formatDate value="${user.stateTime}" pattern="YYYY-M-d"></fmt:formatDate></td>
+                        <td><fmt:formatDate value="${user.stateTime}" pattern="YYYY-MM-dd HH:mm:ss"></fmt:formatDate></td>
                         <td><c:if test="${user.state=='A'}">正常</c:if><c:if test="${user.state=='X'}">已禁用</c:if></td>
                         <td>
                             <div class="am-btn-toolbar">

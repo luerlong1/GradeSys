@@ -21,4 +21,6 @@ public interface LoginService {
 	public Map<String, Object> validateAccount(String account);
 
 	public int signUser(String account, String password, String trueName, String email);
+
+	int updateUser(User user);
 }

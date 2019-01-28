@@ -61,21 +61,21 @@ public class LoginController extends BaseController {
 		Map<String, Object> user = new HashMap<String, Object>();
 		// md5 对密码加密
 		password = CommonUtil.md5(password);
-		System.out.println(password);
 		// 登录校验
 		user = loginService.validateUser(account, password);
-		if ("X".equals(user.get("state"))) {
-			session.setAttribute("error", "该用户已被禁用！");
-			return new ModelAndView("redirect:/index.action");
-		}
 		if (user != null) {
-			System.out.println(user);
+			if ("X".equals(user.get("state"))) {
+				session.setAttribute("error", "该用户已被禁用！");
+				return new ModelAndView("redirect:/index.action");
+			}
 			if (user.get("password") != null) {
 				// 填充登录信息
 				session.setAttribute(WebConstant.SESSION_LOGIN_FLAG, WebConstant.SESSION_LOGIN_FLAG);
 				User userLoginTime = new User();
 				userLoginTime.setStateTime(new Date());	//设置登录时间
-				user.get("userId");//暂时没做更新登录时间
+				//暂时没做更新登录时间
+				userLoginTime.setUserId((Integer) user.get("userId"));
+				loginService.updateUser(userLoginTime);
 				// 登录成功跳转
 				if (user.get("isAdmin").toString().equals("1")) {
 					// 管理员登录
@@ -94,7 +94,7 @@ public class LoginController extends BaseController {
 				return new ModelAndView("redirect:/index.action");
 			}
 		} else {
-			session.setAttribute("error", "用户名不存在");
+			session.setAttribute("error", "账号不存在");
 			return new ModelAndView("redirect:/index.action");
 		}
 		// 返回登录

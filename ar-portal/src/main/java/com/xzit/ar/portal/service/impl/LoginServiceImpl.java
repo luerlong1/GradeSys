@@ -101,5 +101,13 @@ public class LoginServiceImpl implements LoginService {
 		return id;
 	}
 
-
+	@Override
+	public int updateUser(User user) {
+		try {
+			return userMapper.update(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
 }
