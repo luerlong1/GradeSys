@@ -71,9 +71,9 @@
 		u.user_id userId,
 		u.account account,
 		u.true_name trueName,
-		u.introduce introduce
-
-
+		u.introduce introduce,
+        u.email email,u.state state,
+        u.is_admin isAdmin
 		FROM
 		`user` u
 		WHERE u.account = #{account}

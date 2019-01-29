@@ -30,11 +30,14 @@
 			<ul class="layui-nav right" lay-filter="">
 				<li class="layui-nav-item">
 
-					<a href="javascript:;"><c:if test="${sessionScope.loginAdUser!=null}">${SESSION_ADMIN.account}</c:if>${SESSION_ADMIN.account}</a>
+					<a href="javascript:;"><c:if test="${sessionScope.loginAdUser!=null}">${SESSION_ADMIN.account}</c:if>${SESSION_ADMIN.trueName}</a>
 					<dl class="layui-nav-child">
 						<!-- 二级菜单 -->
 						<dd>
-							<a _href="${pageContext.request.contextPath }/set/userInfo?id=${sessionScope.loginAdUser.id}" id="userClick">个人信息</a>
+							<a _href="user/userInfo.action?account=${SESSION_ADMIN.account}" id="userClick">个人信息</a>
+						</dd>
+						<dd>
+							<a _href="user/userInfo.action?account=${SESSION_ADMIN.account}" id="">修改密码</a>
 						</dd>
 						<dd>
 							<a href="login/logout.action">退出</a>

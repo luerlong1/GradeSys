@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -170,5 +171,16 @@ public class UserController extends BaseController {
             model.addAttribute("page", page);
         }
         return "user/user-origin";
+    }
+
+    @RequestMapping(value = "/userInfo", method = RequestMethod.GET)
+    public String userInfo(Model model, String account){
+        if (CommonUtil.isNotEmpty(account)){
+            // 查询成员
+            Map<String, Object> user = userService.validateAccount(account);
+            // 数据返回
+            model.addAttribute("adUser", user);
+        }
+        return "user/user-info";
     }
 }
