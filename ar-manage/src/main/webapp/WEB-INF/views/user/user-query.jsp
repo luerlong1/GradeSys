@@ -82,64 +82,71 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${page.beanList}" var="user">
-                    <tr>
-                        <td><input type="checkbox" value="${user.userId}"/></td>
-                        <td>
-                            <a href="user/userOrigin.action?userId=${user.userId}">
-                                    ${user.account}
-                            </a>
-                            <c:if test="${user.isAdmin == 1}">
-                                &nbsp;<span class="am-badge am-badge-success">管理员</span>
-                            </c:if>
-                        </td>
-                        <td>
-                            <c:if test="${user.isAdmin == 0}">前台用户</c:if>
-                            <c:if test="${user.isAdmin == 1}">管理员</c:if>
-                        </td>
-                        <td>${user.trueName}</td>
-                        <td><c:if test="${user.email !=null}">${user.email}</c:if><c:if test="${user.email ==null}">暂无</c:if></td>
-                        <td><fmt:formatDate value="${user.stateTime}" pattern="YYYY-MM-dd HH:mm:ss"></fmt:formatDate></td>
-                        <td><c:if test="${user.state=='A'}">正常</c:if><c:if test="${user.state=='X'}">已禁用</c:if></td>
-                        <td>
-                            <div class="am-btn-toolbar">
-                                <div class="am-btn-group am-btn-group-xs">
-                                    <c:if test="${user.state == 'A'}">
-                                        <%--<button type="button"--%>
-                                                <%--onclick="javascript:cancelTopInfo('${user.infoId}')"--%>
-                                                <%--class="am-btn am-btn-default am-btn-xs am-text-danger">--%>
-                                            <%--<span class="am-icon-pencil-square-o"></span> 删除--%>
-                                        <%--</button>--%>
-                                        <button type="button"
-                                                onclick="javascript:removeInfo('${user.userId}')"
-                                                class="am-btn am-btn-default am-btn-xs am-text-primary">
-                                            <span class="am-icon-pencil-square-o"></span> 禁用${user.userId}
-                                        </button>
-                                        <button type="button"
-                                                onclick="window.location.href='origin/home.action?originId=${origin.originId}'"
-                                                class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
-                                            <span class="am-icon-edit"></span> 编辑
-                                        </button>&nbsp;&nbsp;
-                                    </c:if>
-                                    <c:if test="${user.state != 'A'}">
-                                        <button type="button"
-                                                onclick="javascript:recoverInfo('${user.userId}')"
-                                                class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
-                                            <i class="am-icon-recycle"></i> 恢复
-                                        </button>
-                                    </c:if>
-                                    <c:if test="${user.state == 'X'}">
-                                        <%--<button type="button"--%>
-                                                <%--onclick="javascript:deleteInfo('${info.infoId}')"--%>
-                                                <%--class="am-btn am-btn-default am-btn-xs am-text-danger confirm">--%>
-                                            <%--<span class="am-icon-trash-o"></span> 彻底删除--%>
-                                        <%--</button>--%>
-                                    </c:if>
+                <c:if test="${page.beanList != null}">
+                    <c:forEach items="${page.beanList}" var="user">
+                        <tr>
+                            <td><input type="checkbox" value="${user.userId}"/></td>
+                            <td>
+                                <a href="user/userOrigin.action?userId=${user.userId}">
+                                        ${user.account}
+                                </a>
+                                <c:if test="${user.isAdmin == 1}">
+                                    &nbsp;<span class="am-badge am-badge-success">管理员</span>
+                                </c:if>
+                            </td>
+                            <td>
+                                <c:if test="${user.isAdmin == 0}">前台用户</c:if>
+                                <c:if test="${user.isAdmin == 1}">管理员</c:if>
+                            </td>
+                            <td>${user.trueName}</td>
+                            <td><c:if test="${user.email !=null}">${user.email}</c:if><c:if test="${user.email ==null}">暂无</c:if></td>
+                            <td><fmt:formatDate value="${user.stateTime}" pattern="YYYY-MM-dd HH:mm:ss"></fmt:formatDate></td>
+                            <td><c:if test="${user.state=='A'}">正常</c:if><c:if test="${user.state=='X'}">已禁用</c:if></td>
+                            <td>
+                                <div class="am-btn-toolbar">
+                                    <div class="am-btn-group am-btn-group-xs">
+                                        <c:if test="${user.state == 'A'}">
+                                            <%--<button type="button"--%>
+                                                    <%--onclick="javascript:cancelTopInfo('${user.infoId}')"--%>
+                                                    <%--class="am-btn am-btn-default am-btn-xs am-text-danger">--%>
+                                                <%--<span class="am-icon-pencil-square-o"></span> 删除--%>
+                                            <%--</button>--%>
+                                            <button type="button"
+                                                    onclick="javascript:removeInfo('${user.userId}')"
+                                                    class="am-btn am-btn-default am-btn-xs am-text-primary">
+                                                <span class="am-icon-pencil-square-o"></span> 禁用${user.userId}
+                                            </button>
+                                            <button type="button"
+                                                    onclick="window.location.href='origin/home.action?originId=${origin.originId}'"
+                                                    class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
+                                                <span class="am-icon-edit"></span> 编辑
+                                            </button>&nbsp;&nbsp;
+                                        </c:if>
+                                        <c:if test="${user.state != 'A'}">
+                                            <button type="button"
+                                                    onclick="javascript:recoverInfo('${user.userId}')"
+                                                    class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
+                                                <i class="am-icon-recycle"></i> 恢复
+                                            </button>
+                                        </c:if>
+                                        <c:if test="${user.state == 'X'}">
+                                            <%--<button type="button"--%>
+                                                    <%--onclick="javascript:deleteInfo('${info.infoId}')"--%>
+                                                    <%--class="am-btn am-btn-default am-btn-xs am-text-danger confirm">--%>
+                                                <%--<span class="am-icon-trash-o"></span> 彻底删除--%>
+                                            <%--</button>--%>
+                                        </c:if>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </c:if>
+                <c:if test="${ empty page.beanList}">
+                    <tr>
+                        <td colspan="8" align="center">暂无信息</td>
                     </tr>
-                </c:forEach>
+                </c:if>
                 </tbody>
             </table>
             <!-- 页码 -->

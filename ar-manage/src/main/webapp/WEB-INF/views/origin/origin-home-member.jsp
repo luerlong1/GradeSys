@@ -48,7 +48,7 @@
                             <th class="table-check"><input type="checkbox" class="alls"/></th>
                             <th class="table-title">成员名</th>
                             <th class="table-detail">加入时间</th>
-                            <th class="table-detail">加入状态</th>
+                            <th class="table-detail">用户状态</th>
                             <th class="table-set">操作</th>
                         </tr>
                         </thead>
@@ -70,14 +70,14 @@
                                     <td>
                                         <div class="am-btn-toolbar">
                                             <div class="am-btn-group am-btn-group-xs">
-                                                <c:if test="${member.userId != origin.mgrId && member.state=='A'}">
+                                                <c:if test="${member.userId != origin.mgrId && member.state=='X'}">
                                                     <button type="button"
                                                             onclick="javascript:removeMember('${member.userId}')"
                                                             class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
                                                         <span class="am-icon-trash-o"></span> 移除
                                                     </button>
                                                 </c:if>
-                                                <c:if test="${member.userId != origin.mgrId}">
+                                                <c:if test="${member.userId != origin.mgrId && member.state=='A'}">
                                                     <button type="button"
                                                             onclick="javascript:setManager('${member.userId}')"
                                                             class="am-btn am-btn-default am-btn-xs am-text-danger confirm">

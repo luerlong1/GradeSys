@@ -113,7 +113,7 @@
 			u.user_id userId,
 			u.true_name trueName,
 			img.image_path portrait,
-			uo.state state
+			u.state state
 		FROM
 			`user` u,
 			user_origin uo,

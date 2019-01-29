@@ -70,50 +70,57 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${page.beanList}" var="origin">
-                    <tr>
-                        <td><input type="checkbox" value="${origin.originId}"/></td>
-                        <td>
-                            <a href="origin/member.action?originId=${origin.originId}">${origin.originName}</a>
-                        </td>
-                        <td><ar:dictdata dictdata="${origin.originType}" dict="ot"></ar:dictdata></td>
-                        <td>${origin.members}</td>
-                        <td><a href="user/account.action?userId=${origin.mgrId}">${origin.mgrName}</a></td>
-                        <td><fmt:formatDate value="${origin.stateTime}" pattern="YYYY-MM-dd HH:mm"></fmt:formatDate></td>
-                        <%--<td><ar:dictdata dictdata="${origin.state}" dict="state"/></td>--%>
-                        <td><c:if test="${origin.state=='A'}">正常</c:if><c:if test="${origin.state=='X'}">已禁用</c:if></td>
-                        <td>
-                            <div class="am-btn-toolbar">
-                                <div class="am-btn-group am-btn-group-xs">
-                                    <c:if test="${origin.state=='A'}">
-                                        <button type="button"
-                                                onclick="javascript:removeInfo('${origin.originId}')"
-                                                class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
-                                            <span class="am-icon-trash-o"></span> 禁用
-                                        </button>&nbsp;&nbsp;
-                                        <button type="button"
-                                                onclick="window.location.href='origin/home.action?originId=${origin.originId}'"
-                                                class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
-                                            <span class="am-icon-edit"></span> 编辑
-                                        </button>&nbsp;&nbsp;
-                                    </c:if>
-                                    <c:if test="${origin.state=='X'}">
-                                        <button type="button"
-                                                onclick="javascript:recoverInfo('${origin.originId}')"
-                                                class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
-                                            <i class="am-icon-recycle"></i> 恢复
-                                        </button>
-                                        <%--<button type="button"--%>
-                                                <%--onclick="javascript:deleteInfo('${origin.originId}')"--%>
-                                                <%--class="am-btn am-btn-default am-btn-xs am-text-danger confirm">--%>
-                                            <%--<span class="am-icon-trash-o"></span> 彻底删除--%>
-                                        <%--</button>--%>
-                                    </c:if>
+                <c:if test="${page.beanList != null}">
+                    <c:forEach items="${page.beanList}" var="origin">
+                        <tr>
+                            <td><input type="checkbox" value="${origin.originId}"/></td>
+                            <td>
+                                <a href="origin/member.action?originId=${origin.originId}">${origin.originName}</a>
+                            </td>
+                            <td><ar:dictdata dictdata="${origin.originType}" dict="ot"></ar:dictdata></td>
+                            <td>${origin.members}</td>
+                            <td><a href="user/account.action?userId=${origin.mgrId}">${origin.mgrName}</a></td>
+                            <td><fmt:formatDate value="${origin.stateTime}" pattern="YYYY-MM-dd HH:mm"></fmt:formatDate></td>
+                            <%--<td><ar:dictdata dictdata="${origin.state}" dict="state"/></td>--%>
+                            <td><c:if test="${origin.state=='A'}">正常</c:if><c:if test="${origin.state=='X'}">已禁用</c:if></td>
+                            <td>
+                                <div class="am-btn-toolbar">
+                                    <div class="am-btn-group am-btn-group-xs">
+                                        <c:if test="${origin.state=='A'}">
+                                            <button type="button"
+                                                    onclick="javascript:removeInfo('${origin.originId}')"
+                                                    class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
+                                                <span class="am-icon-trash-o"></span> 禁用
+                                            </button>&nbsp;&nbsp;
+                                            <button type="button"
+                                                    onclick="window.location.href='origin/home.action?originId=${origin.originId}'"
+                                                    class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
+                                                <span class="am-icon-edit"></span> 编辑
+                                            </button>&nbsp;&nbsp;
+                                        </c:if>
+                                        <c:if test="${origin.state=='X'}">
+                                            <button type="button"
+                                                    onclick="javascript:recoverInfo('${origin.originId}')"
+                                                    class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
+                                                <i class="am-icon-recycle"></i> 恢复
+                                            </button>
+                                            <%--<button type="button"--%>
+                                                    <%--onclick="javascript:deleteInfo('${origin.originId}')"--%>
+                                                    <%--class="am-btn am-btn-default am-btn-xs am-text-danger confirm">--%>
+                                                <%--<span class="am-icon-trash-o"></span> 彻底删除--%>
+                                            <%--</button>--%>
+                                        </c:if>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </c:if>
+                <c:if test="${ empty page.beanList}">
+                    <tr>
+                        <td colspan="8" align="center">暂无信息</td>
                     </tr>
-                </c:forEach>
+                </c:if>
                 </tbody>
             </table>
             <button id="_message" name="_message" type="hide"></button>

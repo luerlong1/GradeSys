@@ -42,7 +42,7 @@ function setManager(mgrId) {
     }
 }
 
-//移除成员
+//组织下移除成员
 function removeMember(userId) {
     var originId = $('#originId').val();
     if (window.confirm("您确定移除该成员吗？")) {

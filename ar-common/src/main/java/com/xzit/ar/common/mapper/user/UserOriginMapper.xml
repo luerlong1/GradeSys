@@ -20,7 +20,8 @@
 	</select>
 
 	<select id="queryUserOrigin" parameterType="java.lang.Integer" resultType="map">
-		select o.origin_name originName, o.origin_type originType, o.members, o.state, o.state_time stateTime, u.true_name trueName
+		select o.origin_name originName, o.origin_type originType, o.members, o.state, o.state_time stateTime,
+		u.true_name trueName, uo.origin_id originId, uo.user_id userId
 		from origin o, user_origin uo, user u
 		where uo.user_id=#{userId} and uo.origin_id=o.origin_id and u.user_id = uo.user_id
 	</select>
@@ -52,6 +53,12 @@
 			<if test="state != null">state = #{state,jdbcType=CHAR},</if>
 			<if test="stateTime != null">state_time = #{stateTime,jdbcType=TIMESTAMP},</if>
 		</set>
-		where user_id = #{userId,jdbcType=INTEGER}
+		where user_id = #{userId,jdbcType=INTEGER} AND origin_id = #{originId,jdbcType=INTEGER}
 	</update>
+
+    <!--删除用户组织-->
+    <delete id="delete" parameterType="java.lang.Integer">
+      delete from user_origin
+      where origin_id = #{originId,jdbcType=INTEGER} and user_id = #{userId,jdbcType=INTEGER}
+    </delete>
 </mapper>

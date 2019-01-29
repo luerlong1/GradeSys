@@ -29,7 +29,7 @@ public class OriginController extends BaseController {
     private OriginService originService;
 
     @Resource
-    private UserOriginMapper UserOriginMapper;
+    private UserOriginMapper userOriginMapper;
 
     /**
      * TODO 加载组织管理界面
@@ -141,7 +141,7 @@ public class OriginController extends BaseController {
             userOrigin.setCreateTime(new Date());
             userOrigin.setStateTime(new Date());
             userOrigin.setState("A");
-            UserOriginMapper.save(userOrigin);
+            userOriginMapper.save(userOrigin);
         }
 
         return "redirect:/origin.action";
@@ -257,7 +257,7 @@ public class OriginController extends BaseController {
         // 参数校验
         userOrigin.setStateTime(new Date());
         if (userOrigin != null && CommonUtil.isNotEmpty(userOrigin.getOriginId()) && CommonUtil.isNotEmpty(userOrigin.getUserId())) {
-            if (UserOriginMapper.update(userOrigin)>0) {
+            if (userOriginMapper.delete(userOrigin)>0) {
                 setMessage(model, "操作成功");
                 Map<String, Object> originMap = originService.getOriginById(userOrigin.getOriginId());
                 Origin origin = new Origin();
