@@ -50,7 +50,7 @@
 								<label class="sr-only" for="account">account</label>账号(*):<input
 									style="font-weight: bold" type="text" name="araccount" placeholder="请输入账号"
 									id="account" class="form-control input-control clearfix"
-									required onkeyup="isCheckEmail()" /><span id="emailTip"></span>
+									required /><span id="emailTip"></span>
 							</div>
 							<div class="form-group col-xs-12">
 								<label class="sr-only" for="password">password</label>密码(*):
@@ -60,7 +60,7 @@
 							</div>
 							<div class="form-group col-xs-12">
 								<button type="submit" class="btn" style="width:200px;display:inline-block">登录</button>
-								<button class="btn" style="width:200px;display:inline-block" onclick="regist()">注册</button>
+								<button class="btn" style="width:200px;display:inline-block" onclick="javascript:regist()">注册</button>
 							</div>
 						</form>
 						<span><span>
@@ -78,31 +78,9 @@
 <script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="../../assets/js/jquery.backstretch.min.js"></script>
 <script src="../../assets/js/scripts.js"></script>
-
-<!--[if lt IE 10]>
-<![endif]-->
-<%--<script type="text/javascript">--%>
-    <%--function isCheckEmail() {--%>
-        <%--var email = document.getElementById("userEmail").value;--%>
-        <%--document.getElementById("errorTip").innerHTML = "";--%>
-        <%--if (email != "") {--%>
-            <%--var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;--%>
-            <%--isok = reg.test(email);--%>
-            <%--if (isok) {--%>
-                <%--document.getElementById("emailTip").innerHTML = "邮箱格式正确";--%>
-                <%--document.getElementById("btn").disabled = false;--%>
-            <%--} else {--%>
-                <%--document.getElementById("btn").disabled = true;--%>
-                <%--document.getElementById("emailTip").innerHTML = "邮箱格式不正确";--%>
-            <%--}--%>
-        <%--} else {--%>
-            <%--document.getElementById("emailTip").innerHTML = "";--%>
-        <%--}--%>
-    <%--}--%>
-<%--</script>--%>
 <script type="text/javascript">
     function regist() {
-        window.location.href ="login/sign.action"
+        window.location.href ="/login/sign.action"
     }
 </script>
 <script type="text/javascript">

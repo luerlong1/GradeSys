@@ -43,17 +43,12 @@ public class LoginController extends BaseController {
 	@RequestMapping("")
 	public String login(Model model, String queryString) {
 		model.addAttribute("queryString", queryString);
-		return "portal-main/login";
-	}
-
-	@RequestMapping("login")
-	public String login1(Model model, String queryString) {
-		return "portal-main/login";
+		return "/portal-main/login";
 	}
 
 	/**
 	 * @Description: TODO 登录处理<br>
-	 * @author Mr.Black <br>
+	 *
 	 */
 	@RequestMapping(value = "/validate", method = RequestMethod.POST)
 	public ModelAndView validate(Model model, HttpSession session, @RequestParam("araccount") String account,
@@ -97,10 +92,9 @@ public class LoginController extends BaseController {
 			session.setAttribute("error", "账号不存在");
 			return new ModelAndView("redirect:/index.action");
 		}
-		// 返回登录
-//		return new ModelAndView("portal-main/login");
 	}
 
+    //这方法暂时作废
 	@RequestMapping(value = "/val", method = RequestMethod.POST)
 	public @ResponseBody Map<String, Object> val(Model model, HttpSession session,
 			@RequestParam("araccount") String account, @RequestParam("arpassword") String password, String queryString)

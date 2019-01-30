@@ -94,7 +94,7 @@ input:-webkit-autofill {
 								<button type="submit" class="btn" id="btn">立即注册</button>
 							</div>
 							<div class="tr" style="text-align: right">
-								已有账号，<a href="/login/login.action" class="main-color">点击登录</a>
+								已有账号，<a href="/login.action" class="main-color">点击登录</a>
 							</div>
 						</form>
 						<span><a href="#">.</a></span> <span><a
