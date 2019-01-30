@@ -37,7 +37,7 @@
 							<a _href="user/userInfo.action?account=${SESSION_ADMIN.account}" id="userClick">个人信息</a>
 						</dd>
 						<dd>
-							<a _href="user/userInfo.action?account=${SESSION_ADMIN.account}" id="">修改密码</a>
+							<a _href="user/changePwd.action?account=${SESSION_ADMIN.account}" id="userClickA">修改密码</a>
 						</dd>
 						<dd>
 							<a href="login/logout.action">退出</a>
@@ -182,9 +182,10 @@
 				<div class="layui-tab-content">
 					<div class="layui-tab-item layui-show">
 						<iframe src='set/setName.action' frameborder="0" scrolling="yes" class="x-iframe iframe_m">
+						</iframe>
 					</div>
 				</div>
-				
+
 			</div>
 			
 		</div>

@@ -69,6 +69,7 @@
     <select id="validateAccount" parameterType="string" resultType="map">
 		SELECT
 		u.user_id userId,
+		u.password password,
 		u.account account,
 		u.true_name trueName,
 		u.introduce introduce,

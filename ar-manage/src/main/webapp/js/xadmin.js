@@ -118,6 +118,16 @@ $(function () {
         tab.tabAdd('个人信息',$(this).attr('_href'),'99');
         tab.tabChange('99');
     })
+    $("#userClickA").click(function () {
+        for (var i = 0; i <$('.x-iframe').length; i++) {
+            if($('.x-iframe').eq(i).attr('tab-id')=='98'){
+                tab.tabChange('98');
+                return;
+            }
+        };
+        tab.tabAdd('修改密码',$(this).attr('_href'),'98');
+        tab.tabChange('98');
+    })
     $('.left-nav #nav li').click(function (event) {
 
         if($(this).children('.sub-menu').length){

@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 
 import com.xzit.ar.common.util.origin.OriginUtil;
 import com.xzit.ar.common.util.info.InfoUtil;
+import com.xzit.ar.common.vo.info.ResponseResult;
 import org.springframework.web.servlet.DispatcherServlet;
 
 import com.xzit.ar.common.init.context.ARContext;
@@ -58,6 +59,8 @@ public class StartupServlet extends DispatcherServlet {
 			 */
 			PrivilegeUtil.loadAllRights();
 
+			ResponseResult.loadResponce();
+
 			/**
 			 * 加载数据字典
 			 */
@@ -78,9 +81,9 @@ public class StartupServlet extends DispatcherServlet {
 			 */
 			InfoUtil.initForum();
 
-			System.out.println("-------------------- 信电校友录 启动成功  --------------------");
+			System.out.println("-------------------- 轻大校友汇 启动成功  --------------------");
 		} catch (Exception e) {
-			System.out.println("-------------------- 信电校友录 启动失败  --------------------");
+			System.out.println("-------------------- 轻大校友汇 启动失败  --------------------");
 			e.printStackTrace();
 		}
 	}
