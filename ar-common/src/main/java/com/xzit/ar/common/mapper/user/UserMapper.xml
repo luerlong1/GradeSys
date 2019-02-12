@@ -79,6 +79,13 @@
 		`user` u
 		WHERE u.account = #{account}
 	</select>
+    <select id="checkContactEmail" parameterType="String" resultType="int">
+        select count(1) from user where email =#{email}
+    </select>
+
+    <select id="getUserId" parameterType="String" resultType="int">
+        select user_id from user where email =#{email}
+    </select>
 
     <select id="queryUser" resultType="map">
         SELECT

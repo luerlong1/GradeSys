@@ -62,6 +62,11 @@ public class UserController extends BaseController {
      */
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)
     public String addUser(Model model, User user) {
+        int userEmail = userService.validateEmail(user.getEmail());
+        if (userEmail != 0){
+            model.addAttribute("signError", "该邮箱已被注册。");
+            return "user/user_add";
+        }
         Map<String, Object> userMap = userService.validateAccount(user.getAccount());
         if (userMap == null) {
             Map<String, Object> addUser = new HashMap<>();

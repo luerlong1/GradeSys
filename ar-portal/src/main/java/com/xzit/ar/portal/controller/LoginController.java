@@ -13,9 +13,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.alibaba.fastjson.JSONObject;
 import com.xzit.ar.common.po.user.User;
+import com.xzit.ar.common.vo.info.ResponseResult;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,6 +42,8 @@ public class LoginController extends BaseController {
 
 	@Resource
 	private LoginService loginService;
+
+
 
 	@RequestMapping("")
 	public String login(Model model, String queryString) {
@@ -146,10 +151,15 @@ public class LoginController extends BaseController {
 	 */
 	@RequestMapping(value = "/doSign", method = RequestMethod.POST)
 	public String doSign(Model model, String account, String password, String trueName, String email) {
+		int userEmail = loginService.checkContactEmail(email);
+		if (userEmail != 0){
+			model.addAttribute("signError", "该邮箱已被注册。");
+			return "portal-main/sign";
+		}
 		Map<String, Object> user = loginService.validateAccount(account);
 		if (user == null) {
             int id = loginService.signUser(account, password, trueName, email);
-		}else {
+		} else {
 			model.addAttribute("signError", "该账号已存在。");
 			return "portal-main/sign";
 		}
@@ -173,6 +183,92 @@ public class LoginController extends BaseController {
 
 		return "redirect:/index.action";
 	}
+	/**
+	 * 找回密码页面跳转
+	 */
+	@RequestMapping(value = "/findPassword", method = RequestMethod.GET)
+	public String findPassword() {
 
+		return "portal-main/find-pwd";
+	}
 
+    /**
+     * 找回密码 发验证码
+     */
+    @RequestMapping(value = "/findPwd", method = RequestMethod.POST)
+	@ResponseBody
+    public JSONObject findPwd(final String email) {
+		JSONObject jsonObject = new JSONObject();
+		Map<String, Object> responceMap =  new HashMap<>();
+    	//判断邮箱是否注册
+		int contactMobileCount = loginService.checkContactEmail(email);
+		if (contactMobileCount<1){
+			responceMap.put("code",1);//"[{'code':1,'message':'原始密码输入错误！'}]"
+			responceMap.put("message","你填写的邮箱尚未注册！");
+			//字符串转换JSON数组
+			jsonObject = new JSONObject(responceMap);
+			return jsonObject;
+		}
+        // 单独开启线程发送邮件，防止用户等待时间过长，成功日志输出，失败也输出。
+		final int verificationCode = (int) (Math.random() * (9000)) + 1000;
+		System.out.println(("验证码是:" + verificationCode));
+        new Thread(new Runnable() {
+            public void run() {
+                boolean isSuccess = loginService.sendEmailCheck(email, verificationCode);
+                if (isSuccess) {
+                    System.out.println("发送成功");
+//                    CommonUser userMSG = commonUserService.findCommonUserByEmail(commonUser.getUserEmail());
+//                    userMSG.setStatus(2);
+                   // model.addAttribute("userMSG", userMSG);
+                } else {
+					System.out.println("发送失败");
+                }
+            }
+        }).start();
+
+		responceMap.put("code",0);
+		responceMap.put("data",verificationCode);
+		//字符串转换JSON数组
+		jsonObject = new JSONObject(responceMap);
+		return jsonObject;
+    }
+
+	/**
+	 * 修改密码，根据邮箱修改，一个账号一个邮箱，不能相同
+	 */
+	@RequestMapping(value = "/changePwd", method = RequestMethod.POST)
+	@ResponseBody
+	public JSONObject updatePassword(HttpServletRequest request){
+		String email = request.getParameter("phone");
+		String password = request.getParameter("password");
+		System.out.println("邮箱："+email+",新密码："+password);
+		try {
+			password = CommonUtil.md5(password);
+		} catch (UtilException e) {
+			System.out.println("加密密码失败");
+			e.printStackTrace();
+		}
+		int userId = loginService.getUserId(email);
+//更新用户
+		User user1 = new User();
+		user1.setPassword(password);
+		user1.setUserId(userId);
+		int updateUser = loginService.updateUser(user1);
+		JSONObject jsonObject = new JSONObject();
+		Map<String, Object> responceMap =  new HashMap<>();
+//		if (updateUser==1){
+//			responceMap.put("code",0);
+//			responceMap.put("data","login.action");
+//			responceMap.put("message","修改成功");
+//			//字符串转换JSON数组
+//			jsonObject = new JSONObject(responceMap);
+//			return jsonObject;
+//		}
+//		responceMap.put("code",1);
+//		responceMap.put("data","login.action");
+//		responceMap.put("message","修改失败");
+//		//字符串转换JSON数组
+//		jsonObject = new JSONObject(responceMap);
+		return jsonObject;
+	}
 }

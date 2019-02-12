@@ -55,6 +55,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public int validateEmail(String email) {
+        return userMapper.checkContactEmail(email);
+    }
+
+    @Override
     public int save(User user) {
         try {
             return userMapper.save(user);

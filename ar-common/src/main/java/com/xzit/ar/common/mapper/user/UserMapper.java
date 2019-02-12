@@ -40,4 +40,12 @@ public interface UserMapper extends BaseMapper {
 	 * @return user
 	 */
 	Map<String,Object> validateAccount(String account);
+	/**
+	 *	判断邮箱是否注册
+	 * @param email 邮箱
+	 * @return user
+	 */
+    int checkContactEmail(String email);
+
+	int getUserId(String email);
 }

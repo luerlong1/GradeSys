@@ -23,4 +23,11 @@ public interface LoginService {
 	public int signUser(String account, String password, String trueName, String email);
 
 	int updateUser(User user);
+
+    boolean sendEmailCheck(String email, int verificationCode);
+
+	int checkContactEmail(String email);
+
+
+	int getUserId(String email);
 }
