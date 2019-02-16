@@ -24,14 +24,15 @@
 		}
 	</style>
 	<body>
-		<div class="layui-anim layui-anim-up body-main">
+		< class="layui-anim layui-anim-up body-main">
 			<div class="layui-elem-quote clearfix">
-				<div class="fl">添加成员</div>
+				<div class="fl">创建组织</div>
 				<%--<a href="javascript:history.back(-1)" class="layui-btn layui-btn-normal fr"><img src="${pageContext.request.contextPath }/images/back.png">返回</a>--%>
 			</div>
 
 			<form id="info-form" method="post" action="/user/addUser.action" class="layui-form">
 			<div id="inputWidth">
+
 				<div class="layui-form-item">
 					<span class="cfc">${accountError}</span>
 					<label class="layui-form-label"><span class="cfc"> * </span>账号：</label>
@@ -39,6 +40,7 @@
 						<input name="account" id="account" class="layui-input" onkeyup="isCheckAccount()" required errormsg="登录账号仅支持6-15位" nullmsg="请设置登录账号" placeholder="请设置登录账号">
 						<span id="accountTip" style="color: #fc3a3a"></span></div>
 				</div>
+
 				<input type="hidden" name="password" value="zzuli123456"/>
 				<div class="layui-form-item">
 					<label class="layui-form-label"><span class="cfc"> * </span>校友姓名：</label>
@@ -46,6 +48,7 @@
 						<input name="trueName" id="trueName" class="layui-input" required errormsg="请输入正确的姓名格式" nullmsg="请填写成员姓名" placeholder="请填写校友姓名">
 					</div>
 				</div>
+
 				<div class="layui-form-item">
 					<label class="layui-form-label"><span class="cfc">  </span>邮箱地址：</label>
 					<div class="layui-input-block" style="line-height: 38px;">
@@ -53,20 +56,22 @@
 						<span id="emailTip" style="color: #fc3a3a"></span></div>
 					</div>
 				</div>
+
 				<div class="layui-form-item">
 					<label class="layui-form-label"><span class="cfc"> * </span>设置角色：</label>
 					<div class="layui-input-block" style="line-height: 38px;">
-						<select name="isAdmin" id="isAdmin" required>
+						<select name="isAdmin" id="isAdmin1" required>
 							<option value="" selected>请选择</option>
 							<option value="1">管理员</option>
 							<option value="0">前台用户</option>
 						</select>
 					</div>
 				</div>
+
 				<div class="layui-form-item">
-					<label class="layui-form-label"><span class="cfc">  </span>介绍：</label>
+				    <label class="layui-form-label"><span class="cfc">  </span>介绍：</label>
 					<div class="layui-input-block" style="line-height: 38px;">
-						<input name="introduce" id="introduce" class="layui-input">
+						<textarea name="introduce" id="introduce" class="layui-input"></textarea>
 					</div>
 				</div>
 				<div class="layui-form-item">

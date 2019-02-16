@@ -55,34 +55,34 @@
 			<div id="side-nav">
 				<ul id="nav">
 
-					<li>
-						<a href="javascript:;">
-							<i class="iconfont">&#xe6ae;</i>
-							<cite>权限设置</cite>
-							<i class="iconfont nav_right">&#xe697;</i>
-						</a>
-						<ul class="sub-menu">
-								<li>
-									<a _href="right/indexRight.action">
-										<i class="iconfont">&#xe6a7;</i>
-										<cite>权限列表</cite>
-									</a>
-								</li>
+					<%--<li>--%>
+						<%--<a href="javascript:;">--%>
+							<%--<i class="iconfont">&#xe6ae;</i>--%>
+							<%--<cite>权限设置</cite>--%>
+							<%--<i class="iconfont nav_right">&#xe697;</i>--%>
+						<%--</a>--%>
+						<%--<ul class="sub-menu">--%>
+								<%--<li>--%>
+									<%--<a _href="right/indexRight.action">--%>
+										<%--<i class="iconfont">&#xe6a7;</i>--%>
+										<%--<cite>权限列表</cite>--%>
+									<%--</a>--%>
+								<%--</li>--%>
 
-								<li>
-									<a _href="role.action">
-										<i class="iconfont">&#xe6a7;</i>
-										<cite>角色管理</cite>
-									</a>
-								</li>
-							<li>
-								<a _href="origin/add.action">
-									<i class="iconfont">&#xe6a7;</i>
-									<cite>权限管理</cite>
-								</a>
-							</li>
-						</ul>
-					</li>
+								<%--<li>--%>
+									<%--<a _href="role.action">--%>
+										<%--<i class="iconfont">&#xe6a7;</i>--%>
+										<%--<cite>角色管理</cite>--%>
+									<%--</a>--%>
+								<%--</li>--%>
+							<%--<li>--%>
+								<%--<a _href="origin/add.action">--%>
+									<%--<i class="iconfont">&#xe6a7;</i>--%>
+									<%--<cite>权限管理</cite>--%>
+								<%--</a>--%>
+							<%--</li>--%>
+						<%--</ul>--%>
+					<%--</li>--%>
 					<li>
 						<a href="javascript:;">
 							<i class="iconfont">&#xe6ce;</i>
@@ -124,7 +124,7 @@
 							<li>
 								<a _href="user/add.action">
 									<i class="iconfont">&#xe6a7;</i>
-									<cite>添加用户</cite>
+									<cite>创建用户</cite>
 								</a>
 							</li>
 						</ul>
@@ -133,7 +133,7 @@
                     <li>
                         <a href="javascript:;">
                             <i class="iconfont">&#xe6b4;</i>
-                            <cite>消息管理</cite>
+                            <cite>新闻管理</cite>
                             <i class="iconfont nav_right">&#xe697;</i>
                         </a>
                         <ul class="sub-menu">
@@ -144,25 +144,31 @@
                                     <cite>信息中心</cite>
                                 </a>
                             </li>
+							<li>
+								<a _href="info.action">
+									<i class="iconfont">&#xe6a7;</i>
+									<cite>发布新闻</cite>
+								</a>
+							</li>
                         </ul>
                     </li>
 					<li>
 						<a href="javascript:;">
 							<i class="iconfont">&#xe6b4;</i>
-							<cite>系统设置</cite>
+							<cite>个人中心</cite>
 							<i class="iconfont nav_right">&#xe697;</i>
 						</a>
 						<ul class="sub-menu">
 							<li>
-								<a _href="dict/indexDict.action">
+								<a _href="user/userInfo.action?account=${SESSION_ADMIN.account}">
 									<i class="iconfont">&#xe6a7;</i>
-									<cite>字典</cite>
+									<cite>个人信息</cite>
 								</a>
 							</li>
 							<li>
-								<a _href="dictData/indexDictData.action">
+								<a _href="user/changePwd.action?account=${SESSION_ADMIN.account}">
 									<i class="iconfont">&#xe6a7;</i>
-									<cite>字典数据</cite>
+									<cite>修改密码</cite>
 								</a>
 							</li>
 
