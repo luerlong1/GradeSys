@@ -5,11 +5,13 @@ import com.xzit.ar.common.exception.ServiceException;
 import com.xzit.ar.common.init.context.ARContext;
 import com.xzit.ar.common.page.Page;
 import com.xzit.ar.common.po.info.Information;
+import com.xzit.ar.common.po.origin.Origin;
 import com.xzit.ar.common.util.CommonUtil;
 import com.xzit.ar.manage.service.info.InfoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
@@ -137,26 +139,29 @@ public class InfoController extends BaseController {
             }
         }
 
-        return "forward:queryInfo.action";
+        return "info/info-query";
     }
-
     /**
-     * TODO 删除信息
-     * @param model
-     * @param infoId
+     * TODO 批量删除新闻
+     * @param infoIds
      * @return
-     * @throws ServiceException
      */
-    @RequestMapping("/delete")
-    public String delete(Model model, Integer infoId) throws ServiceException {
-        // 参数校验
-        if (CommonUtil.isNotEmpty(infoId)) {
-            // 删除信息
-            if (infoService.deleteInfo(infoId) > 0) {
-                setMessage(model, "操作成功！");
+    @RequestMapping("/removeInfos")
+    public String removeInfos(@RequestParam("infoIds") String infoIds) {
+        System.out.println(infoIds);
+        String[] ids = infoIds.split("-");
+        Information information = new Information();
+        for (int i=0; i<ids.length; i++){
+            information.setInfoId(Integer.valueOf(ids[i]));
+            information.setState("X");
+            try {
+                infoService.updateInfo(information);
+            } catch (ServiceException e) {
+                System.out.println("批量更新失败");
+                e.printStackTrace();
             }
         }
 
-        return "forward:queryInfo.action";
+        return "info/info-query";
     }
 }

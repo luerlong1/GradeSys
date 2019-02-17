@@ -93,7 +93,7 @@
 							<li>
 								<a _href="origin.action">
 									<i class="iconfont">&#xe6a7;</i>
-									<cite>组织管理</cite>
+									<cite>班级组织管理</cite>
 								</a>
 							</li>
 
@@ -133,7 +133,7 @@
                     <li>
                         <a href="javascript:;">
                             <i class="iconfont">&#xe6b4;</i>
-                            <cite>新闻管理</cite>
+                            <cite>新闻/帖子管理</cite>
                             <i class="iconfont nav_right">&#xe697;</i>
                         </a>
                         <ul class="sub-menu">
@@ -145,7 +145,7 @@
                                 </a>
                             </li>
 							<li>
-								<a _href="info.action">
+								<a _href="info/add.action">
 									<i class="iconfont">&#xe6a7;</i>
 									<cite>发布新闻</cite>
 								</a>

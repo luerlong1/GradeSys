@@ -16,9 +16,9 @@
 <div class="am-cf admin-main">
 
     <!-- 侧边栏 side bar start -->
-    <div class="admin-sidebar">
-        <%@ include file="/WEB-INF/views/global/sidebar.jsp" %>
-    </div>
+    <%--<div class="admin-sidebar">--%>
+        <%--<%@ include file="/WEB-INF/views/global/sidebar.jsp" %>--%>
+    <%--</div>--%>
     <!-- side bar end -->
 
     <!-- 内容区域 content start -->
@@ -117,7 +117,7 @@
 
 </div>
 <!-- footer -->
-<%@ include file="/WEB-INF/views/global/footer.jsp" %>
+<%--<%@ include file="/WEB-INF/views/global/footer.jsp" %>--%>
 
 <!-- 控制js -->
 <%@ include file="/WEB-INF/views/global/common-js.jsp" %>

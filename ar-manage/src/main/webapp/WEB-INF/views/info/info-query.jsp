@@ -2,19 +2,17 @@
          pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ include file="/WEB-INF/views/global/common-taglib.jsp" %>
 
-<div class="am-cf am-padding">
-    <div class="am-fl am-cf">
-        <strong class="am-text-primary am-text-lg">信息中心</strong> /
-        <small>所有信息</small>
-    </div>
+<div class="layui-elem-quote overh" style="overflow: hidden;">
+    <div class="fl" style="float: left;">新闻/帖子管理</div>
+    <%--<button class="layui-btn layui-btn-normal2 fr" style="float: right;" onclick="window.location.href='origin/add.action'"><img src="${pageContext.request.contextPath }/images/add.png">创建组织</button>--%>
 </div>
 
 <div class="am-g">
     <div class="am-u-md-9 am-cf">
         <div class="am-btn-group am-btn-group-xs">
-            <a class="am-btn am-btn-default" href="info/add.action">
-                <span class="am-icon-plus"></span> 发布消息
-            </a>
+            <%--<a class="am-btn am-btn-default" href="info/add.action">--%>
+                <%--<span class="am-icon-plus"></span> 发布消息--%>
+            <%--</a>--%>
             <c:if test="${state=='D'}">
                 <button class="am-btn am-btn-default" type="button" onclick="auditInfos()">
                     <span class="am-icon-archive"></span> 批量审核
@@ -26,18 +24,8 @@
                     <span class="am-icon-trash-o"></span> 批量删除
                 </button>
             </c:if>
-            <c:if test="${state=='X'}">
-                <button class="am-btn am-btn-default" type="button"
-                        onclick="recoverInfos()">
-                    <i class="am-icon-recycle"></i> 批量恢复
-                </button>
-                <button class="am-btn am-btn-default" type="button"
-                        onclick="deleteInfos()">
-                    <span class="am-icon-trash-o"></span> 彻底删除
-                </button>
-            </c:if>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <%@ include file="/WEB-INF/views/global/page-size.jsp" %>
+            <%--<%@ include file="/WEB-INF/views/global/page-size.jsp" %>--%>
             &nbsp;&nbsp;状态：
             <select id="state" class="dll-query">
                 <option value="" name="state" <c:if test="${state==''}">selected</c:if>>全部</option>
@@ -87,70 +75,72 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${page.beanList}" var="info">
-                    <tr>
-                        <td><input type="checkbox" value="${info.infoId}"/></td>
-                        <td>
-                            <a href="info/detail.action?infoId=${info.infoId}" target="blank">
-                                <ar:sub value="${info.infoTitle}" length="15"></ar:sub>
-                            </a>
-                            <c:if test="${info.isTop==1}">
-                                &nbsp;<span class="am-badge am-badge-success">置顶</span>
-                            </c:if>
-                        </td>
-                        <td><ar:dictdata dictdata="${info.infoType}" dict="in"></ar:dictdata></td>
-                        <td>${info.views}/${info.comments}</td>
-                        <td>${info.trueName}</td>
-                        <td><fmt:formatDate value="${info.createTime}" pattern="YYYY-M-d"></fmt:formatDate></td>
-                        <td><ar:dictdata dictdata="${info.state}" dict="state"/></td>
-                        <td>
-                            <div class="am-btn-toolbar">
-                                <div class="am-btn-group am-btn-group-xs">
-                                    <c:if test="${info.isTop==1}">
-                                        <button type="button"
-                                                onclick="javascript:cancelTopInfo('${info.infoId}')"
-                                                class="am-btn am-btn-default am-btn-xs am-text-secondary">
-                                            <span class="am-icon-pencil-square-o"></span> 取消置顶
-                                        </button>
-                                    </c:if>
-                                    <c:if test="${info.isTop==0 && info.state=='A'}">
-                                        <button type="button"
-                                                onclick="javascript:setTopInfo('${info.infoId}')"
-                                                class="am-btn am-btn-default am-btn-xs am-text-secondary">
-                                            <span class="am-icon-pencil-square-o"></span> 置顶
-                                        </button>
-                                    </c:if>
-                                    <c:if test="${info.state=='D'}">
-                                        <button type="button"
-                                                onclick="javascript:auditInfo('${info.infoId}')"
-                                                class="am-btn am-btn-default am-btn-xs am-text-secondary">
-                                            <span class="am-icon-archive"></span> 审核
-                                        </button>
-                                    </c:if>
-                                    <c:if test="${info.state!='X'}">
-                                        <button type="button"
-                                                onclick="javascript:removeInfo('${info.infoId}')"
-                                                class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
-                                            <span class="am-icon-trash-o"></span> 删除
-                                        </button>
-                                    </c:if>
-                                    <c:if test="${info.state=='X'}">
-                                        <button type="button"
-                                                onclick="javascript:recoverInfo('${info.infoId}')"
-                                                class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
-                                            <i class="am-icon-recycle"></i> 恢复
-                                        </button>
-                                        <button type="button"
-                                                onclick="javascript:deleteInfo('${info.infoId}')"
-                                                class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
-                                            <span class="am-icon-trash-o"></span> 彻底删除
-                                        </button>
-                                    </c:if>
+                <c:if test="${page.beanList != null}">
+                    <c:forEach items="${page.beanList}" var="info">
+                        <tr>
+                            <td><input type="checkbox" value="${info.infoId}"/></td>
+                            <td>
+                                <a href="info/detail.action?infoId=${info.infoId}" target="blank">
+                                    <ar:sub value="${info.infoTitle}" length="15"></ar:sub>
+                                </a>
+                                <c:if test="${info.isTop==1}">
+                                    &nbsp;<span class="am-badge am-badge-success">置顶</span>
+                                </c:if>
+                            </td>
+                            <td><ar:dictdata dictdata="${info.infoType}" dict="in"></ar:dictdata></td>
+                            <td>${info.views}/${info.comments}</td>
+                            <td>${info.trueName}</td>
+                            <td><fmt:formatDate value="${info.createTime}" pattern="YYYY-M-d"></fmt:formatDate></td>
+                            <td><ar:dictdata dictdata="${info.state}" dict="state"/></td>
+                            <td>
+                                <div class="am-btn-toolbar">
+                                    <div class="am-btn-group am-btn-group-xs">
+                                        <c:if test="${info.isTop==1} && info.state=='A'">
+                                            <button type="button"
+                                                    onclick="javascript:cancelTopInfo('${info.infoId}')"
+                                                    class="am-btn am-btn-default am-btn-xs am-text-secondary">
+                                                <span class="am-icon-pencil-square-o"></span> 取消置顶
+                                            </button>
+                                        </c:if>
+                                        <c:if test="${info.isTop==0 && info.state=='A'}">
+                                            <button type="button"
+                                                    onclick="javascript:setTopInfo('${info.infoId}')"
+                                                    class="am-btn am-btn-default am-btn-xs am-text-secondary">
+                                                <span class="am-icon-pencil-square-o"></span> 置顶
+                                            </button>
+                                        </c:if>
+                                        <c:if test="${info.state=='D'}">
+                                            <button type="button"
+                                                    onclick="javascript:auditInfo('${info.infoId}')"
+                                                    class="am-btn am-btn-default am-btn-xs am-text-secondary">
+                                                <span class="am-icon-archive"></span> 审核
+                                            </button>
+                                        </c:if>
+                                        <c:if test="${info.state=='A'}">
+                                            <button type="button"
+                                                    onclick="javascript:removeInfo('${info.infoId}')"
+                                                    class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
+                                                <span class="am-icon-trash-o"></span> 删除
+                                            </button>
+                                        </c:if>
+                                        <c:if test="${info.state=='X'}">
+                                            <button type="button"
+                                                    onclick="javascript:recoverInfo('${info.infoId}')"
+                                                    class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
+                                                <i class="am-icon-recycle"></i> 恢复
+                                            </button>
+                                        </c:if>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </c:if>
+                <c:if test="${ empty page.beanList}">
+                    <tr>
+                        <td colspan="8" align="center">暂无信息</td>
                     </tr>
-                </c:forEach>
+                </c:if>
                 </tbody>
             </table>
             <!-- 页码 -->

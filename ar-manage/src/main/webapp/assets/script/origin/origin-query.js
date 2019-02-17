@@ -105,20 +105,7 @@ function removeInfos() {
         }
     }
 }
-// /* 彻底删除 */
-// function deleteInfo(infoId) {
-//     if (isValid(infoId)) {
-//         if (window.confirm("您，确定要彻底删除这条数据？")) {
-//             $.AMUI.progress.start();
-//             $.post("origin/delete.action", {
-//                 "originId": infoId
-//             }, function (data) {
-//                 queryOrigin(1, 10);
-//                 $.AMUI.progress.done();
-//             });
-//         }
-//     }
-// }
+
 
 /* 恢复删除数据 */
 function recoverInfo(infoId) {
@@ -135,18 +122,3 @@ function recoverInfo(infoId) {
     }
 }
 
-// /* 批量恢复删除数据 */
-// function recoverInfos() {
-//     var infoIds = getIds();
-//     if (isValid(infoIds)) {
-//         if (confirm("您，确定恢复这些数据吗？")) {
-//             $.AMUI.progress.start();
-//             $.post("info/recoverInfos.action", {
-//                 "infoIds": infoIds
-//             }, function (data) {
-//                 queryOrigin(1, 10);
-//                 $.AMUI.progress.done();
-//             });
-//         }
-//     }
-// }
