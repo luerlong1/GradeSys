@@ -11,6 +11,7 @@ import com.xzit.ar.manage.service.info.InfoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -98,8 +99,8 @@ public class InfoController extends BaseController {
      * @return
      * @throws ServiceException
      */
-    @RequestMapping("/save")
-    public String save(Information information) throws ServiceException {
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String save(Information information, String infoTheme) throws ServiceException {
         // 参数校验
         if (information != null && CommonUtil.isNotEmpty(information.getInfoTitle())
                 && CommonUtil.isNotEmpty(information.getContent())
@@ -107,6 +108,7 @@ public class InfoController extends BaseController {
                 && CommonUtil.isNotEmpty(information.getIsTop())) {
             // 关键参数设置
             information.setComments(0);
+            information.setTheme(infoTheme);
             information.setViews(0);
             information.setLoves(0);
             information.setUserId(getCurrentUserId());
