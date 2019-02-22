@@ -27,6 +27,9 @@
 				<i title="展开左侧栏" class="iconfont">&#xe699;</i>
 			</div>
 			<div class="left_open2" onclick="refresh()" style="margin-left:10px; "><i class="layui-icon" title="刷新">&#xe666;</i></div>
+			<div class="left_open2" style="margin-left:10px; ">
+				<a href="javascript:void(0);" onclick="local()">去官网看看</a>
+			</div>
 			<ul class="layui-nav right" lay-filter="">
 				<li class="layui-nav-item">
 
@@ -223,6 +226,13 @@
             $("iframe").each(function () {
                 $(this).attr('src', $(this).attr('src'));//需要引用jquery
             })
+        }
+        function local() {
+            // cookieUser name pwd
+            <%--localStorage.setItem("araccount", ${SESSION_ADMIN.account});--%>
+            <%--localStorage.setItem("arpassword", ${SESSION_ADMIN.password});--%>
+
+            window.location.href="login/jumpPort.action?araccount=${SESSION_ADMIN.account}"+"&arpassword=${SESSION_ADMIN.password}"
         }
 	</script>
 	</body>
