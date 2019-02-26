@@ -102,28 +102,11 @@ public class LoginController extends BaseController {
 	@RequestMapping(value = "/jumpPort", method = RequestMethod.GET)
 	public ModelAndView jumpPort(Model model, HttpSession session, @RequestParam("araccount") String account,
 								 @RequestParam("arpassword") String password, @RequestParam(defaultValue = "") String queryString) throws ServiceException, UtilException {
-//		Map<String, Object> user = new HashMap<String, Object>();
-//		// md5 对密码加密
-//		password = CommonUtil.md5(password);
-//		// 登录校验
-//		user = loginService.validateUser(account, password);
-//		if (user != null) {
-//			if (user.get("password") != null) {
-//				// 校友登录
-//					session.setAttribute(WebConstant.SESSION_USER, user);
-//					if (CommonUtil.isNotEmpty(queryString)) {
-//						return new ModelAndView("redirect:" + queryString);
-//					}
+
 		Map<String, Object> user = new HashMap<String, Object>();
-		// md5 对密码加密
-		password = CommonUtil.md5(password);
-		// 登录校验
 		user = loginService.validateUser(account, password);
 		session.setAttribute(WebConstant.SESSION_USER, user);
-					return new ModelAndView("redirect:/index.action");
-//				}
-//			}
-//		}
+		return new ModelAndView("redirect:/index.action");
 	}
     //这方法暂时作废
 	@RequestMapping(value = "/val", method = RequestMethod.POST)

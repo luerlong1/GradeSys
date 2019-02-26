@@ -27,10 +27,11 @@
 
     <!-- 帐号查找用户 登录 -->
     <select id="selectByAccount" resultType="map" parameterType="java.lang.String">
-		SELECT user_id userId, account account, password password, true_name trueName, introduce introduce, is_admin isAdmin,
-			email email, image_id imageId, state
-		from `user`
-    	WHERE account = #{account}
+		SELECT u.user_id as userId, u.account as account, u.password as password, u.true_name as trueName, u.introduce as introduce,
+		u.is_admin as isAdmin,u.email as email, u.image_id as imageId, u.state as state, im.image_path as portrait
+		from user u
+		left join image im on im.image_id=u.image_id
+    	WHERE u.account = #{account}
 	</select>
 
     <!--获取用户基本信息-->

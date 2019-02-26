@@ -16,12 +16,12 @@ package com.xzit.ar.common.constant;
  */
 public interface PathConstant {
 
-	String contextAbsolutePath = "D:/cache";
+	String contextAbsolutePath = "D:/workspace/ar";
 
 	/**
 	 * 项目的相对路径
 	 */
-	String contextRelativePath = "/ar";
+	String contextRelativePath = "/ar-parent";
 
 	/**
 	 * 上传的图片的相对路径
