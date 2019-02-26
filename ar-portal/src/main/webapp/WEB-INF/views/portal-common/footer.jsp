@@ -12,6 +12,7 @@
             <h6>信息</h6>
             <ul>
                 <li><a href="news.action">新闻中心</a></li>
+                <li><a href="news.action">论坛中心</a></li>
             </ul>
         </div>
         <div class="col-md-3 footer-grid">
@@ -20,12 +21,12 @@
                 <li><a href="my.action">我的帐户</a></li>
             </ul>
         </div>
-        <div class="col-md-3 footer-grid">
-            <h6>招聘信息</h6>
-            <ul>
-                <li><a href="recruit.action">站内招聘</a></li>
-            </ul>
-        </div>
+        <%--<div class="col-md-3 footer-grid">--%>
+            <%--<h6>招聘信息</h6>--%>
+            <%--<ul>--%>
+                <%--<li><a href="recruit.action">站内招聘</a></li>--%>
+            <%--</ul>--%>
+        <%--</div>--%>
         <div class="clearfix"></div>
     </div>
 </div>

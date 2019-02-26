@@ -1,9 +1,4 @@
-<%--
-  TODO: 
-  User: 董亮亮 1075512174@qq.com
-  Date: 2017/4/23
-  Time: 17:21
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="ar" uri="/ar-taglib"%>

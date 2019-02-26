@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>${ta.trueName}的主页-信电校友录</title>
+    <title>${ta.trueName}的主页-轻大校友汇</title>
     <%@ include file="/WEB-INF/views/portal-common/portal-meta.jsp" %>
 </head>
 <body>

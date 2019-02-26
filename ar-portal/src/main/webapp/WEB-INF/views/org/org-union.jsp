@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>学生协会-信电校友录</title>
+<title>学生协会-轻大校友汇</title>
 <%@ include file="/WEB-INF/views/portal-common/portal-meta.jsp"%>
 </head>
 <body>

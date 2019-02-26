@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>轻大校友汇-用户注册</title>
+<title>用户注册-轻大校友汇</title>
 <jsp:include page="../include/headtag.jsp" />
 <!-- CSS -->
 <!-- <link rel="stylesheet"

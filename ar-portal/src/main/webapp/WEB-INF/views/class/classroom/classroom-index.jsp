@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>${classroom.className}-信电校友录</title>
+<title>${classroom.className}-轻大校友汇</title>
 <%@ include file="/WEB-INF/views/portal-common/portal-meta.jsp"%>
 </head>
 <body>

@@ -5,8 +5,8 @@
 	<!-- navigation -->
 	<div class="header">
 		<ol class="breadcrumb">
-			<li><i class="fa fa-home"></i>&nbsp;<a href="index.action">主页</a></li>
-			<li class="active">个人中心</li>
+			<li><i class="fa fa-home"></i>&nbsp;<a href="index.action">主页1111111</a></li>
+			<li class="active">个人中心1111111111111111</li>
 		</ol>
 	</div>
 

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>${orgroom.originName}通讯录-信电校友录</title>
+<title>${orgroom.originName}通讯录-轻大校友汇</title>
 	<%@ include file="/WEB-INF/views/portal-common/portal-meta.jsp"%>
 </head>
 

@@ -1,9 +1,4 @@
-<%--
-  TODO: 
-  User: 董亮亮 1075512174@qq.com
-  Date: 2017/4/16
-  Time: 16:45
---%>
+
 <%@ page contentType="text/html; charset=UTF-8" language="java"  pageEncoding="UTF-8" %>
 
 <ul class="nav nav-tabs nav-justified">
