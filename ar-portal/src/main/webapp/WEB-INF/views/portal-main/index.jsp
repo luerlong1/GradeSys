@@ -21,12 +21,12 @@
     </ol>
     <!-- 轮播（Carousel）项目 -->
     <div class="carousel-inner">
-        <div class="item active"><img src="assets/images/school/zzuli1.jpg"></div>
-        <div class="item "><img src="assets/images/school/xzit-front-wide.jpg"></div>
-        <div class="item"><img src="assets/images/school/xzit-south.jpg"></div>
-        <div class="item"><img src="assets/images/school/xzit-motto.jpg"></div>
-        <div class="item"><img src="assets/images/school/xzit-library.jpg"></div>
-        <%--<div class="item"><img src="assets/images/school/xzit-alumni.jpg"></div>--%>
+        <div class="item active"><img src="assets/images/school/zzuli1.jpg" STYLE="width: 100%;display: table-cell; vertical-align: middle; text-align: center;"></div>
+        <div class="item "><img src="assets/images/school/zzuli6.jpg" STYLE="width: 100%; display: table-cell; vertical-align: middle; text-align: center;"></div>
+        <%--<div class="item"><img src="assets/images/school/zzuli3.jpg" STYLE="width: 100%;    border: 1px dashed #ccc;   display: table-cell;   vertical-align: middle;   text-align: center;"></div>--%>
+        <%--<div class="item"><img src="assets/images/school/zzuli4.jpg"></div>--%>
+        <%--<div class="item"><img src="assets/images/school/zzuli5.jpg"></div>--%>
+
     </div>
     <!-- 轮播（Carousel）导航 -->
     <a class="carousel-control focus-navigation left" href="#myCarousel" data-slide="prev">
