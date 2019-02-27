@@ -52,7 +52,7 @@
         </div>
     </div>
 </div>
-
+<button id="_message" name="_message" type="hide"></button>
 <div class="am-g">
     <div class="am-u-sm-12">
         <form class="am-form">
@@ -123,7 +123,7 @@
                 </c:if>
                 </tbody>
             </table>
-            <button id="_message" name="_message" type="hide"></button>
+
             <%--&nbsp;&nbsp;&nbsp;&nbsp;--%>
             <%--<%@ include file="/WEB-INF/views/global/page-size.jsp" %>--%>
             <%--&nbsp;&nbsp;--%>
@@ -137,6 +137,5 @@
     <%--<!-- 操作说明 -->--%>
     <%--<%@ include file="/WEB-INF/views/global/operate-message.jsp" %>--%>
     <!-- 控制 js -->
-    <script src="../../assets/script/origin/origin-query.js"></script>
-    <script src="../../lib/layui/layui.all.js" charset="utf-8"></script>
+    <script src="assets/script/origin/origin-query.js"></script>
 </div>
