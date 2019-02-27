@@ -1,149 +1,148 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
-<%@ include file="/WEB-INF/views/global/common-taglib.jsp" %>
-<!DOCTYPE HTML>
+         pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html>
+
 <head>
-    <%@ include file="/WEB-INF/views/global/base-path.jsp" %>
-    <title>${origin.originName}-后台管理</title>
-    <%@ include file="/WEB-INF/views/global/manage-meta.jsp" %>
-    <%@ include file="/WEB-INF/views/global/common-css.jsp" %>
+    <meta charset="UTF-8">
+    <title>轻大校友汇</title>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/font.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/xadmin.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/style.css" />
+    <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.min.js" ></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/js/Validform_v5.3.2_min.js" ></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.cookie.js" ></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/lib/layui/layui.js"></script>
 </head>
+<style>
+    #addUser{
+        margin-bottom: 200px;
+    }
+</style>
 <body>
-<%--<!-- header -->--%>
-<%--<%@ include file="/WEB-INF/views/global/header.jsp" %>--%>
-
-<!-- 主管理区域 admin-main -->
-<div class="am-cf admin-main">
-    <!-- 侧边栏 side bar start -->
-    <%--<div class="admin-sidebar">--%>
-        <%--<%@ include file="/WEB-INF/views/global/sidebar.jsp" %>--%>
-    <%--</div>--%>
-    <!-- side bar end -->
-
-    <!-- 内容区域 content start -->
-    <div class="admin-content" id="admin-content">
-        <div class="am-cf am-padding">
-            <div class="layui-elem-quote overh" style="overflow: hidden;">
-                <div class="fl" style="float: left;">组织管理</div>
-                <a href="javascript:history.back(-1)" class="layui-btn layui-btn-normal fr" style="margin-left: 10px;"><img src="${pageContext.request.contextPath }/images/back.png">返回</a>
-            </div>
-        </div>
-
-        <div class="am-tabs am-margin">
-            <%--<ul class="am-tabs-nav am-nav am-nav-tabs">--%>
-                <%--<li class="am-active"><a href="javascript:;">主页</a></li>--%>
-                <%--<li><a href="origin/member.action?originId=${origin.originId}">成员</a></li>--%>
-            <%--</ul>--%>
-            <%--<br>--%>
-
-            <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8">
-                <%--<div class="am-panel am-panel-default">--%>
-                    <%--<div class="am-panel-bd">--%>
-                        <%--<div class="am-g">--%>
-                            <%--<div class="am-u-md-4">--%>
-                                <%--<img class="am-img-circle" src="${origin.mgrPortrait}"/>--%>
-                            <%--</div>--%>
-                            <%--<div class="am-u-md-8">--%>
-                                <%--<p>管理员：<a href="user/detail.action?userId=${origin.mgrId}">${origin.mgrName}</a></p>--%>
-                                <%--<p class="am-form-help">${origin.mgrIntroduce}</p>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-
-                <%--<div class="am-panel am-panel-default">--%>
-                    <%--&lt;%&ndash;<div class="am-panel-bd">&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<div class="user-info">&ndash;%&gt;--%>
-                            <%--&lt;%&ndash;<p>等级信息</p>&ndash;%&gt;--%>
-                            <%--&lt;%&ndash;<div class="am-progress am-progress-sm">&ndash;%&gt;--%>
-                                <%--&lt;%&ndash;<div class="am-progress-bar" style="width: 60%"></div>&ndash;%&gt;--%>
-                            <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
-                            <%--&lt;%&ndash;<p class="user-info-order">当前等级：<strong>LV8</strong> 活跃天数：<strong>587</strong>&ndash;%&gt;--%>
-                                <%--&lt;%&ndash;距离下一级别：<strong>160</strong></p>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<div class="user-info">&ndash;%&gt;--%>
-                            <%--&lt;%&ndash;<p>信用信息</p>&ndash;%&gt;--%>
-                            <%--&lt;%&ndash;<div class="am-progress am-progress-sm">&ndash;%&gt;--%>
-                                <%--&lt;%&ndash;<div class="am-progress-bar am-progress-bar-success" style="width: 80%"></div>&ndash;%&gt;--%>
-                            <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
-                            <%--&lt;%&ndash;<p class="user-info-order">信用等级：正常当前 信用积分：<strong>80</strong></p>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
-                    <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
-                <%--</div>--%>
-
-            </div>
-
-            <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
-                <form class="am-form am-form-horizontal" method="get" action="origin/update.action">
-
-                    <div class="am-form-group">
-                        <label for="originName" class="am-u-sm-3 am-form-label">名称 </label>
-                        <div class="am-u-sm-9">
-                            <input type="text" id="originName" name="originName" value="${origin.originName}" required>
-                        </div>
-                    </div>
-
-                    <div class="am-form-group">
-                        <label for="originType" class="am-u-sm-3 am-form-label">类型 </label>
-                        <div class="am-u-sm-9">
-                            <select name="originType" id="originType"
-                                    data-am-selected="{btnSize:'sm'}" class="am-input-sm" required>
-                                <c:forEach items="${types}" var="type">
-                                    <option value="${type.value}"
-                                            <c:if test="${type.value == origin.originType}">selected</c:if>>${type.name}</option>
-                                </c:forEach>
-                            </select>
-                            <span class="error_span" id="origin-type-span"></span>
-                        </div>
-                    </div>
-
-                    <div class="am-form-group">
-                        <label for="originGrade" class="am-u-sm-3 am-form-label">年级 </label>
-                        <div class="am-u-sm-9">
-                            <select name="originGrade" id="originGrade" required
-                                    data-am-selected="{btnSize:'sm'}" class="am-input-sm">
-                                <option value="">请选择...</option>
-                                <c:forEach items="${grades}" var="grade">
-                                    <option value="${grade.value}"
-                                            <c:if test="${grade.value == origin.originGrade}">selected</c:if>>${grade.value}</option>
-                                </c:forEach>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="am-form-group">
-                        <label for="originDesc" class="am-u-sm-3 am-form-label">简介 </label>
-                        <div class="am-u-sm-9">
-                            <textarea rows="5" id="originDesc" name="originDesc">
-                                ${origin.originDesc}
-                            </textarea>
-                        </div>
-                    </div>
-
-                    <input hidden name="originId" id="originId" value="${origin.originId}">
-
-                    <div class="am-form-group">
-                        <div class="am-u-sm-9 am-u-sm-push-3">
-                            <button type="" onclick="javascript:updateInfo()"
-                                    class="am-btn am-btn-primary am-btn-xs">提交修改</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-        </div>
+<div class="layui-anim layui-anim-up body-main">
+    <div class="layui-elem-quote clearfix">
+        <div class="fl">修改组织</div>
+        <%--<a href="javascript:history.back(-1)" class="layui-btn layui-btn-normal fr"><img src="${pageContext.request.contextPath }/images/back.png">返回</a>--%>
     </div>
-    <!-- content end -->
-</div>
 
-<%--<!-- footer -->--%>
-<%--<%@ include file="/WEB-INF/views/global/footer.jsp" %>--%>
-<%--<%@ include file="/WEB-INF/views/global/operate-message.jsp" %>--%>
-<!-- 控制js -->
-<%@ include file="/WEB-INF/views/global/common-js.jsp" %>
-<script src="../../assets/script/origin/origin-home.js"></script>
+    <form id="info-form" method="get" action="/origin/update.action" class="layui-form">
+        <div id="inputWidth">
+            <div class="layui-form-item">
+                <span class="cfc">${error}</span>
+                <label class="layui-form-label"><span class="cfc"> * </span>名称：</label>
+                <div class="layui-input-block" style="line-height: 38px;">
+                    <input name="originName" id="originName" class="layui-input" value="${origin.originName}" required placeholder="请输入组织名称">
+                    <span id="" style="color: #fc3a3a"></span></div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span class="cfc"> * </span>类型：</label>
+                <div class="layui-input-block" style="line-height: 38px;">
+                    <select name="originType" id="originType"
+                    data-am-selected="{btnSize:'sm'}" class="am-input-sm" required>
+                    <c:forEach items="${types}" var="type">
+                    <option value="${type.value}"
+                    <c:if test="${type.value == origin.originType}">selected</c:if>>${type.name}</option>
+                    </c:forEach>
+                    </select>
+                </div>
+            </div>
+            <input hidden name="originId" id="originId" value="${origin.originId}">
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span class="cfc"> * </span>年级：</label>
+                <div class="layui-input-block" style="line-height: 38px;">
+                    <select name="originGrade" id="originGrade" required>
+                        <option value="">请选择...</option>
+                        <c:forEach items="${grades}" var="grade">
+                            <option value="${grade.value}"
+                                <c:if test="${grade.value == origin.originGrade}">selected</c:if>>${grade.value}
+                            </option>
+                        </c:forEach>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span class="cfc">  </span>描述：</label>
+                <div class="layui-input-block" style="line-height: 38px;">
+                    <textarea name="originDesc" id="originDesc" class="layui-input">${origin.originDesc}</textarea>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" onclick="javascript:updateInfo()" id="btn">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+<input type="hidden" id="_message"
+       <c:if test="${_message != null && _message != ''}">value="${_message}"</c:if>>
+
+
+<script type="text/javascript">
+    /**
+     * 浮动DIV定时显示提示信息,如操作成功, 失败等
+     * @param string
+     *            _messgae (提示的内容)
+     * @param int
+     *            height 显示的信息距离浏览器顶部的高度
+     * @param int
+     *            time 显示的时间(按秒算), time > 0
+     * @sample <a href="javascript:void(0);" onclick="_alert_messgae( '操作成功', 100, 3
+     *         );">点击</a>
+     * @sample 上面代码表示点击后显示操作成功3秒钟, 距离顶部100px
+     * @copyright Mr.Black 2015-12-28
+     */
+    function _alert_messgae(_messgae, height, time) {
+        var windowWidth = document.documentElement.clientWidth;
+        var tipsDiv = '<div class="_message-class">&nbsp;&nbsp;' + _messgae
+            + '&nbsp;&nbsp;</div>';
+        $('body').append(tipsDiv);
+        $('div._message-class').css({
+            'position': 'absolute',
+            'top': height + 'px',
+            'left': ((windowWidth / 2) - (_messgae.length) * 13) + 'px',
+            'padding': '3px 5px',
+            'background': '#8FCCFF',
+            'font-size': 14 + 'px',
+            'margin': '0 auto',
+            'text-align': 'center',
+            'width': 'auto',
+            'color': '#fff',
+            'opacity': '0.8'
+        }).show();
+        setTimeout(function () {
+            $('div._message-class').fadeOut();
+        }, (time * 1000));
+    }
+    /* 填充信息 */
+    $(function () {
+        var _message = $("#_message").val();
+        if (_message.length > 1) {
+            $('div').remove("._message-class");
+            _alert_messgae(_message, 200, 2);
+        }
+    });
+</script>
+<%--<script type="text/javascript" src="../../assets/script/user/user-query.js"></script>--%>
+<script src="assets/script/user/user-add.js"></script>
+<script>
+    layui.use('form', function() {
+        var form = layui.form;
+        $(function () {
+            XIALIA();
+        })
+    });
+
+</script>
 <script src="../../assets/script/origin/origin-query.js"></script>
 </body>
+
 </html>
 
