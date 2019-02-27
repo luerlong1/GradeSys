@@ -62,6 +62,7 @@
                     <th class="table-check"><input type="checkbox" class="alls"/></th>
                     <th class="table-title">名称</th>
                     <th class="table-type">类型</th>
+                    <th class="table-type">年级</th>
                     <th class="table-detail">成员数</th>
                     <th class="table-detail">管理员</th>
                     <th class="table-detail">近期活动</th>
@@ -78,6 +79,7 @@
                                 <a href="origin/member.action?originId=${origin.originId}">${origin.originName}</a>
                             </td>
                             <td><ar:dictdata dictdata="${origin.originType}" dict="ot"></ar:dictdata></td>
+                            <td>${origin.originGrade}</td>
                             <td>${origin.members}</td>
                             <td><a href="user/account.action?userId=${origin.mgrId}">${origin.mgrName}</a></td>
                             <td><fmt:formatDate value="${origin.stateTime}" pattern="YYYY-MM-dd HH:mm"></fmt:formatDate></td>
@@ -118,7 +120,7 @@
                 </c:if>
                 <c:if test="${ empty page.beanList}">
                     <tr>
-                        <td colspan="8" align="center">暂无信息</td>
+                        <td colspan="9" align="center">暂无信息</td>
                     </tr>
                 </c:if>
                 </tbody>

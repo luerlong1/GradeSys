@@ -36,14 +36,14 @@
                 <span class="cfc">${error}</span>
                 <label class="layui-form-label"><span class="cfc"> * </span>名称：</label>
                 <div class="layui-input-block" style="line-height: 38px;">
-                    <input name="originName" id="originName" class="layui-input" value="${origin.originName}" required placeholder="请输入组织名称">
+                    <input name="originName" id="originName" class="layui-input" disabled="disabled" value="${origin.originName}" placeholder="请输入组织名称">
                     <span id="" style="color: #fc3a3a"></span></div>
             </div>
 
             <div class="layui-form-item">
                 <label class="layui-form-label"><span class="cfc"> * </span>类型：</label>
                 <div class="layui-input-block" style="line-height: 38px;">
-                    <select name="originType" id="originType"
+                    <select name="originType" id="originType" disabled="disabled"
                     data-am-selected="{btnSize:'sm'}" class="am-input-sm" required>
                     <c:forEach items="${types}" var="type">
                     <option value="${type.value}"
@@ -56,7 +56,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label"><span class="cfc"> * </span>年级：</label>
                 <div class="layui-input-block" style="line-height: 38px;">
-                    <select name="originGrade" id="originGrade" required>
+                    <select name="originGrade" id="originGrade" disabled="disabled">
                         <option value="">请选择...</option>
                         <c:forEach items="${grades}" var="grade">
                             <option value="${grade.value}"
