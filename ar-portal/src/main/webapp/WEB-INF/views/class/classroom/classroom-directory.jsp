@@ -40,7 +40,7 @@
                                         <i class="fa fa-map-marker"></i> ${directory.address}
                                     </div>
                                     <div class="text-muted">
-                                        <i class="fa fa-briefcase"></i> 软件工程师 就职于<a href="javascript:;">上海证券交易所</a>
+                                        <i class="fa fa-briefcase"></i> ${directory.jobName} 就职于<a href="javascript:;">${directory.jobUnit}</a>
                                     </div>
                                     <ul class="social-list">
                                         <c:if test="${directory.phone!=null}">

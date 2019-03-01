@@ -17,12 +17,6 @@ import org.apache.ibatis.annotations.SelectProvider;
 import com.xzit.ar.common.base.BaseMapper;
 import com.xzit.ar.common.page.Page;
 
-/**
- * @ClassName: ClassRoomMapper
- * @Description: TODO
- * @author Mr.Black
- * @date 2016年2月20日 下午4:14:37
- */
 public interface ClassRoomMapper extends BaseMapper {
 
 	@SelectProvider(type = ClassRoomProvider.class, method = "classIndex")

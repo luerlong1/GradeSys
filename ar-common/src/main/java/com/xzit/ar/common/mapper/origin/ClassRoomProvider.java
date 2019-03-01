@@ -8,12 +8,6 @@
  */
 package com.xzit.ar.common.mapper.origin;
 
-/**
- * @ClassName: ClassRoomProvider
- * @Description: TODO Class SQL
- * @author Mr.Black
- * @date 2016年2月20日 下午4:10:25
- */
 public class ClassRoomProvider {
 
 	public String classIndex() {
@@ -24,11 +18,12 @@ public class ClassRoomProvider {
 	}
 	
 	public String classDirectory(){
-		return "select ui.qq qq, ui.phone phone, ui.email email, u.user_id userId, u.true_name trueName, "
-				+ "ui.microblog microblog, ui.wechat wechat, ui.address address, img.image_path imgPath "
-				+ "from origin o, user_origin uo, user_info ui, image img, user u "
+		return "select ui.qq qq, ui.phone phone, ui.email email, u.user_id userId, u.true_name trueName, userJob.job_unit jobUnit,"
+				+ "ui.microblog microblog, ui.wechat wechat, ui.address address, img.image_path imgPath, userJob.job_name jobName "
+				+ "from origin o, user_origin uo, user_info ui, image img, user u, user_job userJob "
 				+ "where o.origin_id=#{classId} and o.state='A' "
 				+ "and uo.origin_id=o.origin_id and uo.state='A' and ui.user_id=uo.user_id "
+				+ "and userJob.user_id=u.user_id and userJob.state='A' "
 				+ "and u.user_id=ui.user_id and img.image_id=u.image_id ";
 	}
 	

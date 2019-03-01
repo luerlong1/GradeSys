@@ -41,7 +41,7 @@
 													pattern="yyyy-MM-dd"></fmt:formatDate>
 											</li>
 											<li><a
-												href="class/queryClasses.action?selectStr=${grade.gradeValue}">${grade.classNum}个班级</a></li>
+												href="class/queryClasses.action?selectStr=${grade.gradeValue}&type=C">${grade.classNum}个班级</a></li>
 										</ul>
 									</div>
 								</div>

@@ -28,7 +28,7 @@
 			</div>
 			<div class="left_open2" onclick="refresh()" style="margin-left:10px; "><i class="layui-icon" title="刷新">&#xe666;</i></div>
 			<div class="left_open2" style="margin-left:10px; ">
-				<a href="javascript:void(0);" onclick="local()">去官网看看</a>
+				<a href="javascript:void(0);" onclick="local()" target="_blank">去官网看看</a>
 			</div>
 			<ul class="layui-nav right" lay-filter="">
 				<li class="layui-nav-item">

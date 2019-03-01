@@ -79,8 +79,9 @@ public class ClassController extends BaseController {
      * @throws ServiceException
      */
     @RequestMapping("/queryClasses")
-    public String queryClasses(Model model, String queryStr, String selectStr) throws ServiceException {
+    public String queryClasses(Model model, String queryStr, String selectStr, String type) throws ServiceException {
         // page 对象
+        System.out.println(type);
         Page<Map<String, Object>> page = new Page<>(getPageIndex(), getPageSize());
         Map<String, Object> clazz = new HashMap<>();
         if (CommonUtil.isNotEmpty(queryStr)) {
@@ -88,6 +89,9 @@ public class ClassController extends BaseController {
         }
         if (CommonUtil.isNotEmpty(selectStr)) {
             clazz.put("originGrade", selectStr);
+        }
+        if (CommonUtil.isNotEmpty(type)) {
+            clazz.put("originType", type);
         }
         page.setQueryMap(clazz);
         // 查询班级

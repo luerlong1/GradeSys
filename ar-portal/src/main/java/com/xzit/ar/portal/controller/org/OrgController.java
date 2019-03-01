@@ -31,7 +31,11 @@ public class OrgController extends BaseController {
      */
     @RequestMapping("")
     public String index(Model model){
-        model.addAttribute("");
+        try {
+            model.addAttribute("orgZongHius", orgService.getOriginByOriginType("org"));
+        } catch (ServiceException e) {
+            e.printStackTrace();
+        }
         return "org/org-index";
     }
 

@@ -25,19 +25,17 @@
             <div class="col-sm-9">
                 <%@include file="/WEB-INF/views/org/org-tab.jsp" %>
                 <div id="bloglist" class="row" style="position: relative;">
-                    <c:forEach items="${gradeList}" var="grade">
+                    <c:forEach items="${orgZongHius}" var="orgZongHiu">
                         <div class="col-sm-3">
                             <div class="blog-item">
                                 <div class="blog-details">
-                                    <h4 class="blog-title">
-                                        <a href="class/queryClasses.action?selectStr=${grade.gradeValue}">${grade.gradeValue}级</a>
-                                    </h4>
+                                    <h5 class="blog-title">
+                                        <a href="orgroom.action?originId=${orgZongHiu.originId}">
+                                            <i class="fa fa-users"></i> <ar:sub length="10" value="${orgZongHiu.originName}" /></a>
+                                    </h5>
                                     <ul class="blog-meta">
-                                        <li>创建于:<fmt:formatDate value="${grade.createTime}"
-                                                                pattern="yyyy-MM-dd"></fmt:formatDate></li>
-                                        <li>
-                                            <a href="class/queryClasses.action?selectStr=${grade.gradeValue}">${grade.classNum}个班级</a>
-                                        </li>
+                                        <li>最近活动：<fmt:formatDate value="${orgZongHiu.stateTime}" pattern="YYYY-MM-dd"></fmt:formatDate></li>
+                                        <li>成员：<a href="orgroom.action?originId=${orgZongHiu.originId}">${orgZongHiu.members}</a></li>
                                     </ul>
                                 </div>
                             </div>

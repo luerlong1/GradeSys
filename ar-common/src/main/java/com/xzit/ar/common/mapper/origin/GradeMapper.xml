@@ -22,7 +22,7 @@
     <select id="getAll" resultMap="resultMap">
         select
         <include refid="column_list"/>
-        from grade
+        from grade where state = 'A'
         order by grade_value desc
     </select>
 
