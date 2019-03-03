@@ -2,6 +2,7 @@ package com.xzit.ar.portal.controller.my;
 
 import com.xzit.ar.common.base.BaseController;
 import com.xzit.ar.common.exception.ServiceException;
+import com.xzit.ar.portal.service.my.ProfileService;
 import com.xzit.ar.portal.service.my.TaService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +22,8 @@ public class TaController extends BaseController {
 
     @Resource
     private TaService taService;
-
+    @Resource
+    private ProfileService profileService;
     /**
      * TODO 用户个人主页
      * @param model
@@ -33,7 +35,7 @@ public class TaController extends BaseController {
     public String show(Model model, Integer userId) throws ServiceException {
         // 查询用户及本消息
         model.addAttribute("ta", taService.getUserBasicInfo(userId));
-
+        model.addAttribute("userJobs", profileService.getUserJobByUserId(getCurrentUserId()));
         return "my/ta/ta-index";
     }
 }
