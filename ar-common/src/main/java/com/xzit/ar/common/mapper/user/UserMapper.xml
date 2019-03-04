@@ -40,11 +40,11 @@
 		 	u.account account,
 		 	u.true_name trueName,
 		 	u.introduce introduce,
-		 	img.image_path portrait
-		FROM `user` u,
+		 	img.image_path portrait, ui.qq qq, ui.email email, ui.weChat weChat, ui.address, ui.microblog microblog, ui.phone phone
+		FROM `user` u, user_info ui,
 			image img
 		WHERE u.image_id=img.image_id
-		 	AND u.user_id=#{userId}
+		 	AND u.user_id=ui.user_id and u.user_id=#{userId}
 	</select>
 
     <!--获取用户详细信息-->

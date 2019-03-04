@@ -33,19 +33,18 @@
 
             <h5 class="subtitle">联系方式</h5>
             <ul class="profile-social-list">
-                <li><i class="fa fa-qq"></i> <a href="javascript:;">twitter.com/eileensideways</a></li>
-                <li><i class="fa fa-wechat"></i> <a href="javascript:;">facebook.com/eileen</a></li>
-                <li><i class="fa fa-weibo"></i> <a href="javascript:;">youtube.com/eileen22</a></li>
-                <li><i class="fa fa-linkedin"></i> <a href="javascript:;">linkedin.com/4ever-eileen</a></li>
+                <li><i class="fa fa-qq"></i> <a href="javascript:;">${ta.qq}</a></li>
+                <li><i class="fa fa-wechat"></i> <a href="javascript:;">${ta.weChat}</a></li>
+                <li><i class="fa fa-weibo"></i> <a href="javascript:;">${ta.microblog}</a></li>
+                <li><i class="fa fa-phone"></i> <a href="javascript:;"></a>${ta.phone}</li>
+                <li><i class="fa fa-envelope-o"></i> <a href="javascript:;">${ta.email}</a></li>
             </ul>
 
             <div class="mb30"></div>
 
-            <h5 class="subtitle">地址</h5>
+            <h5 class="subtitle">地址：</h5>
             <address>
-                云龙区 徐州工程学院中心校区<br>
-                中国 江苏省 徐州市<br>
-                <abbr title="电话">电话:</abbr> 18796253637
+                ${ta.address}<br>
             </address>
 
         </div><!-- col-sm-3 -->
@@ -53,7 +52,7 @@
 
             <div class="profile-header">
                 <h2 class="profile-name">${ta.trueName}</h2>
-                <div class="profile-location"><i class="fa fa-map-marker"></i> 江苏省 徐州市</div>
+                <div class="profile-location"><i class="fa fa-map-marker"></i> ${ta.address}</div>
                 <div class="profile-position"><i class="fa fa-briefcase"></i> 软件工程师 任职于 <a href="">东软.</a></div>
                 
                 <div class="mb20"></div>
