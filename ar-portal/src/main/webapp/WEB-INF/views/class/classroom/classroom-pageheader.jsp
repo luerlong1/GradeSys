@@ -9,7 +9,7 @@
 			
 			<li><a href="index.action">主页</a></li>
 			<li><a href="class.action">班级录</a></li>
-			<li class="active">${classroom.clasName}</li>
+			<li class="active">${classroom.className}</li>
 		</ol>
 	</div>
 	<input id="originId" value="${classroom.classId}" type="hidden">

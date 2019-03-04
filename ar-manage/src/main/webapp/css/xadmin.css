@@ -253,8 +253,12 @@ xblock{
 .container .left_open,
 .container .left_open2{
     height: 50px;
+    line-height: 50px;
     float: left;
 }
+
+.container .left_open2 a,.container .left_open2 a:hover{color: #fff !important;}
+.container .left_open2 a:hover{text-decoration: underline;}
 .container .left_open i,
 .container .left_open2 i{
     display: block;

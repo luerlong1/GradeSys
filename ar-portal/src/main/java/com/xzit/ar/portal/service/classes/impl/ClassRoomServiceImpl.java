@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.sound.midi.Soundbank;
 
 import com.xzit.ar.common.po.origin.Origin;
 import org.springframework.cache.annotation.CacheEvict;
@@ -280,4 +281,17 @@ public class ClassRoomServiceImpl implements ClassRoomService {
 		return false;
 	}
 
+    @Override
+    public Map<String, Object> getclassAdmin(Integer classId){
+        try {
+
+            if (classRoomMapper.getclassAdmin(classId).size() > 0) {
+                return classRoomMapper.getclassAdmin(classId);
+            }
+        } catch (Exception e) {
+            System.out.println("加载班级管理员失败");
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

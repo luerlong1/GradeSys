@@ -97,17 +97,17 @@
 							class="glyphicon glyphicon-plus"></span>&nbsp;加入班级</a>
 					</ar:notexist>
 					<hr />
-					<h5 class="subtitle mb5">管理员：</h5>
+					<h5 class="subtitle mb5">班级管理员：</h5>
 					<div class="media">
 						<a class="pull-left"
-							href="ta/show.action?userId=${classroom.mgrId}"> <img
-							class="media-object img-responsive" src="${classroom.mgrImg}"
+							href="ta/show.action?userId=${classAdmin.userId}"> <img
+							class="media-object img-responsive" src="${classAdmin.imgPath}"
 							alt="" style="max-width: 100px;">
 						</a>
 						<div class="media-body">
-							<h5>${classroom.mgrName}</h5>
+							<h5>${classAdmin.trueName}</h5>
 							<p class="email-summary">
-								<ar:sub length="20" value="${classroom.mgrDesc}" />
+								<ar:sub length="20" value="${classAdmin.introduce}" />
 							</p>
 						</div>
 					</div>

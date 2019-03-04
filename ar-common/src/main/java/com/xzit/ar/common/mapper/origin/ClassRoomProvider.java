@@ -62,4 +62,12 @@ public class ClassRoomProvider {
 				+ "where info.user_id=u.user_id and u.image_id=img.image_id "
 				+ "and info.origin_id=#{classId} and info.info_id=#{infoId} and info.info_type='CI' and info.state='A' ";
 	}
+
+	public String getclassAdmin(){
+		return "select u.user_id userId, img.image_path imgPath, u.true_name trueName, u.introduce introduce "
+				+ "from origin o, image img, user u "
+				+ "where o.origin_id=#{classId} and o.state='A' "
+				+ "and u.user_id=o.mgr_id "
+				+ "and img.image_id=u.image_id ";
+	}
 }

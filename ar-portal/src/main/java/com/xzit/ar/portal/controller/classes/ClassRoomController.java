@@ -84,6 +84,8 @@ public class ClassRoomController extends BaseController {
         Page<Map<String, Object>> page = new Page<>(getPageIndex(), 3);
         model.addAttribute("lastInfos", classRoomService.classInfo(page, classId).getBeanList());
         model.addAttribute("memberList", classRoomService.getAllMemberIds(classId));
+        //加载班级管理员
+        model.addAttribute("classAdmin", classRoomService.getclassAdmin(classId));
 
         return "class/classroom/classroom-index";
     }

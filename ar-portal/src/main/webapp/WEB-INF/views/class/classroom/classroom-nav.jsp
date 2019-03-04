@@ -21,13 +21,16 @@
     <li id="message-li"><a
             href="classroom/message.action?classId=${classroom.classId}"><i
             class="fa fa-comment"></i>&nbsp;<strong>留言板</strong></a></li>
-    <li id="dropdown-li" class="dropdown"><a href="javascript:;"
-                                             data-toggle="dropdown" class="dropdown-toggle"><i
-            class="fa fa-gear"></i>&nbsp;管理 <span class="caret"></span> </a>
+
+    <li id="dropdown-li" class="dropdown">
+        <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle">
+            <i class="fa fa-gear"></i>&nbsp;管理 <span class="caret"></span>
+        </a>
         <ul role="menu" class="dropdown-menu pull-right">
             <li><a
-                    href="classroom/description.action?classId=${classroom.classId}">班级简介</a></li>
-            <li class="divider"></li>
+                    href="classroom/description.action?classId=${classroom.classId}">班级简介</a>
+            <%--</li>--%>
+            <%--<li class="divider"></li>--%>
             <%--<li><a--%>
             <%--href="classroom/audit.action?classId=${classroom.classId}">班干</a></li>--%>
         </ul>

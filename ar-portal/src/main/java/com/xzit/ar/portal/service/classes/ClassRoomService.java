@@ -71,4 +71,5 @@ public interface ClassRoomService {
 
 	Integer updateClassDesc(String description, Integer classId) throws ServiceException;
 
+	Map<String, Object> getclassAdmin(Integer classId);
 }

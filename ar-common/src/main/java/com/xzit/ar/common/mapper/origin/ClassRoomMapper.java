@@ -42,4 +42,6 @@ public interface ClassRoomMapper extends BaseMapper {
 	Map<String, Object> classInfoDetail(@Param("classId") Integer classId, @Param("infoId") Integer infoId)
 			throws Exception;
 
+	@SelectProvider(type = ClassRoomProvider.class, method = "getclassAdmin")
+	Map<String, Object> getclassAdmin(Integer classId) throws Exception;
 }
