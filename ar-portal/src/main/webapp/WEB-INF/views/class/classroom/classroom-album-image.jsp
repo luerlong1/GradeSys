@@ -21,16 +21,22 @@
     <div class="tab-content" style="background-color: #ddd;">
 
         <ul class="filemanager-options">
+            <%--<li>--%>
+                <%--&lt;%&ndash;<div class="ckbox ckbox-default">&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<input type="checkbox" id="selectall" value="1"/>&ndash;%&gt;--%>
+                    <%--&lt;%&ndash;<label for="selectall">全选</label>&ndash;%&gt;--%>
+                <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
+            <%--</li>--%>
+            <%--<li>--%>
+                <%--&lt;%&ndash;<a href="classroom/album/upload.action?classId=${classroom.classId}&albumId=${album.albumId}"&ndash;%&gt;--%>
+                   <%--&lt;%&ndash;class=""><i class="fa fa-upload"></i> 上传照片</a>&ndash;%&gt;--%>
+            <%--</li>--%>
+            <%--<li>--%>
+                <%--&lt;%&ndash;<a href="javascript:;" class="itemopt disabled"><i class="fa fa-download"></i> 下载选中</a>&ndash;%&gt;--%>
+            <%--</li>--%>
             <li>
-                <div class="ckbox ckbox-default">
-                    <input type="checkbox" id="selectall" value="1"/>
-                    <label for="selectall">全选</label>
-                </div>
+                <a href="javascript:;" class="itemopt disabled"><i class=""></i> .</a>
             </li>
-            <li><a href="classroom/album/upload.action?classId=${classroom.classId}&albumId=${album.albumId}"
-                   class=""><i class="fa fa-upload"></i> 上传照片</a></li>
-            <li><a href="javascript:;" class="itemopt disabled"><i class="fa fa-download"></i> 下载选中</a></li>
-            <li><a href="javascript:;" class="itemopt disabled"><i class="fa fa-trash-o"></i> 删除选中</a></li>
             <li class="filter-type"><span style="font-size: 16px">${album.albumName} &nbsp; | &nbsp; <fmt:formatDate value="${album.createTime}"
                                                                          pattern="yyyy-MM-dd HH:mm"/></span></li>
         </ul>
@@ -40,8 +46,8 @@
                 <div class="col-xs-6 col-sm-4 col-md-3 document">
                     <div class="thmb" style="min-height: 200px; text-align: center">
                         <div class="ckbox ckbox-default">
-                            <input type="checkbox" id="check${image.imageId}" name="imageId" value="${image.imageId}"/>
-                            <label for="check${image.imageId}"></label>
+                            <%--<input type="checkbox" id="check${image.imageId}" name="imageId" value="${image.imageId}"/>--%>
+                            <%--<label for="check${image.imageId}"></label>--%>
                         </div>
                         <div class="btn-group fm-group">
                             <button type="button" class="btn btn-default dropdown-toggle fm-toggle"
