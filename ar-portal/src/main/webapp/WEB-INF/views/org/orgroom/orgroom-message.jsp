@@ -20,9 +20,10 @@
 		<!-- Tab panes -->
 		<div class="tab-content" style="background-color: #ddd;">
 			<div class="tab-pane active" id="classroom-content">
+		    <c:if test="${isMemberInClass}">
 				<!-- 动态编写 -->
 				<div class="panel panel-dark panel-alt timeline-post" id="infoBox">
-					<form action="orgroom/publishMessage.action" method="post" id="orgroomMessageForm">
+					<form action="/orgroom/publishMessage.action" method="post" id="orgroomMessageForm">
 						<div class="panel-body">
 							<textarea class="form-control" placeholder="留言..." id="infoBoxText" maxlength="200" name="content"></textarea>
 						</div>
@@ -32,7 +33,11 @@
 						<input hidden name="originId" value="${orgroom.originId}">
 					</form>
 				</div>
+		    </c:if>
 				<div id="bloglist" class="row">
+					<c:if test="${empty page.beanList}">
+						该组织暂无留言
+					</c:if>
 					<c:forEach items="${page.beanList}" var="message"
 						varStatus="status">
 						<div class="col-md-12">

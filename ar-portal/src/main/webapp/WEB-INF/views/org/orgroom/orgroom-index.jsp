@@ -22,7 +22,7 @@
 				<div class="col-md-9">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h4 class="panel-title">班级简介：</h4>
+							<h4 class="panel-title">组织简介：</h4>
 						</div>
 						<div class="panel-body">
 							<blockquote>
@@ -91,7 +91,7 @@
 					<ar:notexist items="${memberIds}" value="${SESSION_USER.userId}">
 						<div class="alert alert-info">
 							<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-							<a class="alert-link" href="javascript:;">您还未加入该班级${orgroom.originName}!</a>
+							<a class="alert-link" href="javascript:;">您还未加入该组织${orgroom.originName}!</a>
 						</div>
 						<a class="btn btn-darkblue" href="orgroom/joinOrigin.action?originId=${orgroom.originId}">
 							<span class="glyphicon glyphicon-plus"></span>&nbsp;申请加入</a>
@@ -100,14 +100,14 @@
 					<h5 class="subtitle mb5">管理员：</h5>
 					<div class="media">
 						<a class="pull-left"
-							href="ta/show.action?userId=${classroom.mgrId}"> <img
-							class="media-object img-responsive" src="${classroom.mgrImg}"
+							href="ta/show.action?userId=${originAdmin.userId}"> <img
+							class="media-object img-responsive" src="${originAdmin.imgPath}"
 							alt="" style="max-width: 100px;">
 						</a>
 						<div class="media-body">
-							<h5>${classroom.mgrName}</h5>
+							<h5>${originAdmin.trueName}</h5>
 							<p class="email-summary">
-								<ar:sub length="20" value="${classroom.mgrDesc}" />
+								<ar:sub length="20" value="${originAdmin.introduce}" />
 							</p>
 						</div>
 					</div>

@@ -46,7 +46,7 @@
                             <ul class="dropdown-menu fm-menu" role="menu">
                                 <li>
                                     <a href="classroom/album/image.action?classId=${classroom.classId}&albumId=${album.albumId}">
-                                        <i class="fa fa-picture-o"></i> 查看相册${classroom.originAdminId}</a></li>
+                                        <i class="fa fa-picture-o"></i> 查看相册</a></li>
                                 <c:if test="${isAdminInClass}">
                                 <li>
                                     <a href="classroom/album/edit.action?classId=${classroom.classId}&albumId=${album.albumId}">

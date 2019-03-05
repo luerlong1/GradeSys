@@ -21,6 +21,7 @@
 		<div class="tab-content" style="background-color: #ddd;">
 			<div class="tab-pane active" id="orgroom-content">
 				<!-- 动态编写 -->
+				<c:if test="${isMemberInClass}">
 				<div class="panel panel-dark panel-alt timeline-post" id="infoBox">
 					<form action="orgroom/publishInfo.action" method="post" enctype="multipart/form-data" id="originInfoForm">
 						<div class="panel-body" style="border-bottom: solid 5px #ddd">
@@ -52,8 +53,12 @@
 						<input type="hidden" name="originId" value="${orgroom.originId}">
 					</form>
 				</div>
+				</c:if>
 				<!-- 动态列表 -->
 				<div id="bloglist" class="row">
+					<c:if test="${empty page.beanList}">
+						该组织暂无动态
+					</c:if>
 					<c:forEach items="${page.beanList}" var="info" varStatus="status">
 						<div class="col-md-12">
 							<div class="blog-item">

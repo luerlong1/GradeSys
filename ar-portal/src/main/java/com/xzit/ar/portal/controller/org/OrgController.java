@@ -12,11 +12,7 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
-/**
- * TODO 校友组织管理
- * @author 董亮亮 1075512174@qq.com.
- * @Date:2017/4/16 15:32.
- */
+
 @Controller
 @RequestMapping("/org")
 public class OrgController extends BaseController {

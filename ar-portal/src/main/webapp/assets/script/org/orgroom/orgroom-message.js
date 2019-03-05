@@ -26,5 +26,4 @@ function publishMessage() {
 
 	$("#orgroomMessageForm").submit();
 
-	post()
 }

@@ -1,16 +1,20 @@
 package com.xzit.ar.portal.controller.org;
 
 import com.xzit.ar.common.base.BaseController;
+import com.xzit.ar.common.constant.PathConstant;
 import com.xzit.ar.common.exception.ServiceException;
 import com.xzit.ar.common.init.context.ARContext;
 import com.xzit.ar.common.page.Page;
 import com.xzit.ar.common.po.album.Album;
+import com.xzit.ar.common.po.image.Image;
 import com.xzit.ar.common.po.info.Comment;
 import com.xzit.ar.common.po.info.Information;
 import com.xzit.ar.common.po.origin.Origin;
 import com.xzit.ar.common.po.user.UserOrigin;
 import com.xzit.ar.common.util.CommonUtil;
+import com.xzit.ar.portal.service.classes.ClassRoomService;
 import com.xzit.ar.portal.service.image.AlbumService;
+import com.xzit.ar.portal.service.image.ImageService;
 import com.xzit.ar.portal.service.information.CommentService;
 import com.xzit.ar.portal.service.information.InformationService;
 import com.xzit.ar.portal.service.my.TaService;
@@ -18,6 +22,7 @@ import com.xzit.ar.portal.service.org.OrgroomService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -26,12 +31,7 @@ import javax.annotation.Resource;
 import java.util.Date;
 import java.util.Map;
 
-/**
- * TODO 校友组织主页
- *
- * @author 董亮亮 1075512174@qq.com.
- * @Date:2017/4/16 15:34.
- */
+
 @Controller
 @RequestMapping("/orgroom")
 public class OrgroomController extends BaseController {
@@ -50,6 +50,13 @@ public class OrgroomController extends BaseController {
 
     @Resource
     private AlbumService albumService;
+
+    @Resource
+    private ClassRoomService classRoomService;
+
+    @Resource
+    private ImageService imageService;
+
 
 
     /**
@@ -73,6 +80,12 @@ public class OrgroomController extends BaseController {
         model.addAttribute("latestInfos", informationService.getOriginInfos(page, originId, "OI"));
         // 加载组织成员id 列表
         model.addAttribute("memberIds", orgroomService.getMemberIds(originId));
+
+        //加载组织管理员
+        Map<String, Object> originAdmin = classRoomService.getclassAdmin(originId);
+        model.addAttribute("originAdmin", originAdmin);
+
+        model.addAttribute("isAdminInClass",getCurrentUserId().equals(origin.getMgrId())?true:false);
 
         return "org/orgroom/orgroom-index";
     }
@@ -121,6 +134,7 @@ public class OrgroomController extends BaseController {
             return "redirect:/org.action";
         }
         model.addAttribute("orgroom", origin);
+        model.addAttribute("isMemberInClass",classRoomService.isMemberInClass(getCurrentUserId(),originId));
         // 分页查询组织内最新消息
         Page<Map<String, Object>> page = new Page<>(getPageIndex(), getPageSize());
         informationService.getOriginInfos(page, originId, "OI");
@@ -137,7 +151,7 @@ public class OrgroomController extends BaseController {
      * @param originId
      * @return
      * @throws ServiceException
-     * @author 董亮亮
+     * @author
      */
     @RequestMapping("/publishInfo")
     public String publishInfo(RedirectAttributes attributes, @RequestParam("infoTitle") String infoTitle, @RequestParam("content") String content, @RequestParam("originId") Integer originId) throws ServiceException {
@@ -310,6 +324,8 @@ public class OrgroomController extends BaseController {
             return "redirect:/org.action";
         }
         model.addAttribute("orgroom", origin);
+        model.addAttribute("isMemberInClass",classRoomService.isMemberInClass(getCurrentUserId(),originId));
+
         // 加载留言
         Page<Map<String, Object>> page = new Page<>(getPageIndex(), getPageSize());
         informationService.getOriginInfos(page, originId, "OM");
@@ -326,7 +342,7 @@ public class OrgroomController extends BaseController {
      * @return
      * @throws ServiceException
      */
-    @RequestMapping("publishMessage")
+    @RequestMapping(value = "/publishMessage", method = RequestMethod.POST)
     public String publishMessage(RedirectAttributes attributes, Information information) throws ServiceException {
         // 参数校验
         if (CommonUtil.isNotEmpty(information.getOriginId()) && CommonUtil.isNotEmpty(information.getContent())) {
@@ -413,10 +429,11 @@ public class OrgroomController extends BaseController {
     public String album(Model model, @RequestParam("originId") Integer originId) throws ServiceException {
         // 校友组织基本信息
         Origin origin = orgroomService.getOriginById(originId);
-        if (origin == null || CommonUtil.isEmpty(origin.getOriginId())) {
-            return "redirect:/org.action";
+        if (origin == null) {
+            return "redirect:/orgroom.action";
         }
         model.addAttribute("orgroom", origin);
+        model.addAttribute("isMemberInClass",classRoomService.isMemberInClass(getCurrentUserId(),originId));
         // 加载相册
         Page<Album> page = new Page<>(getPageIndex(), 12);
         albumService.getAlbums(page, originId);
@@ -437,16 +454,201 @@ public class OrgroomController extends BaseController {
     public String image(Model model, Integer albumId, Integer originId) throws ServiceException {
         // 校友组织基本信息
         Origin origin = orgroomService.getOriginById(originId);
-        if (origin == null || CommonUtil.isEmpty(origin.getOriginId())) {
-            return "redirect:/org.action";
+        if (origin == null ) {
+            return "redirect:/orgroom.action";
         }
         model.addAttribute("orgroom", origin);
 
-        model.addAttribute("page");
+        // 加载照片流
+        Page<Map<String, Object>> page = new Page<>(getPageIndex(), getPageSize());
+        albumService.getAlbumImage(page, albumId);
+        model.addAttribute("page", page);
+        // 相册信息
+        model.addAttribute("album", albumService.getAlbumById(albumId));
 
         return "org/orgroom/orgroom-album-image";
     }
+    /**
+     * TODO 加载创建相册界面
+     *
+     * @param model
+     * @param classId
+     * @return
+     * @throws ServiceException
+     */
+    @RequestMapping("/album/add")
+    public String addAlbum(Model model, Integer classId) throws ServiceException {
+        // zuzhi基本信息
+        Origin origin = orgroomService.getOriginById(classId);
+        if (origin == null || CommonUtil.isEmpty(origin.getOriginId())) {
+            return "redirect:/orgroom.action";
+        }
+        model.addAttribute("orgroom", origin);
 
+        return "org/orgroom/orgroom-album-add";
+    }
+
+
+    /**
+     * TODO 保存相册
+     *
+     * @param attributes
+     * @param originId
+     * @param albumName
+     * @param albumDesc
+     * @return
+     * @throws ServiceException
+     */
+    @RequestMapping(value = "/album/save", method = RequestMethod.POST)
+    public String saveAlbum(RedirectAttributes attributes, Integer originId, String albumName, String albumDesc) throws ServiceException {
+
+        // 参数校验
+        if (CommonUtil.isNotEmpty(originId) && CommonUtil.isNotEmpty(albumName)) {
+            // 创建相册对象
+            Album album = new Album();
+            album.setAlbumName(albumName);
+            album.setAlbumDesc(albumDesc);
+            album.setInterests(0);
+            album.setOriginId(originId);
+            album.setUserId(getCurrentUserId());
+            album.setCreateTime(new Date());
+            album.setStateTime(new Date());
+            album.setState("A");
+            album.setCoverImage(PathConstant.albumCoverDefaultRelPath);
+
+            // 存储相册
+            attributes.addAttribute("originId", originId);
+            // 插入相册后返回ID
+            attributes.addAttribute("albumId", albumService.saveAlbum(album));
+
+            return "redirect:/orgroom/album.action";
+        }
+        return "redirect:/orgroom.action";
+    }
+
+
+    /**
+     * TODO 加载相册编辑界面
+     *
+     * @param model
+     * @param albumId
+     * @param originId
+     * @return
+     * @throws ServiceException
+     */
+    @RequestMapping("/album/edit")
+    public String editAlbum(Model model, Integer albumId, Integer originId) throws ServiceException {
+        // 班级基本信息
+        Origin origin = orgroomService.getOriginById(originId);
+        if (origin == null) {
+            return "redirect:/orgroom.action";
+        }
+        model.addAttribute("orgroom", origin);
+        // 查询相册信息
+        model.addAttribute("album", albumService.getAlbumById(albumId));
+
+        return "org/orgroom/orgroom-album-edit";
+    }
+
+    /**
+     * TODO 更新相册信息
+     *
+     * @param attributes
+     * @param originId
+     * @param album
+     * @return
+     * @throws ServiceException
+     */
+    @RequestMapping(value = "/album/update", method = RequestMethod.POST)
+    public String updateAlbum(RedirectAttributes attributes, Integer originId, Album album) throws ServiceException {
+        // 参数校验
+        if (album != null && CommonUtil.isNotEmpty(originId) && CommonUtil.isNotEmpty(album.getAlbumId())) {
+            album.setStateTime(new Date());
+            // 数据存储
+            albumService.updateAlbum(album);
+            attributes.addAttribute("originId", originId);
+
+            return "redirect:/orgroom/album.action";
+        }
+        return "redirect:/orgroom.action";
+    }
+
+
+
+
+
+
+    /**
+     * TODO 删除相册图片
+     * @param attributes
+     * @param originId
+     * @param albumId
+     * @param imageId
+     * @return
+     * @throws ServiceException
+     */
+    @RequestMapping("/album/image/delete")
+    public String deleteImage(RedirectAttributes attributes, Integer originId, Integer albumId, Integer imageId) throws ServiceException {
+        // 删除图片
+        if (CommonUtil.isNotEmpty(imageId)) {
+            imageService.deleteImageById(imageId);
+        }
+        // 参数传递
+        attributes.addAttribute("originId", originId);
+        attributes.addAttribute("albumId", albumId);
+
+        return "redirect:/orgroom/album/image.action";
+    }
+
+    /**
+     * TODO 修改相册封面
+     *
+     * @param attributes
+     * @param originId
+     * @param albumId
+     * @return
+     */
+    @RequestMapping("/album/cover")
+    public String cover(RedirectAttributes attributes, Integer originId, Integer albumId, Integer imageId) throws ServiceException {
+        // 参数校验
+        if (CommonUtil.isNotEmpty(imageId)) {
+            // image
+            Image image = imageService.getImageById(imageId);
+            // 更新相册封面
+            Album album = albumService.getAlbumById(albumId);
+            album.setCoverImage(image.getThumbPath());
+            albumService.updateAlbum(album);
+        }
+
+        // 参数传递
+        attributes.addAttribute("originId", originId);
+        attributes.addAttribute("albumId", albumId);
+        attributes.addAttribute("userId", getCurrentUserId());
+
+        return "redirect:/orgroom/album.action";
+    }
+
+    /**
+     * TODO 删除相册
+     *
+     * @param attributes
+     * @param originId
+     * @param albumId
+     * @return jsp
+     * @throws ServiceException
+     */
+    @RequestMapping(value = "/album/delete", method = RequestMethod.POST)
+    public String deleteAlbum(RedirectAttributes attributes, Integer originId, Integer albumId) throws ServiceException {
+        // 参数校验
+        if (CommonUtil.isNotEmpty(albumId) && CommonUtil.isNotEmpty(originId)) {
+            // 删除相册
+            albumService.deleteAlbum(albumId);
+        }
+        // 跳转页面
+        attributes.addAttribute("originId", originId);
+
+        return "redirect:/orgroom/album.action";
+    }
 }
 
 

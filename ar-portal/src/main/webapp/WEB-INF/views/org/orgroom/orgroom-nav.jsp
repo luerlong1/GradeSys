@@ -6,7 +6,7 @@
 	<li id="index-li"><a href="orgroom.action?originId=${orgroom.originId}">
 		<i class="fa fa-home"></i><strong> 主页</strong></a></li>
 	<li id="info-li"><a href="orgroom/info.action?originId=${orgroom.originId}">
-		<i class="fa fa-comments"></i>&nbsp;<strong>动态消息</strong></a></li>
+		<i class="fa fa-comments"></i>&nbsp;<strong>组织动态</strong></a></li>
 	<li id="message-li"><a href="orgroom/message.action?originId=${orgroom.originId}">
 		<i class="fa fa-comment"></i>&nbsp;<strong>留言板</strong></a></li>
 	<li id="member-li"><a href="orgroom/member.action?originId=${orgroom.originId}">

@@ -20,6 +20,21 @@
 		<div class="tab-content" style="background-color: #ddd;">
 
 			<div class="row filemanager">
+				<c:if test="${isMemberInClass}">
+					<div class="col-xs-6 col-sm-4 col-md-3 document">
+						<div class="thmb" style="height: 228px">
+							<a href="orgroom/album/add.action?classId=${orgroom.originId}">
+								<div class="thmb-prev" style="height: 170px">
+									<img src="assets/images/icon/album/plus.png" class="img-responsive center-block"/>
+								</div>
+							</a>
+							<h5 class="fm-title">
+								<a href="orgroom/album/add.action?classId=${orgroom.originId}">新建相册</a>
+							</h5>
+							<small class="text-muted">新建班级相册</small>
+						</div><!-- thmb -->
+					</div>
+				</c:if>
 				<c:forEach items="${page.beanList}" var="album" >
 					<div class="col-xs-6 col-sm-4 col-md-3 document">
 						<div class="thmb" style="min-height: 228px">
@@ -28,14 +43,14 @@
 									<span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu fm-menu" role="menu">
-									<li><a href="#"><i class="fa fa-picture-o"></i> 查看相册</a></li>
-									<li><a href="#"><i class="fa fa-edit"></i> 编辑相册</a></li>
-									<li><a href="#"><i class="fa fa-trash-o"></i> 删除相册</a></li>
-									<li><a href="#"><i class="fa fa-upload"></i> 上传照片</a></li>
+									<li><a href="orgroom/album/image.action?albumId=${album.albumId}&originId=${album.originId}"><i class="fa fa-picture-o"></i> 查看相册</a></li>
+									<li><a href="orgroom/album/edit.action?originId=${orgroom.originId}&albumId=${album.albumId}"><i class="fa fa-edit"></i> 编辑相册</a></li>
+									<li><a href="javascript:;" onclick="deleteAlbum(${album.albumId})"><i class="fa fa-trash-o"></i> 删除相册</a></li>
+									<li><a href="orgroom/album/upload.action?originId=${orgroom.originId}&albumId=${album.albumId}"><i class="fa fa-upload"></i> 上传照片</a></li>
 								</ul>
 							</div><!-- btn-group -->
 							<div class="thmb-prev">
-								<a href="classroom/album/image.action?albumId=${album.albumId}&classId=${album.originId}">
+								<a href="orgroom/album/image.action?albumId=${album.albumId}&originId=${album.originId}">
 									<img src="${album.coverImage}" class="img-responsive center-block" style="min-height: 160px"/>
 								</a>
 							</div>
@@ -74,5 +89,18 @@
 
     });
 
+</script>
+<script>
+function deleteAlbum(albumId) {
+	// 确认框
+	if (window.confirm("确定要删除这个相册吗？")) {
+		// 参数校验
+		if (isValid(albumId)) {
+		var originId = $('#originId').val();
+		//调用方法 如  e
+		post('orgroom/album/delete.action', {'albumId': albumId, 'originId' : originId});
+		}
+	}
+}
 </script>
 </html>
