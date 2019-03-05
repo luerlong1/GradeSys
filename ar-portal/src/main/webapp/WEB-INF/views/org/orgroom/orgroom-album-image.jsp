@@ -29,6 +29,9 @@
 		</ul>
 
 		<div class="row filemanager">
+			<c:if test="${empty page.beanList}">
+				该相册暂无相片
+			</c:if>
 			<c:forEach items="${page.beanList}" var="image">
 				<div class="col-xs-6 col-sm-4 col-md-3 document">
 					<div class="thmb" style="min-height: 200px; text-align: center">
@@ -46,10 +49,10 @@
 									<a href="download.action?fileRelPath=${image.imagePath}&fileName=${image.imageName}">
 										<i class="fa fa-download"></i> 下载照片</a></li>
 								<li>
-									<a href="orgroom/album/image/delete.action?classId=${orgroom.classId}&albumId=${album.albumId}&imageId=${image.imageId}">
+									<a href="orgroom/album/image/delete.action?classId=${orgroom.originId}&albumId=${album.albumId}&imageId=${image.imageId}">
 										<i class="fa fa-trash-o"></i> 删除照片</a></li>
 								<li>
-									<a href="orgroom/album/cover.action?classId=${orgroom.classId}&albumId=${album.albumId}&imageId=${image.imageId}">
+									<a href="orgroom/album/cover.action?originId=${orgroom.originId}&albumId=${album.albumId}&imageId=${image.imageId}">
 										<i class="fa fa-trash-o"></i> 设为封面</a></li>
 							</ul>
 						</div><!-- btn-group -->

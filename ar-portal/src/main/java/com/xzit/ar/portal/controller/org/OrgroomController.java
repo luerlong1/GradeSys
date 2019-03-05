@@ -3,6 +3,7 @@ package com.xzit.ar.portal.controller.org;
 import com.xzit.ar.common.base.BaseController;
 import com.xzit.ar.common.constant.PathConstant;
 import com.xzit.ar.common.exception.ServiceException;
+import com.xzit.ar.common.exception.UtilException;
 import com.xzit.ar.common.init.context.ARContext;
 import com.xzit.ar.common.page.Page;
 import com.xzit.ar.common.po.album.Album;
@@ -12,6 +13,7 @@ import com.xzit.ar.common.po.info.Information;
 import com.xzit.ar.common.po.origin.Origin;
 import com.xzit.ar.common.po.user.UserOrigin;
 import com.xzit.ar.common.util.CommonUtil;
+import com.xzit.ar.common.util.ImageUtil;
 import com.xzit.ar.portal.service.classes.ClassRoomService;
 import com.xzit.ar.portal.service.image.AlbumService;
 import com.xzit.ar.portal.service.image.ImageService;
@@ -25,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
@@ -573,7 +576,85 @@ public class OrgroomController extends BaseController {
         return "redirect:/orgroom.action";
     }
 
+    /**
+     * TODO 加载图片上传界面
+     *
+     * @param model
+     * @param originId
+     * @return
+     * @throws ServiceException
+     */
+    @RequestMapping("/album/upload")
+    public String uploadAlbum(Model model, Integer originId, Integer albumId) throws ServiceException {
+        // 班级基本信息
+        Origin origin = orgroomService.getOriginById(originId);
+        if (origin == null) {
+            return "redirect:/orgroom.action";
+        }
+        model.addAttribute("orgroom", origin);
+        // 相册信息
+        model.addAttribute("album", albumService.getAlbumById(albumId));
 
+        return "org/orgroom/orgroom-album-upload";
+    }
+
+    /**
+     * TODO 上传zuzhi 图片
+     *
+     * @param attributes
+     * @param originId
+     * @param albumId
+     * @param images
+     * @return
+     */
+    @RequestMapping("/album/image/upload")
+    public String uploadImage(RedirectAttributes attributes, Integer originId, Integer albumId,
+                              @RequestParam("images") MultipartFile images[]) throws UtilException, ServiceException {
+        // 参数校验
+        if (CommonUtil.isNotEmpty(originId) && CommonUtil.isNotEmpty(albumId)
+                && CommonUtil.isNotEmpty(images) && images.length > 0) {
+            Album album = albumService.getAlbumById(albumId);
+            if (album != null) {
+                // 图片存储
+                for (int i = 0; i < images.length; i++) {
+                    // 存储图片
+                    String imagePath = ImageUtil.saveImage(images[i]);
+                    // 图片对象
+                    Image image = new Image();
+                    image.setImageName(images[i].getOriginalFilename());
+                    image.setImageSize((images[i].getSize() / (1024)) + "k");
+                    image.setImagePath(imagePath);
+                    image.setImageType("AI");
+                    image.setIsRemote("0");
+                    image.setIsThumb("0");
+                    image.setThumbPath(imagePath);
+                    image.setCreateTime(new Date());
+                    image.setState("A");
+                    image.setStateTime(new Date());
+
+                    // 存储照片
+                    imageService.saveAlbumImage(image, albumId);
+
+                    // 设置相册封面
+                    String albumCover = album.getCoverImage();
+                    if (i == 0 && CommonUtil.isNotEmpty(albumCover) && albumCover.equals(PathConstant.albumCoverDefaultRelPath)) {
+                        // 设置第一张照片为相册封面
+                        album.setCoverImage(image.getImagePath());
+                        albumService.updateAlbum(album);
+                    }
+
+                }
+            }
+
+
+        }
+        System.out.print(originId+"````````111111111111");
+        // 参数传递
+        attributes.addAttribute("originId", originId);
+        attributes.addAttribute("albumId", albumId);
+
+        return "redirect:/orgroom/album/image.action";
+    }
 
 
 
@@ -623,7 +704,6 @@ public class OrgroomController extends BaseController {
         // 参数传递
         attributes.addAttribute("originId", originId);
         attributes.addAttribute("albumId", albumId);
-        attributes.addAttribute("userId", getCurrentUserId());
 
         return "redirect:/orgroom/album.action";
     }

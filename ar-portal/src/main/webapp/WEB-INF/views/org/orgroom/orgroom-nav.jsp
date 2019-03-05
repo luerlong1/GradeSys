@@ -14,11 +14,13 @@
 	<li id="directory-li"><a href="orgroom/directory.action?originId=${orgroom.originId}">
 		<i class="fa  fa-phone-square"></i>&nbsp;<strong>通讯录</strong></a></li>
 	<li id="album-li"><a href="orgroom/album.action?originId=${orgroom.originId}"><i class="fa fa-picture-o"></i>&nbsp;<strong>相册</strong></a></li>
+	<c:if test="${isAdminInClass}">
 	<li id="dropdown-li" class="dropdown"><a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-gear"></i>&nbsp;管理 <span class="caret"></span> </a>
 		<ul role="menu" class="dropdown-menu pull-right">
 			<%--<li><a href="orgroom/description.action?originId=${orgroom.originId}">组织简介</a></li>--%>
 			<li><a href="javascript:;">组织简介</a></li>
 		</ul>
 	</li>
+	</c:if>
 </ul>
 <!-- navigation -->

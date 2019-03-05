@@ -43,7 +43,9 @@
                     </c:forEach>
                 </div>
             </div>
-            <div class="col-sm-3" id="org-outline"></div>
+            <div class="col-sm-3" id="org-outline">
+                <img src="assets/images/icon/loading/loader.gif" class="center-block">
+            </div>
         </div>
     </section>
 </div>
