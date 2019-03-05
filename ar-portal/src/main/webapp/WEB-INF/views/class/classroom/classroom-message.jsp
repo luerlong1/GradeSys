@@ -22,6 +22,7 @@
 		<div class="tab-content" style="background-color: #ddd;">
 			<div class="tab-pane active" id="classroom-content">
 				<!-- 动态编写 -->
+				<c:if test="${isMemberInClass}">
 				<div class="panel panel-dark panel-alt timeline-post" id="infoBox">
 					<form action="classroom/publishClassMessage.action" method="post"
 						enctype="multipart/form-data" id="classMessagePublishForm">
@@ -37,6 +38,7 @@
 							value="${classroom.classId}">
 					</form>
 				</div>
+				</c:if>
 				<div id="bloglist" class="row">
 					<c:forEach items="${page.beanList}" var="message"
 						varStatus="status">

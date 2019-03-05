@@ -20,19 +20,21 @@
     <div class="tab-content" style="background-color: #ddd;">
         <!-- options -->
         <div class="row filemanager">
-            <div class="col-xs-6 col-sm-4 col-md-3 document">
-                <div class="thmb" style="height: 228px">
-                    <a href="classroom/album/add.action?classId=${classroom.classId}">
-                        <div class="thmb-prev" style="height: 170px">
-                            <img src="assets/images/icon/album/plus.png" class="img-responsive center-block"/>
-                        </div>
-                    </a>
-                    <h5 class="fm-title">
-                        <a href="classroom/album/add.action?classId=${classroom.classId}">新建相册</a>
-                    </h5>
-                    <small class="text-muted">新建班级相册</small>
-                </div><!-- thmb -->
-            </div>
+            <c:if test="${isMemberInClass}">
+                <div class="col-xs-6 col-sm-4 col-md-3 document">
+                    <div class="thmb" style="height: 228px">
+                        <a href="classroom/album/add.action?classId=${classroom.classId}">
+                            <div class="thmb-prev" style="height: 170px">
+                                <img src="assets/images/icon/album/plus.png" class="img-responsive center-block"/>
+                            </div>
+                        </a>
+                        <h5 class="fm-title">
+                            <a href="classroom/album/add.action?classId=${classroom.classId}">新建相册</a>
+                        </h5>
+                        <small class="text-muted">新建班级相册</small>
+                    </div><!-- thmb -->
+                </div>
+            </c:if>
             <c:forEach items="${page.beanList}" var="album">
                 <div class="col-xs-6 col-sm-4 col-md-3 document">
                     <div class="thmb" style="height: 228px">
@@ -44,7 +46,8 @@
                             <ul class="dropdown-menu fm-menu" role="menu">
                                 <li>
                                     <a href="classroom/album/image.action?classId=${classroom.classId}&albumId=${album.albumId}">
-                                        <i class="fa fa-picture-o"></i> 查看相册</a></li>
+                                        <i class="fa fa-picture-o"></i> 查看相册${classroom.originAdminId}</a></li>
+                                <c:if test="${isAdminInClass}">
                                 <li>
                                     <a href="classroom/album/edit.action?classId=${classroom.classId}&albumId=${album.albumId}">
                                         <i class="fa fa-edit"></i> 编辑相册</a></li>
@@ -52,8 +55,11 @@
                                         class="fa fa-trash-o"></i>
                                     删除相册</a></li>
                                 <li>
+                                </c:if>
+                                <c:if test="${isMemberInClass}">
                                     <a href="classroom/album/upload.action?classId=${classroom.classId}&albumId=${album.albumId}"><i
                                             class="fa fa-upload"></i> 上传照片</a></li>
+                                </c:if>
                             </ul>
                         </div><!-- btn-group -->
                         <a href="classroom/album/image.action?albumId=${album.albumId}&classId=${album.originId}">

@@ -22,6 +22,7 @@
     <div class="tab-content" style="background-color: #ddd;">
         <div class="tab-pane active" id="classroom-content">
             <!-- 动态编写 -->
+            <c:if test="${isMemberInClass}">
             <div class="panel panel-dark panel-alt timeline-post" id="infoBox">
                 <form action="classroom/publishClassInfo.action" method="post"
                       enctype="multipart/form-data" id="classInfoPublishForm">
@@ -61,6 +62,7 @@
                     <input type="hidden" name="classId" value="${classroom.classId}" id="classId">
                 </form>
             </div>
+            </c:if>
             <!-- 动态列表 -->
             <div id="bloglist" class="row">
                 <c:forEach items="${page.beanList}" var="info" varStatus="status">

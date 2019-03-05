@@ -12,7 +12,7 @@ public class ClassRoomProvider {
 
 	public String classIndex() {
 		return "select o.origin_id classId, o.origin_name className, o.origin_grade classGrade, o.origin_desc classDesc, "
-				+ "o.members members, o.create_time createTime "
+				+ "o.members members, o.create_time createTime, o.mgr_id originAdminId "
 				+ "from origin o "
 				+ "where o.origin_id=#{classId} and o.state='A'";
 	}

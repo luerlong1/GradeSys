@@ -85,7 +85,10 @@ public class ClassRoomController extends BaseController {
         model.addAttribute("lastInfos", classRoomService.classInfo(page, classId).getBeanList());
         model.addAttribute("memberList", classRoomService.getAllMemberIds(classId));
         //加载班级管理员
-        model.addAttribute("classAdmin", classRoomService.getclassAdmin(classId));
+        Map<String, Object> classAdmin = classRoomService.getclassAdmin(classId);
+        model.addAttribute("classAdmin", classAdmin);
+
+        model.addAttribute("isAdminInClass",getCurrentUserId().equals(classroom.get("originAdminId"))?true:false);
 
         return "class/classroom/classroom-index";
     }
@@ -152,6 +155,7 @@ public class ClassRoomController extends BaseController {
             return "redirect:/class.action";
         }
         model.addAttribute("classroom", classroom);
+        model.addAttribute("isMemberInClass",classRoomService.isMemberInClass(getCurrentUserId(),classId));
         // 加载信息列表
         Page<Map<String, Object>> page = new Page<>(getPageIndex(), 8);
         model.addAttribute("page", classRoomService.classInfo(page, classId));
@@ -346,6 +350,8 @@ public class ClassRoomController extends BaseController {
             return "redirect:/class.action";
         }
         model.addAttribute("classroom", classroom);
+        model.addAttribute("isMemberInClass",classRoomService.isMemberInClass(getCurrentUserId(),classId));
+        System.out.println(classRoomService.isMemberInClass(getCurrentUserId(), classId)+"1111111111111111111111111111111111");
         // 加载留言列表
         Page<Map<String, Object>> page = new Page<>(getPageIndex(), getPageSize());
         model.addAttribute("page", classRoomService.classMessage(page, classId));
@@ -385,7 +391,7 @@ public class ClassRoomController extends BaseController {
     }
 
     /**
-     * TODO 加载班级相册
+     * TODO 加载班级相册进入相册页面
      *
      * @param model
      * @param classId
@@ -393,13 +399,16 @@ public class ClassRoomController extends BaseController {
      * @throws ServiceException
      */
     @RequestMapping("/album")
-    public String album(Model model, Integer classId) throws ServiceException {
+    public String album(Model model, Integer classId, Integer userId) throws ServiceException {
         // 班级基本信息
         Map<String, Object> classroom = classRoomService.classIndex(classId);
         if (classroom == null || CommonUtil.isEmpty(classroom.get("classId").toString())) {
             return "redirect:/class.action";
         }
         model.addAttribute("classroom", classroom);
+        //判断当前用户有咩有加入该组织
+        model.addAttribute("isMemberInClass",classRoomService.isMemberInClass(userId,classId));
+        model.addAttribute("isAdminInClass",userId.equals(classroom.get("originAdminId"))?true:false);
         // 加载相册
         Page<Album> page = new Page<>(getPageIndex(), 12);
         albumService.getAlbums(page, classId);
@@ -458,6 +467,7 @@ public class ClassRoomController extends BaseController {
 
             // 存储相册
             attributes.addAttribute("classId", classId);
+            attributes.addAttribute("userId", getCurrentUserId());
             // 插入相册后返回ID
             attributes.addAttribute("albumId", albumService.saveAlbum(album));
 
@@ -506,6 +516,8 @@ public class ClassRoomController extends BaseController {
             // 数据存储
             albumService.updateAlbum(album);
             attributes.addAttribute("classId", classId);
+            attributes.addAttribute("userId", getCurrentUserId());
+
             return "redirect:/classroom/album.action";
         }
         return "redirect:/class.action";
@@ -663,6 +675,7 @@ public class ClassRoomController extends BaseController {
         // 参数传递
         attributes.addAttribute("classId", classId);
         attributes.addAttribute("albumId", albumId);
+        attributes.addAttribute("userId", getCurrentUserId());
 
         return "redirect:/classroom/album.action";
     }
@@ -685,6 +698,7 @@ public class ClassRoomController extends BaseController {
         }
         // 跳转页面
         attributes.addAttribute("classId", classId);
+        attributes.addAttribute("userId", getCurrentUserId());
 
         return "redirect:/classroom/album.action";
     }
