@@ -43,7 +43,7 @@
     <div class="col-md-3">
         <div class="panel panel-default">
             <div class="panel-heading" style="background-color: #D8DBDE">
-                <h4 class="panel-title">校友新闻</h4>
+                <h4 class="panel-title">热门新闻</h4>
             </div>
             <div class="panel-body padding0">
 
@@ -111,7 +111,7 @@
                 <div class="panel-btns">
                     <a href="forum.action" class="panel-edit"><i class="fa fa-chevron-right"></i></a>
                 </div>
-                <h2 class="panel-title">热门话题</h2>
+                <h2 class="panel-title">论坛帖子</h2>
             </div>
             <div class="panel-body">
                 <ul>

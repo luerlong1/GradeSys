@@ -236,11 +236,22 @@ public class InformationServiceImpl implements InformationService {
      * @throws ServiceException
      */
     @Override
-    public List<Map<String, Object>>
-    getInfoByInfoType(Page<Map<String, Object>> page, String infoType) throws ServiceException {
+    public List<Map<String, Object>> getInfoByInfoType(Page<Map<String, Object>> page, String infoType) throws ServiceException {
         try {
             if (CommonUtil.isNotEmpty(infoType)) {
                 return informationMapper.getInfoByInfoType(page, infoType);
+            }
+        } catch (Exception e) {
+            throw new ServiceException("查询信息时发生异常");
+        }
+        return null;
+    }
+
+    @Override
+    public List<Map<String, Object>> getInfoByInfoType1(Page<Map<String, Object>> page, String infoType) throws ServiceException {
+        try {
+            if (CommonUtil.isNotEmpty(infoType)) {
+                return informationMapper.getInfoByInfoType1(page, infoType);
             }
         } catch (Exception e) {
             throw new ServiceException("查询信息时发生异常");

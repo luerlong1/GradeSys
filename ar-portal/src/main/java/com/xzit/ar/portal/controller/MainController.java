@@ -67,13 +67,13 @@ public class MainController extends BaseController {
                 informationService.getInfoByInfoType(new Page<Map<String, Object>>(getPageIndex(), 4), "AN"));
         // 校友新闻
         model.addAttribute("news",
-                informationService.getInfoByInfoType(new Page<Map<String, Object>>(getPageIndex(), getPageSize()), "AN"));
+                informationService.getInfoByInfoType1(new Page<Map<String, Object>>(getPageIndex(), getPageSize()), "AN"));
         // 热门话题
         model.addAttribute("posts",
                 postService.queryPosts(new Page<Map<String, Object>>(1, 10), ""));
         // 热门招聘
-        model.addAttribute("recruits",
-                recruitService.queryRecruit(new Page<Map<String, Object>>(1, 8), ""));
+//        model.addAttribute("recruits",
+//                recruitService.queryRecruit(new Page<Map<String, Object>>(1, 8), ""));
         // 近期校友
         model.addAttribute("latestMembers", classService.latestMembers(5));
 

@@ -202,6 +202,30 @@
         </where>
 
         ORDER BY
+        views DESC
+
+    </select>
+
+    <select id="getInfoByInfoType1" resultType="map">
+
+        SELECT
+        info_id infoId,
+        info_title infoTitle,
+        content content,
+        theme theme,
+        views views,
+        comments comments,
+        loves loves,
+        create_time createTime
+        FROM
+        information
+        <where>
+            info_type=#{infoType}
+            AND state='A'
+        </where>
+
+        ORDER BY
+        is_top desc,
         create_time DESC
 
     </select>
