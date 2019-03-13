@@ -71,13 +71,10 @@
             </div>
             <div class="panel-body text-center nopadding">
                 <br>
-                <a href="recruit/addRecruit.action" class="btn btn-warning-alt"> 发布招聘 </a>
                 <a href="post/add.action" class="btn btn-warning-alt"> 发布新帖 </a>
-                <a class="btn btn-warning-alt"> 我的简历 </a>
                 <hr>
                 <a href="my/class.action" class="btn btn-info-alt"> 我的班級 </a>
-                <a href="my/recruit.action" class="btn btn-info-alt"> 我的招聘 </a>
-                <a href="my/resume.action" class="btn btn-info-alt"> 我的简历 </a>
+                <a href="my/class.action" class="btn btn-info-alt"> 我的组织 </a>
                 <hr>
             </div>
         </div>
@@ -134,22 +131,6 @@
 
     <!--col-md-4   3-->
     <div class="col-md-3">
-        <div class="panel panel-default">
-            <div class="panel-heading" style="background-color: #D8DBDE">
-                <h4 class="panel-title">热门招聘</h4>
-            </div>
-            <div class="panel-body padding0 about-list">
-                <ul>
-                    <c:forEach items="${recruits}" var="recruit">
-                        <li>
-                            <a href="recruit/detailRecruit.action?recruitId=${recruit.recruitId}">
-                                <ar:sub value="${recruit.title}" length="15"></ar:sub>
-                            </a>
-                        </li>
-                    </c:forEach>
-                </ul>
-            </div>
-        </div>
 
         <br>
         <h3 class="subtitle">最新加入校友</h3>

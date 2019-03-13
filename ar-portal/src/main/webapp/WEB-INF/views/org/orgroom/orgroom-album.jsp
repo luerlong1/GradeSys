@@ -35,6 +35,9 @@
 						</div><!-- thmb -->
 					</div>
 				</c:if>
+				<c:if test="${empty page.beanList}">
+					该组织暂无相册
+				</c:if>
 				<c:forEach items="${page.beanList}" var="album" >
 					<div class="col-xs-6 col-sm-4 col-md-3 document">
 						<div class="thmb" style="min-height: 228px">
