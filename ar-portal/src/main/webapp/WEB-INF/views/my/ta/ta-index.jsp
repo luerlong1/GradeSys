@@ -36,7 +36,7 @@
                 <li><i class="fa fa-qq"></i> <a href="javascript:;">${ta.qq}</a></li>
                 <li><i class="fa fa-wechat"></i> <a href="javascript:;">${ta.weChat}</a></li>
                 <li><i class="fa fa-weibo"></i> <a href="javascript:;">${ta.microblog}</a></li>
-                <li><i class="fa fa-phone"></i> <a href="javascript:;"></a>${ta.phone}</li>
+                <li><i class="fa fa-phone"></i> <a href="javascript:;">${ta.phone}</a></li>
                 <li><i class="fa fa-envelope-o"></i> <a href="javascript:;">${ta.email}</a></li>
             </ul>
 
@@ -53,7 +53,7 @@
             <div class="profile-header">
                 <h2 class="profile-name">${ta.trueName}</h2>
                 <div class="profile-location"><i class="fa fa-map-marker"></i> ${ta.address}</div>
-                <div class="profile-position"><i class="fa fa-briefcase"></i> 软件工程师 任职于 <a href="">东软.</a></div>
+                <div class="profile-position"><i class="fa fa-briefcase"></i> ${userJobs.jobName} 任职于 <a href="">${userJobs.jobUnit}</a></div>
                 
                 <div class="mb20"></div>
 

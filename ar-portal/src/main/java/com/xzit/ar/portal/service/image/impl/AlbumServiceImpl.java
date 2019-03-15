@@ -13,12 +13,7 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
-/**
- * TODO ${TODO}
- *
- * @author 董亮亮 1075512174@qq.com.
- * @Date:2017/4/29 11:03.
- */
+
 @Service("albumService")
 public class AlbumServiceImpl implements AlbumService {
 

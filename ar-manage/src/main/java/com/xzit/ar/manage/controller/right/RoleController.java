@@ -1,11 +1,4 @@
-/**
- * @Title: RoleController.java
- * @Package com.xzit.uscdl.manage.controller.right
- * @Description: TODO
- * @author 董亮亮
- * @date 2016年3月15日 下午7:05:25
- * @version V1.0
- */
+
 package com.xzit.ar.manage.controller.right;
 
 import java.util.ArrayList;
@@ -24,12 +17,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-/**
- * @author 董亮亮
- * @ClassName: RoleController
- * @Description: TODO
- * @date 2016年3月15日 下午7:05:25
- */
 @Controller
 @RequestMapping("/role")
 public class RoleController extends BaseController {

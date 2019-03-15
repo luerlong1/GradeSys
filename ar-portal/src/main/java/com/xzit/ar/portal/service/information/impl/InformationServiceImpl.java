@@ -16,10 +16,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-/**
- * TODO ${TODO}
- * Created by 董亮亮 on 2017/4/7.
- */
+
 @Service("informationService")
 public class InformationServiceImpl implements InformationService {
 

@@ -4,12 +4,7 @@ import com.xzit.ar.common.exception.UtilException;
 import com.xzit.ar.common.init.context.ARContext;
 import com.xzit.ar.common.mapper.dict.DictionaryDataMapper;
 
-/**
- * TODO ${TODO}
- *
- * @author 董亮亮 1075512174@qq.com.
- * @Date:2017/4/12 21:35.
- */
+
 public class InfoUtil {
 
     /**

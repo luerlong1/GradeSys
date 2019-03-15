@@ -10,11 +10,7 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
-/**
- * TODO 组织业务类实现类
- * @author 董亮亮 1075512174@qq.com.
- * @Date:2017/4/16 22:38.
- */
+
 @Service("orgService")
 public class OrgServiceImpl implements OrgService {
 

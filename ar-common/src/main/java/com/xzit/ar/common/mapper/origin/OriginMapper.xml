@@ -140,15 +140,15 @@
 			ui.microblog microblog,
 			ui.qq qq,
 			ui.wechat wechat,
-			ui.address address
+			ui.address address,uj.job_name as jobName, uj.job_unit as jobUnit
 		FROM 
-			user_info ui,
+			user_info ui,user_job uj,
 			`user` u,
 			user_origin uo,
 			image img
 		WHERE
 			uo.origin_id=#{originId}
-			AND uo.state='A'
+			AND uo.state='A' and uj.user_id = u.user_id
 			AND uo.user_id=u.user_id
 			AND u.user_id=ui.user_id
 			AND u.image_id=img.image_id

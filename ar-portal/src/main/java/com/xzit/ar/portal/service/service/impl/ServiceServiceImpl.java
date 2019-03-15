@@ -12,10 +12,7 @@ import javax.sql.rowset.serial.SerialException;
 import java.util.List;
 import java.util.Map;
 
-/**
- * TODO ${TODO}
- * Created by 董亮亮 on 2017/4/7.
- */
+
 @Service("serviceService")
 public class ServiceServiceImpl implements ServiceService {
 

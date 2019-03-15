@@ -11,10 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 import java.util.Map;
 
-/**
- * TODO 论坛模块
- * Created by 董亮亮 on 2017/4/8.
- */
 @Controller
 @RequestMapping("/forum")
 public class ForumController extends BaseController {

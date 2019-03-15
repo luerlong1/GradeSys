@@ -11,12 +11,7 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
-/**
- * TODO ${TODO}
- *
- * @author 董亮亮 1075512174@qq.com.
- * @Date:2017/5/19 20:43.
- */
+
 @Service("userService")
 public class UserServiceImpl implements UserService{
 

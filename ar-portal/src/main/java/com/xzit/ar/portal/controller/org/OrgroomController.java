@@ -138,6 +138,8 @@ public class OrgroomController extends BaseController {
         }
         model.addAttribute("orgroom", origin);
         model.addAttribute("isMemberInClass",classRoomService.isMemberInClass(getCurrentUserId(),originId));
+        model.addAttribute("isAdminInClass",getCurrentUserId().equals(origin.getMgrId())?true:false);
+
         // 分页查询组织内最新消息
         Page<Map<String, Object>> page = new Page<>(getPageIndex(), getPageSize());
         informationService.getOriginInfos(page, originId, "OI");
@@ -328,6 +330,7 @@ public class OrgroomController extends BaseController {
         }
         model.addAttribute("orgroom", origin);
         model.addAttribute("isMemberInClass",classRoomService.isMemberInClass(getCurrentUserId(),originId));
+        model.addAttribute("isAdminInClass",getCurrentUserId().equals(origin.getMgrId())?true:false);
 
         // 加载留言
         Page<Map<String, Object>> page = new Page<>(getPageIndex(), getPageSize());
@@ -390,6 +393,8 @@ public class OrgroomController extends BaseController {
         // 成员信息
         Page<Map<String, Object> > page = new Page<>(getPageIndex(), 20);
         orgroomService.getOriginMember(page, originId);
+        model.addAttribute("isAdminInClass",getCurrentUserId().equals(origin.getMgrId())?true:false);
+
         // 传递成员列表 
         model.addAttribute("page", page);
 
@@ -414,6 +419,8 @@ public class OrgroomController extends BaseController {
         // 成员信息
         Page<Map<String, Object> > page = new Page<>(getPageIndex(), 20);
         orgroomService.getOriginDirectory(page, originId);
+        model.addAttribute("isAdminInClass",getCurrentUserId().equals(origin.getMgrId())?true:false);
+
         // 传递通讯录数据
         model.addAttribute("page", page);
         model.addAttribute("letters", ARContext.lowerLetters);
@@ -440,6 +447,8 @@ public class OrgroomController extends BaseController {
         // 加载相册
         Page<Album> page = new Page<>(getPageIndex(), 12);
         albumService.getAlbums(page, originId);
+        model.addAttribute("isAdminInClass",getCurrentUserId().equals(origin.getMgrId())?true:false);
+
         // 传递数据
         model.addAttribute("page", page);
 
@@ -648,7 +657,6 @@ public class OrgroomController extends BaseController {
 
 
         }
-        System.out.print(originId+"````````111111111111");
         // 参数传递
         attributes.addAttribute("originId", originId);
         attributes.addAttribute("albumId", albumId);

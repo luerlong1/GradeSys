@@ -7,10 +7,6 @@ import javax.sql.rowset.serial.SerialException;
 import java.util.List;
 import java.util.Map;
 
-/**
- * TODO 校园服务业务
- * Created by 董亮亮 on 2017/4/7.
- */
 public interface ServiceService {
 
     /**

@@ -14,10 +14,7 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
-/**
- * TODO 校园服务
- * Created by 董亮亮 on 2017/4/7.
- */
+
 @Controller
 @RequestMapping("/service")
 public class ServiceController extends BaseController {

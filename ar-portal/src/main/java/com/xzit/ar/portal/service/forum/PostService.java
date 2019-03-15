@@ -8,10 +8,7 @@ import com.xzit.ar.common.po.info.Information;
 import java.util.List;
 import java.util.Map;
 
-/**
- * TODO ${TODO}
- * Created by 董亮亮 on 2017/4/9.
- */
+
 public interface PostService {
 
     /**

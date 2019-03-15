@@ -12,12 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 
-/**
- * TODO ${TODO}
- *
- * @author 董亮亮 1075512174@qq.com.
- * @Date:2017/5/4 14:12.
- */
+
 @Controller
 @RequestMapping("/my/account")
 public class AccountController extends BaseController {

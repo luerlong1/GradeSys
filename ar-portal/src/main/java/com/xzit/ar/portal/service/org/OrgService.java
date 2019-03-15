@@ -5,11 +5,7 @@ import com.xzit.ar.common.exception.ServiceException;
 import java.util.List;
 import java.util.Map;
 
-/**
- * TODO 校友组织业务类
- * @author 董亮亮 1075512174@qq.com.
- * @Date:2017/4/16 22:32.
- */
+
 public interface OrgService {
 
     /**

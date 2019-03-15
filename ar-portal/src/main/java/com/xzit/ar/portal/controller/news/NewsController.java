@@ -17,12 +17,7 @@ import javax.annotation.Resource;
 import java.util.Date;
 import java.util.Map;
 
-/**
- * TODO ${TODO}
- *
- * @author 董亮亮 1075512174@qq.com.
- * @Date:2017/5/3 21:29.
- */
+
 @Controller
 @RequestMapping("/news")
 public class NewsController extends BaseController {

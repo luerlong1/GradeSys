@@ -18,12 +18,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-/**
- * TODO ${TODO}
- *
- * @author 董亮亮 1075512174@qq.com.
- * @Date:2017/4/18 23:33.
- */
+
 @Service("orgroomService")
 public class OrgroomServiceImpl implements OrgroomService {
 

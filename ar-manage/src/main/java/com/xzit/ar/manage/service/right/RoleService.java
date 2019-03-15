@@ -1,11 +1,4 @@
-/**  
- * @Title: RoleService.java
- * @Package com.xzit.uscdl.manage.service.right
- * @Description: TODO
- * @author 董亮亮
- * @date 2016年3月15日 下午7:14:56
- * @version V1.0  
- */
+
 package com.xzit.ar.manage.service.right;
 
 import com.xzit.ar.common.exception.ServiceException;
@@ -15,12 +8,7 @@ import com.xzit.ar.common.po.role.Role;
 
 import java.util.List;
 
-/**
- * @ClassName: RoleService
- * @Description: TODO
- * @author 董亮亮
- * @date 2016年3月15日 下午7:14:56
- */
+
 public interface RoleService {
 
 	/**

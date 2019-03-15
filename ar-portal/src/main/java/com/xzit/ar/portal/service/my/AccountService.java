@@ -3,12 +3,7 @@ package com.xzit.ar.portal.service.my;
 import com.xzit.ar.common.exception.ServiceException;
 import com.xzit.ar.common.po.user.User;
 
-/**
- * TODO ${TODO}
- *
- * @author 董亮亮 1075512174@qq.com.
- * @Date:2017/5/16 14:22.
- */
+
 public interface AccountService {
 
     /**

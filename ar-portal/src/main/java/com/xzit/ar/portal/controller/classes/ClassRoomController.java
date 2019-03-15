@@ -109,6 +109,8 @@ public class ClassRoomController extends BaseController {
             return "redirect:/class.action";
         }
         model.addAttribute("classroom", classroom);
+        model.addAttribute("isAdminInClass",getCurrentUserId().equals(classroom.get("originAdminId"))?true:false);
+
         // 通讯录列表
         Page<Map<String, Object>> page = new Page<>(getPageIndex(), getPageSize());
         model.addAttribute("page", classRoomService.classDirector(page, classId));
@@ -133,6 +135,8 @@ public class ClassRoomController extends BaseController {
             return "redirect:/class.action";
         }
         model.addAttribute("classroom", classroom);
+        model.addAttribute("isAdminInClass",getCurrentUserId().equals(classroom.get("originAdminId"))?true:false);
+
         // 加载成员列表
         Page<Map<String, Object>> page = new Page<>(getPageIndex(), getPageSize());
         model.addAttribute("page", classRoomService.classMember(page, classId));
@@ -156,6 +160,8 @@ public class ClassRoomController extends BaseController {
         }
         model.addAttribute("classroom", classroom);
         model.addAttribute("isMemberInClass",classRoomService.isMemberInClass(getCurrentUserId(),classId));
+        model.addAttribute("isAdminInClass",getCurrentUserId().equals(classroom.get("originAdminId"))?true:false);
+
         // 加载信息列表
         Page<Map<String, Object>> page = new Page<>(getPageIndex(), 8);
         model.addAttribute("page", classRoomService.classInfo(page, classId));
@@ -351,7 +357,7 @@ public class ClassRoomController extends BaseController {
         }
         model.addAttribute("classroom", classroom);
         model.addAttribute("isMemberInClass",classRoomService.isMemberInClass(getCurrentUserId(),classId));
-        System.out.println(classRoomService.isMemberInClass(getCurrentUserId(), classId)+"1111111111111111111111111111111111");
+        model.addAttribute("isAdminInClass",getCurrentUserId().equals(classroom.get("originAdminId"))?true:false);
         // 加载留言列表
         Page<Map<String, Object>> page = new Page<>(getPageIndex(), getPageSize());
         model.addAttribute("page", classRoomService.classMessage(page, classId));

@@ -9,12 +9,6 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.Map;
 
-/**
- * TODO ${TODO}
- *
- * @author 董亮亮 1075512174@qq.com.
- * @Date:2017/4/23 22:34.
- */
 @Service("taService")
 public class TaServiceImpl implements TaService {
 

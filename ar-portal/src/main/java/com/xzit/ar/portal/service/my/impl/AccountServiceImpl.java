@@ -9,12 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
-/**
- * TODO ${TODO}
- *
- * @author 董亮亮 1075512174@qq.com.
- * @Date:2017/5/16 14:22.
- */
+
 @Service("accountService")
 public class AccountServiceImpl implements AccountService {
 

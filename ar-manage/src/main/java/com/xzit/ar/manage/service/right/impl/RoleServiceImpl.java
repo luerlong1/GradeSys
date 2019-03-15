@@ -1,11 +1,4 @@
-/**
- * @Title: RoleServiceImpl.java
- * @Package com.xzit.uscdl.manage.service.right.impl
- * @Description: TODO
- * @author 董亮亮
- * @date 2016年3月15日 下午7:15:16
- * @version V1.0
- */
+
 package com.xzit.ar.manage.service.right.impl;
 
 import java.util.List;
@@ -26,12 +19,7 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-/**
- * @author 董亮亮
- * @ClassName: RoleServiceImpl
- * @Description: TODO
- * @date 2016年3月15日 下午7:15:16
- */
+
 @Service("roleService")
 public class RoleServiceImpl implements RoleService {
 

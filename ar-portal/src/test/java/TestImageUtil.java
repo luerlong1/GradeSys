@@ -7,12 +7,6 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-/**
- * TODO ${TODO}
- *
- * @author 董亮亮 1075512174@qq.com.
- * @Date:2017/5/9 11:45.
- */
 public class TestImageUtil {
 
     @org.junit.Test

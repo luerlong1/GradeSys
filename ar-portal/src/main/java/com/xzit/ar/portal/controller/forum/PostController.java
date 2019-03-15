@@ -21,10 +21,6 @@ import javax.annotation.Resource;
 import java.util.Date;
 import java.util.Map;
 
-/**
- * TODO ${TODO}
- * Created by 董亮亮 on 2017/4/9.
- */
 @Controller
 @RequestMapping("/post")
 public class PostController extends BaseController {

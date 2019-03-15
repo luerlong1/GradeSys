@@ -7,12 +7,7 @@ import com.xzit.ar.common.po.album.Album;
 import java.util.List;
 import java.util.Map;
 
-/**
- * TODO ${TODO}
- *
- * @author 董亮亮 1075512174@qq.com.
- * @Date:2017/4/29 11:01.
- */
+
 public interface AlbumService {
 
 

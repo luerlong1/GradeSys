@@ -13,11 +13,7 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
-/**
- * TODO ${TODO}
- * @author 董亮亮 1075512174@qq.com.
- * @Date:2017/4/15 21:33.
- */
+
 @Service("commentService")
 public class CommentServiceImpl implements CommentService {
 
