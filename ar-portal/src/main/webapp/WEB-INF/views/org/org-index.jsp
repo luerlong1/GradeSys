@@ -54,5 +54,14 @@
 
 </body>
 <%@ include file="/WEB-INF/views/portal-common/portal-js.jsp" %>
-<script src="assets/script/org/org-index.js"></script>
+<script>
+    $(function() {
+        $("#nav-org").attr("class", "active");
+        $("#org-tab-li-org").attr("class", "active");
+        // 加载outline信息
+        $.post("org/outline.action?originType=org", function(data) {
+            $("#org-outline").html(data);
+        });
+    });
+</script>
 </html>

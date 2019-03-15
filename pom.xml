@@ -6,7 +6,7 @@
 	<artifactId>ar-parent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>信电校友录</name>
+	<name>轻大校友录</name>
 
 	<modules>
 		<module>ar-common</module>
