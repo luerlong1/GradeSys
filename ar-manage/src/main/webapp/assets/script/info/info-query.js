@@ -25,26 +25,34 @@ function queryInfo(pageIndex, pageSize) {
 
 /* 置顶操作 */
 function setTopInfo(infoId) {
-    $.AMUI.progress.start();
-    $.post('info/update.action', {
-        'infoId': infoId,
-        'isTop': '1'
-    }, function (data) {
-        $.AMUI.progress.done();
-        $("#admin-content").html(data);
-    });
+    if (window.confirm("您确定置顶吗？")) {
+        $.AMUI.progress.start();
+        $.post('info/update.action', {
+            'infoId': infoId,
+            'isTop': '1'
+        }, function (data) {
+            $.AMUI.progress.done();
+            $("#admin-content").html(data);
+            _alert_messgae('顶置成功', 100, 1);
+            queryInfo(1, 10);
+        });
+    }
 }
 
 /* 取消置顶操作 */
 function cancelTopInfo(infoId) {
-    $.AMUI.progress.start();
-    $.post('info/update.action', {
-        'infoId': infoId,
-        'isTop': '0'
-    }, function (data) {
-        $.AMUI.progress.done();
-        $("#admin-content").html(data);
-    });
+    if (window.confirm("您确定取消置顶吗？")) {
+        $.AMUI.progress.start();
+        $.post('info/update.action', {
+            'infoId': infoId,
+            'isTop': '0'
+        }, function (data) {
+            $.AMUI.progress.done();
+            $("#admin-content").html(data);
+            _alert_messgae('取消顶置成功', 100, 1);
+            queryInfo(1, 10);
+        });
+    }
 }
 
 

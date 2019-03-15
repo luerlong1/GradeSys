@@ -10,14 +10,7 @@
 <div class="am-g">
     <div class="am-u-md-9 am-cf">
         <div class="am-btn-group am-btn-group-xs">
-            <%--<a class="am-btn am-btn-default" href="info/add.action">--%>
-                <%--<span class="am-icon-plus"></span> 发布消息--%>
-            <%--</a>--%>
-            <c:if test="${state=='D'}">
-                <button class="am-btn am-btn-default" type="button" onclick="auditInfos()">
-                    <span class="am-icon-archive"></span> 批量审核
-                </button>
-            </c:if>
+
             <c:if test="${state!='X'}">
                 <button class="am-btn am-btn-default" type="button"
                         onclick="removeInfos()">
@@ -25,13 +18,12 @@
                 </button>
             </c:if>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <%--<%@ include file="/WEB-INF/views/global/page-size.jsp" %>--%>
             &nbsp;&nbsp;状态：
             <select id="state" class="dll-query">
                 <option value="" name="state" <c:if test="${state==''}">selected</c:if>>全部</option>
                 <option value="A" name="state" <c:if test="${state=='A'}">selected</c:if>>正常</option>
                 <option value="D" name="state" <c:if test="${state=='D'}">selected</c:if>>未审核</option>
-                <option value="X" name="state" <c:if test="${state=='X'}">selected</c:if>>已删除</option>
+                <option value="X" name="state" <c:if test="${state=='X'}">selected</c:if>>已关闭</option>
             </select>
             &nbsp;&nbsp;&nbsp;&nbsp;信息分类：
             <select id="infoType" class="dll-query">
@@ -95,7 +87,7 @@
                             <td>
                                 <div class="am-btn-toolbar">
                                     <div class="am-btn-group am-btn-group-xs">
-                                        <c:if test="${info.isTop==1} && info.state=='A'">
+                                        <c:if test="${info.isTop==1 && info.state=='A'}">
                                             <button type="button"
                                                     onclick="javascript:cancelTopInfo('${info.infoId}')"
                                                     class="am-btn am-btn-default am-btn-xs am-text-secondary">
@@ -120,7 +112,7 @@
                                             <button type="button"
                                                     onclick="javascript:removeInfo('${info.infoId}')"
                                                     class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
-                                                <span class="am-icon-trash-o"></span> 删除
+                                                <span class="am-icon-trash-o"></span> 关闭
                                             </button>
                                         </c:if>
                                         <c:if test="${info.state=='X'}">
