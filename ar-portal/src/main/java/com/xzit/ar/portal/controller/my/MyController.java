@@ -13,12 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.xzit.ar.common.base.BaseController;
 
-/**
- * @ClassName: MyController
- * @Description: TODO
- * @author Mr.Black
- * @date 2016年1月24日 下午1:01:58
- */
+
 @Controller
 @RequestMapping("/my")
 public class MyController extends BaseController {

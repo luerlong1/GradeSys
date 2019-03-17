@@ -27,10 +27,10 @@ public class MyForumController extends BaseController {
      * @throws ServiceException
      */
     @RequestMapping("")
-    public String index(Model model) throws ServiceException {
+    public String index(Model model, int userId) throws ServiceException {
         // 查询用户发布的消息
         Page<Map<String, Object>> page = new Page<>(getPageIndex(), getPageSize());
-        informationService.getInfoByUserIdAndInfoType(page, getCurrentUserId(), "BBS");
+        informationService.getInfoByUserIdAndInfoType(page, userId, "BBS");
         model.addAttribute("page", page);
 
         return "my/forum/forum-index";

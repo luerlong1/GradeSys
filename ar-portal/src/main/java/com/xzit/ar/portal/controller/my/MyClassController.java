@@ -23,9 +23,9 @@ public class MyClassController extends BaseController {
      * @return
      */
     @RequestMapping("")
-    public String index(Model model) throws ServiceException {
+    public String index(Model model, int userId) throws ServiceException {
 
-        model.addAttribute("classes", classService.loadMyClass(getCurrentUserId()));
+        model.addAttribute("classes", classService.loadMyClass(userId));
 
         return "my/class/class-index";
     }
