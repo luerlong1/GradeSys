@@ -42,7 +42,7 @@
 
                     <input hidden id="originId" value="${origin.originId}">
 
-                    <table class="am-table am-table-striped am-table-hover table-main">
+                    <table class="am-table am-table-striped am-table-hover table-main am-table-bordered am-table-condensed">
                         <thead>
                         <tr>
                             <th class="table-check"><input type="checkbox" class="alls"/></th>
@@ -58,8 +58,7 @@
                                 <tr>
                                     <td><input type="checkbox" value="${member.userId}"/></td>
                                     <td>
-                                        <a href=""
-                                           target="blank">${member.trueName}</a>
+                                        ${member.trueName}
                                         <c:if test="${member.userId == origin.mgrId}">
                                             &nbsp;<span class="am-badge am-badge-success">管理员</span>
                                         </c:if>

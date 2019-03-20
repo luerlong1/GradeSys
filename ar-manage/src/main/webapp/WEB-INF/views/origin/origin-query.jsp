@@ -56,7 +56,7 @@
 <div class="am-g">
     <div class="am-u-sm-12">
         <form class="am-form">
-            <table class="am-table am-table-striped am-table-hover table-main">
+            <table class="am-table am-table-striped am-table-hover table-main am-table-bordered am-table-condensed">
                 <thead>
                 <tr>
                     <th class="table-check"><input type="checkbox" class="alls"/></th>

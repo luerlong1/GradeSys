@@ -24,9 +24,9 @@
 		}
 	</style>
 	<body>
-		< class="layui-anim layui-anim-up body-main">
+		<div class="layui-anim layui-anim-up body-main">
 			<div class="layui-elem-quote clearfix">
-				<div class="fl">创建组织</div>
+				<div class="fl">添加用户</div>
 				<%--<a href="javascript:history.back(-1)" class="layui-btn layui-btn-normal fr"><img src="${pageContext.request.contextPath }/images/back.png">返回</a>--%>
 			</div>
 

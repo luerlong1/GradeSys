@@ -26,7 +26,7 @@
     <div class="admin-content" id="admin-content">
 
         <div class="layui-elem-quote overh" style="overflow: hidden;">
-            <div class="fl" style="float: left;">组织列表</div>
+            <div class="fl" style="float: left;">加入组织列表</div>
             <a href="javascript:history.back(-1)" class="layui-btn layui-btn-normal fr" style="margin-left: 10px;"><img src="${pageContext.request.contextPath }/images/back.png">返回</a>
         </div>
 
@@ -42,7 +42,7 @@
 
 
 
-                    <table class="am-table am-table-striped am-table-hover table-main">
+                    <table class="am-table am-table-striped am-table-hover table-main am-table-bordered am-table-condensed">
                         <thead>
                         <tr>
                             <th class="table-title">名称</th>
