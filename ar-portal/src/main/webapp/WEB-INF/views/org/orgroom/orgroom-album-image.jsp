@@ -22,7 +22,7 @@
 
 		<ul class="filemanager-options">
 			<li>
-				<a href="orgroom/album/upload.action?originId=${orgroom.originId}&albumId=${album.albumId}" class="itemopt disabled"><i class=""></i> 上传照片</a>
+				<a href="orgroom/album/upload.action?originId=${orgroom.originId}&albumId=${album.albumId}" class="itemopt disabled"><i class="fa fa-upload"></i> 上传照片</a>
 			</li>
 			<li class="filter-type"><span style="font-size: 16px">${album.albumName} &nbsp; | &nbsp; <fmt:formatDate value="${album.createTime}"
 																													 pattern="yyyy-MM-dd HH:mm"/></span></li>

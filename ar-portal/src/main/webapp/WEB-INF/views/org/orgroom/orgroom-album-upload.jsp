@@ -19,7 +19,7 @@
     <div class="tab-content" style="background-color: #ddd;">
         <form method="post" action="orgroom/album/image/upload.action" enctype="multipart/form-data">
             <div class="panel-footer" id="picUploadBox">
-                <input class="file" type="file" id="uploadInput" multiple data-max-file-count="12"
+                <input class="file" type="file" id="uploadInput" multiple required data-max-file-count="12"
                            name="images" accept=".bmp,.jpg,.gif,.png,.jpeg"> <br>
                 <button class="btn btn-default btn-block" type="submit" > <i class="fa fa-upload"></i> 上传照片</button>
                 <input hidden id="classId" name="originId" value="${orgroom.originId}">

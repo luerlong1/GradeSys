@@ -670,20 +670,20 @@ public class OrgroomController extends BaseController {
     /**
      * TODO 删除相册图片
      * @param attributes
-     * @param originId
+     * @param classId
      * @param albumId
      * @param imageId
      * @return
      * @throws ServiceException
      */
     @RequestMapping("/album/image/delete")
-    public String deleteImage(RedirectAttributes attributes, Integer originId, Integer albumId, Integer imageId) throws ServiceException {
+    public String deleteImage(RedirectAttributes attributes, Integer classId, Integer albumId, Integer imageId) throws ServiceException {
         // 删除图片
         if (CommonUtil.isNotEmpty(imageId)) {
             imageService.deleteImageById(imageId);
         }
         // 参数传递
-        attributes.addAttribute("originId", originId);
+        attributes.addAttribute("originId", classId);
         attributes.addAttribute("albumId", albumId);
 
         return "redirect:/orgroom/album/image.action";

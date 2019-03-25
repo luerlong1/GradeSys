@@ -652,10 +652,11 @@ public class ClassRoomController extends BaseController {
             imageService.deleteImageById(imageId);
         }
         // 参数传递
+        System.out.println(classId);
         attributes.addAttribute("classId", classId);
         attributes.addAttribute("albumId", albumId);
 
-        return "redirect:/classroom/album/image.action";
+        return "redirect:/classroom/album/classId.action";
     }
 
     /**

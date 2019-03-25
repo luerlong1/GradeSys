@@ -27,16 +27,13 @@
                     <%--&lt;%&ndash;<label for="selectall">全选</label>&ndash;%&gt;--%>
                 <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
             <%--</li>--%>
-            <%--<li>--%>
-                <%--&lt;%&ndash;<a href="classroom/album/upload.action?classId=${classroom.classId}&albumId=${album.albumId}"&ndash;%&gt;--%>
-                   <%--&lt;%&ndash;class=""><i class="fa fa-upload"></i> 上传照片</a>&ndash;%&gt;--%>
-            <%--</li>--%>
+            <li>
+                <a href="classroom/album/upload.action?classId=${classroom.classId}&albumId=${album.albumId}"
+                   class=""><i class="fa fa-upload"></i> 上传照片</a>
+            </li>
             <%--<li>--%>
                 <%--&lt;%&ndash;<a href="javascript:;" class="itemopt disabled"><i class="fa fa-download"></i> 下载选中</a>&ndash;%&gt;--%>
             <%--</li>--%>
-            <li>
-                <a href="javascript:;" class="itemopt disabled"><i class=""></i> .</a>
-            </li>
             <li class="filter-type"><span style="font-size: 16px">${album.albumName} &nbsp; | &nbsp; <fmt:formatDate value="${album.createTime}"
                                                                          pattern="yyyy-MM-dd HH:mm"/></span></li>
         </ul>
@@ -62,10 +59,10 @@
                                     <a href="download.action?fileRelPath=${image.imagePath}&fileName=${image.imageName}">
                                         <i class="fa fa-download"></i> 下载照片</a></li>
                                 <li>
-                                    <a href="orgroom/album/image/delete.action?originId=${orgroom.originId}&albumId=${album.albumId}&imageId=${image.imageId}">
+                                    <a href="orgroom/album/image/delete.action?originId=${classroom.classId}&albumId=${album.albumId}&imageId=${image.imageId}">
                                         <i class="fa fa-trash-o"></i> 删除照片</a></li>
                                 <li>
-                                    <a href="orgroom/album/cover.action?originId=${orgroom.originId}&albumId=${album.albumId}&imageId=${image.imageId}">
+                                    <a href="orgroom/album/cover.action?originId=${classroom.classId}&albumId=${album.albumId}&imageId=${image.imageId}">
                                         <i class="fa fa-trash-o"></i> 设为封面</a></li>
                             </ul>
                         </div><!-- btn-group -->
