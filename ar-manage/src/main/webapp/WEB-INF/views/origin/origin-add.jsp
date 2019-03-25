@@ -64,13 +64,18 @@
                     </select>
                 </div>
             </div>
-
             <div class="layui-form-item">
                 <label class="layui-form-label"><span class="cfc">  </span>描述：</label>
-                <div class="layui-input-block" style="line-height: 38px;">
-                    <textarea name="originDesc" id="originDesc" class="layui-input"></textarea>
+                <div class="layui-input-block">
+                    <textarea name="originDesc" id="originDesc" class="layui-textarea" placeholder="请输入内容！"></textarea>
                 </div>
             </div>
+            <%--<div class="layui-form-item">--%>
+                <%--<label class="layui-form-label"><span class="cfc">  </span>描述：</label>--%>
+                <%--<div class="layui-input-block" style="line-height: 38px;">--%>
+                    <%--<textarea name="originDesc" id="originDesc"  rows="3" class="layui-input"></textarea>--%>
+                <%--</div>--%>
+            <%--</div>--%>
         </div>
         <div class="layui-form-item">
             <div class="layui-input-block">

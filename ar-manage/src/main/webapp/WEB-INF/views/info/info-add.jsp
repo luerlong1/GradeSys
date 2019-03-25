@@ -52,11 +52,12 @@
                 <div class="layui-input-block" style="line-height: 38px;">
                     <select name="infoType" id="infoType" required>
                         <option value="">请选择...</option>
-
-                            <c:forEach items="${infoTypes}" var="type">
-                                <option value="${type.value}"
-                            <c:if test="${type.value == 'AN'}">selected</c:if>>${type.name}</option>
-                        </c:forEach>
+                        <option value="AN">校友新闻</option>
+                        <option value="BBS">论坛帖子</option>
+                            <%--<c:forEach items="${infoTypes}" var="type">--%>
+                                <%--<option value="${type.value}"--%>
+                            <%--<c:if test="${type.value == 'AN'}">selected</c:if>>${type.name}${type.value}</option>--%>
+                        <%--</c:forEach>--%>
                     </select>
                 </div>
             </div>
@@ -72,13 +73,12 @@
                     </select>
                 </div>
             </div>
-
-            <div class="layui-form-item">
-                <lael class="layui-form-label"><span class="cfc">  </span>内容：</lael>
-                <div class="layui-input-block" style="line-height: 38px;">
-                    <textarea name="content" id="content" class="layui-input" required></textarea>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="cfc"> * </span>内容：</label>
+                    <div class="layui-input-block">
+                        <textarea name="content" class="layui-textarea" placeholder="请输入内容！" required nullmsg='内容不能为空！'></textarea>
+                    </div>
                 </div>
-            </div>
         </div>
         <div class="layui-form-item">
             <div class="layui-input-block">

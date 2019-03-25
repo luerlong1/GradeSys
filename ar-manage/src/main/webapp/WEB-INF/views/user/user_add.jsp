@@ -50,9 +50,9 @@
 				</div>
 
 				<div class="layui-form-item">
-					<label class="layui-form-label"><span class="cfc">  </span>邮箱地址：</label>
+					<label class="layui-form-label"><span class="cfc"> * </span>邮箱地址：</label>
 					<div class="layui-input-block" style="line-height: 38px;">
-						<input name="email" id="email" class="layui-input" onkeyup="isCheckEmail()" placeholder="请填写邮箱">
+						<input name="email" id="email" class="layui-input" onkeyup="isCheckEmail()" required placeholder="请填写邮箱">
 						<span id="emailTip" style="color: #fc3a3a"></span></div>
 					</div>
 				</div>
@@ -68,10 +68,16 @@
 					</div>
 				</div>
 
+				<%--<div class="layui-form-item">--%>
+				    <%--<label class="layui-form-label"><span class="cfc">  </span>介绍：</label>--%>
+					<%--<div class="layui-input-block" style="line-height: 38px;">--%>
+						<%--<textarea name="introduce" id="introduce" class="layui-input"></textarea>--%>
+					<%--</div>--%>
+				<%--</div>--%>
 				<div class="layui-form-item">
-				    <label class="layui-form-label"><span class="cfc">  </span>介绍：</label>
-					<div class="layui-input-block" style="line-height: 38px;">
-						<textarea name="introduce" id="introduce" class="layui-input"></textarea>
+					<label class="layui-form-label"><span class="cfc">  </span>介绍：</label>
+					<div class="layui-input-block">
+						<textarea name="introduce" id="introduce" class="layui-textarea" placeholder="请输入内容！"></textarea>
 					</div>
 				</div>
 				<div class="layui-form-item">
