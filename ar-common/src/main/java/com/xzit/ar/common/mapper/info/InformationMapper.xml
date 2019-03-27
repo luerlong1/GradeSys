@@ -396,4 +396,10 @@
         </where>
     </update>
 
+    <!--查找用户-->
+    <select id="findUserById" parameterType="java.lang.Integer" resultType="com.xzit.ar.common.po.user.User">
+		SELECT true_name as trueName
+		FROM user
+		WHERE user_id=#{userId}
+	</select>
 </mapper>

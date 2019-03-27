@@ -4,6 +4,7 @@ import com.xzit.ar.common.exception.ServiceException;
 import com.xzit.ar.common.mapper.info.InformationMapper;
 import com.xzit.ar.common.page.Page;
 import com.xzit.ar.common.po.info.Information;
+import com.xzit.ar.common.po.user.User;
 import com.xzit.ar.common.util.CommonUtil;
 import com.xzit.ar.manage.service.info.InfoService;
 import org.springframework.stereotype.Service;
@@ -93,5 +94,33 @@ public class InfoServiceImpl implements InfoService {
             throw new ServiceException("删除信息时发生异常！");
         }
         return 0;
+    }
+
+    /**
+     * TODO 根据information id 加载信息
+     *
+     * @param infoId
+     * @return
+     * @throws ServiceException
+     */
+    @Override
+    public Information getInfoById(Integer infoId) {
+        try {
+            // 参数校验
+            if (CommonUtil.isNotEmpty(infoId)) {
+                // 浏览量
+                informationMapper.increaseViews(infoId);
+                // 插消息
+                return informationMapper.getById(infoId);
+            }
+        } catch (Exception e) {
+            System.out.println("加载信息时发生异常！");
+        }
+        return null;
+    }
+
+    @Override
+    public User findUserById(Integer userId) {
+        return informationMapper.findUserById(userId);
     }
 }

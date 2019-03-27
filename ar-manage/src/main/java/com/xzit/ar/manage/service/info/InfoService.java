@@ -3,6 +3,7 @@ package com.xzit.ar.manage.service.info;
 import com.xzit.ar.common.exception.ServiceException;
 import com.xzit.ar.common.page.Page;
 import com.xzit.ar.common.po.info.Information;
+import com.xzit.ar.common.po.user.User;
 
 import java.util.List;
 import java.util.Map;
@@ -41,4 +42,13 @@ public interface InfoService {
      * @throws ServiceException
      */
     Integer deleteInfo(Integer infoId) throws ServiceException;
+
+    /**
+     * 信息详情
+     * @param infoId  信息id
+     * @return
+     */
+    Information getInfoById(Integer infoId);
+
+    User findUserById(Integer userId);
 }

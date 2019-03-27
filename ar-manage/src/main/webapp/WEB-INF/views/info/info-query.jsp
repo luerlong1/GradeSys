@@ -122,6 +122,12 @@
                                                 <i class="am-icon-recycle"></i> 恢复
                                             </button>
                                         </c:if>
+                                        <button type="button"
+                                            onclick="javascript:detailInfo('${info.infoId}')"
+                                            class="am-btn am-btn-default am-btn-xs am-text-danger confirm">
+                                            <i class="am-icon-eye"></i> 查看
+                                        </button>
+                                        <%--<a type="button" href="/info/detail.action?infoId=${info.infoId}">查看</a>--%>
                                     </div>
                                 </div>
                             </td>

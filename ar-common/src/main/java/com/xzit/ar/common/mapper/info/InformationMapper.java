@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.xzit.ar.common.po.info.Information;
+import com.xzit.ar.common.po.user.User;
 import com.xzit.ar.common.vo.info.InformationVo;
 import org.apache.ibatis.annotations.Param;
 
@@ -158,4 +159,6 @@ public interface InformationMapper extends BaseMapper {
      * @throws Exception
      */
     List<Map<String, Object>> queryInfoByVo(Page<Map<String, Object>> page) throws Exception;
+
+    User findUserById(Integer userId);
 }

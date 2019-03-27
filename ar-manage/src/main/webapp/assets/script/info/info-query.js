@@ -118,3 +118,9 @@ function recoverInfo(infoId) {
         });
     }
 }
+
+    function detailInfo(infoId) {
+
+        window.location.href="/info/detail.action?infoId="+infoId;
+
+    }
