@@ -202,7 +202,8 @@
         </where>
 
         ORDER BY
-        views DESC
+        is_top desc,
+        create_time DESC
 
     </select>
 
