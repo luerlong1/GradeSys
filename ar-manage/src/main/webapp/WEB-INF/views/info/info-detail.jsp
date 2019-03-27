@@ -21,13 +21,14 @@
 </head>
 <body id="activeListDetBox">
 <div class="layui-anim layui-anim-up body-main">
+        <c:if test="${info.infoType=='BBS' || info.infoType=='AN'}">
     <div class="layui-elem-quote overh">
         <div class="fl">新闻帖子信息详情</div>
         <a href="javascript:history.back(-1)" class="layui-btn layui-btn-normal fr" style="margin-left: 10px;"><img src="${pageContext.request.contextPath }/images/back.png">返回</a>
     </div>
     <form class="layui-form" action="">
         <fieldset class="layui-elem-field layui-field-title">
-            <legend>新闻/帖子当前数据</legend>
+            <legend>新闻/帖子详情</legend>
         </fieldset>
         <div class="layui-form-item">
             <label class="layui-form-label">标题：</label>
@@ -69,12 +70,6 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">发布时间：</label>
-            <div class="layui-input-block">
-                <fmt:formatDate value='${info.createTime}' pattern='yyyy-MM-dd HH:mm'/>
-            </div>
-        </div>
-        <div class="layui-form-item">
             <label class="layui-form-label">浏览量：</label>
             <div class="layui-input-block">
                 ${info.views}
@@ -90,6 +85,22 @@
             <label class="layui-form-label">评论数：</label>
             <div class="layui-input-block">
                 ${info.comments}
+            </div>
+        </div>
+        </c:if>
+        <c:if test="${info.infoType!='BBS' || info.infoType!='AN'}">
+            <div class="layui-elem-quote overh">
+                <div class="fl">留言详情</div>
+                <a href="javascript:history.back(-1)" class="layui-btn layui-btn-normal fr" style="margin-left: 10px;"><img src="${pageContext.request.contextPath }/images/back.png">返回</a>
+            </div>
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend>留言详情</legend>
+        </fieldset>
+        </c:if>
+        <div class="layui-form-item">
+            <label class="layui-form-label">发布时间：</label>
+            <div class="layui-input-block">
+                <fmt:formatDate value='${info.createTime}' pattern='yyyy-MM-dd HH:mm'/>
             </div>
         </div>
         <div class="layui-form-item">

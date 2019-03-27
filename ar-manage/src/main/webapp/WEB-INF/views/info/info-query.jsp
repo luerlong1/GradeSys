@@ -80,7 +80,13 @@
                                 </c:if>
                             </td>
                             <td><ar:dictdata dictdata="${info.infoType}" dict="in"></ar:dictdata></td>
-                            <td>${info.views}/${info.comments}</td>
+                            <td><c:if test="${info.infoType=='BBS' || info.infoType=='AN'}">
+                                    ${info.views}/${info.comments}
+                                </c:if>
+                                <c:if test="${info.infoType!='BBS' && info.infoType!='AN'}">
+                                    无
+                                </c:if>
+                            </td>
                             <td>${info.trueName}</td>
                             <td><fmt:formatDate value="${info.createTime}" pattern="YYYY-M-d"></fmt:formatDate></td>
                             <td><ar:dictdata dictdata="${info.state}" dict="state"/></td>
