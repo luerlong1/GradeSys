@@ -40,7 +40,7 @@
             <div class="am-g">
                 <form class="am-form">
 
-
+                    <input hidden id="userId" value="${userId}">
 
                     <table class="am-table am-table-striped am-table-hover table-main am-table-bordered am-table-condensed">
                         <thead>
@@ -131,7 +131,7 @@
 <%@ include file="/WEB-INF/views/global/operate-message.jsp" %>
 <!-- 控制js -->
 <%@ include file="/WEB-INF/views/global/common-js.jsp" %>
-<script src="assets/script/origin/origin-home-member.js"></script>
+<script src="assets/script/user/user-origin.js"></script>
 </body>
 </html>
 

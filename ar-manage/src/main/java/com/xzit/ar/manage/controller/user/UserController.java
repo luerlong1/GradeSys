@@ -172,6 +172,7 @@ public class UserController extends BaseController {
             userService.queryUserOrigin(page, userId);
             // 数据返回
             model.addAttribute("page", page);
+            model.addAttribute("userId", userId);
         }
         return "user/user-origin";
     }
