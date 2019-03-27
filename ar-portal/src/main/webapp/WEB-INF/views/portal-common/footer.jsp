@@ -12,13 +12,13 @@
             <h6>信息</h6>
             <ul>
                 <li><a href="news.action">新闻中心</a></li>
-                <li><a href="news.action">论坛中心</a></li>
+                <li><a href="forum.action">论坛中心</a></li>
             </ul>
         </div>
         <div class="col-md-3 footer-grid">
             <h6>我的帐户</h6>
             <ul>
-                <li><a href="my.action">我的帐户</a></li>
+                <li><a href="my/profile/basic.action">我的帐户</a></li>
             </ul>
         </div>
         <%--<div class="col-md-3 footer-grid">--%>

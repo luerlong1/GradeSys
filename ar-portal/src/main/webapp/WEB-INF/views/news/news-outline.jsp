@@ -8,11 +8,7 @@
     <c:forEach items="${hotNews}" var="hot">
         <li>
             <div class="media">
-                <c:if test="${hot.thumbImage != null && hot.thumbImage !=''}">
-                    <a class="pull-left col-sm-4" style="max-height: 40px;"
-                       href="news/detail.action?infoId=${hot.infoId}">
-                        <img class="img-responsive" src="${hot.thumbImage}"></a>
-                </c:if>
+
                 <div class="media-body" style="max-height: 40px;">
                     <a class="email-summary" href="news/detail.action?infoId=${hot.infoId}">
                         <ar:sub value="${hot.infoTitle}" length="20"></ar:sub>
@@ -21,7 +17,7 @@
                         发布于 ： <fmt:formatDate value="${hot.createTime}" pattern="yyyy-MM-dd"/>
                     </small>
                     <a class="email-summary" href="news/detail.action?infoId=${hot.infoId}">
-                        <ar:sub value="${hot.content}" length="10"></ar:sub>
+                        <ar:sub value="${hot.content}" length="18"></ar:sub>
                     </a>
                 </div>
             </div>

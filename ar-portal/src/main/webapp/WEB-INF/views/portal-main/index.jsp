@@ -85,7 +85,7 @@
         <div class="panel panel-default panel-alt widget-messaging">
             <div class="panel-heading">
                 <div class="panel-btns">
-                    <a href="forum.action" class="panel-edit"><i class="fa fa-chevron-right"></i></a>
+                    <a href="news.action" class="panel-edit"><i class="fa fa-chevron-right"></i></a>
                 </div>
                 <h1 class="panel-title">校友新闻</h1>
             </div>

@@ -64,7 +64,7 @@ public class MainController extends BaseController {
 
         // 校友新闻
         model.addAttribute("inews",
-                informationService.getInfoByInfoType(new Page<Map<String, Object>>(getPageIndex(), 4), "AN"));
+                informationService.getHotInfoByInfoType(new Page<Map<String, Object>>(getPageIndex(), 5), "AN"));
         // 校友新闻
         model.addAttribute("news",
                 informationService.getInfoByInfoType1(new Page<Map<String, Object>>(getPageIndex(), getPageSize()), "AN"));
