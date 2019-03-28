@@ -86,4 +86,6 @@ public interface ClassService {
 	 * @throws ServiceException
 	 */
 	List<Map<String, Object>> queryOrigin(Page<Map<String, Object>> page) throws ServiceException;
+
+	List<Map<String, Object>> loadMyClassOrigin(Page<Map<String, Object>> page,Integer userId);
 }

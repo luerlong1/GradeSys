@@ -255,4 +255,12 @@
 		set state=#{state}
 		where origin_id=#{id}
 	</update>
+
+    <select id="loadMyClassOrigin" resultType="map">
+        select o.origin_name originName, o.origin_id originId, o.state_time stateTime, o.members members
+				from origin o, user_origin uo
+				where uo.user_id=#{userId} and o.origin_id=uo.origin_id
+				and uo.state='A' and o.state='A'
+				order by o.origin_grade desc
+    </select>
 </mapper>

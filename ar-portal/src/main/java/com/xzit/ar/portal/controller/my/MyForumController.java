@@ -32,6 +32,7 @@ public class MyForumController extends BaseController {
         Page<Map<String, Object>> page = new Page<>(getPageIndex(), getPageSize());
         informationService.getInfoByUserIdAndInfoType(page, userId, "BBS");
         model.addAttribute("page", page);
+        model.addAttribute("userId", userId);
 
         return "my/forum/forum-index";
     }

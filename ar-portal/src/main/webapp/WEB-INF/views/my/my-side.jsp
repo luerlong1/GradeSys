@@ -14,7 +14,7 @@
 <div class="mb10"></div>
 <h1 class="subtitle">应用信息</h1>
 <ul class="nav nav-pills nav-stacked nav-email">
-    <li id="my-class"><a href="my/class.action?userId=${SESSION_USER.userId}"><i class="fa fa-mortar-board"></i>我的班级</a></li>
+    <li id="my-class"><a href="my/class.action?userId=${SESSION_USER.userId}"><i class="fa fa-mortar-board"></i>我的组织班级</a></li>
     <li id="my-forum"><a href="my/forum.action?userId=${SESSION_USER.userId}"><i class="fa fa-group"></i>我的论坛</a></li>
     <%--<li id="my-recruit"><a href="my/recruit.action"><i class="fa fa-bookmark"></i>我的招聘</a></li>--%>
 </ul>

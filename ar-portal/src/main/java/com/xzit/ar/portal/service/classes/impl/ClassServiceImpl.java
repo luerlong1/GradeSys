@@ -98,6 +98,18 @@ public class ClassServiceImpl implements ClassService {
     }
 
     @Override
+    public List<Map<String, Object>> loadMyClassOrigin(Page<Map<String, Object>> page,Integer userId) {
+        try {
+            if (CommonUtil.isNotEmpty(userId)) {
+                return classMapper.loadMyClassOrigin(page,userId);
+            }
+        } catch (Exception e) {
+            System.out.println("为您加载班级组织时发生异常!");
+        }
+        return null;
+    }
+
+    @Override
     public List<Map<String, Object>> loadPopularClass(Integer number) throws ServiceException {
         try {
             if (CommonUtil.isNotEmpty(number)) {

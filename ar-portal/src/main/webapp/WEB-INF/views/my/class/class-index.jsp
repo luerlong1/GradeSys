@@ -35,10 +35,10 @@
             <!-- Tab panes -->
             <div class="tab-content">
                 <div class="tab-pane active" id="tab-basic">
-
+                    <input hidden id="userId" value="${userId}">
                     <%--班级列表--%>
                     <div class="people-list">
-                        <c:forEach items="${classes}" var="clazz">
+                        <c:forEach items="${page.beanList}" var="clazz">
                             <div class="col-md-6">
                                 <div class="people-item">
                                     <div class="media">
@@ -72,7 +72,7 @@
                             <!-- col-md-6 -->
                         </c:forEach>
                     </div>
-
+                        <%@include file="/WEB-INF/views/portal-common/originPagination.jsp"%>
                 </div>
             </div>
         </div>

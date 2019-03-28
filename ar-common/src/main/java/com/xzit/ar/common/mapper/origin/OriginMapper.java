@@ -53,6 +53,9 @@ public interface OriginMapper extends BaseMapper {
 	List<Map<String, Object>> loadMyOrigin(@Param("originType") String originType, @Param("userId") Integer userId)
 			throws Exception;
 
+	List<Map<String, Object>> loadMyClassOrigin(Page<Map<String, Object>> page, @Param("userId") Integer userId)
+			throws Exception;
+
 	/**
 	 * TODO 按热度加载班级、校友组织
 	 * @param originType 组织类型

@@ -30,6 +30,7 @@
         <!-- 侧边栏 -->
 
         <div class="col-sm-8 col-lg-10">
+            <input hidden id="userId" value="${userId}">
 
             <!-- Tab panes -->
             <div class="tab-content">
@@ -61,7 +62,7 @@
                         </tbody>
                     </table>
 
-                    <%@include file="/WEB-INF/views/portal-common/pagination.jsp"%>
+                    <%@include file="/WEB-INF/views/portal-common/originPagination.jsp"%>
                 </div>
             </div>
         </div>
