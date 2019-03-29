@@ -8,6 +8,7 @@ import com.xzit.ar.portal.service.information.InformationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
 import java.util.Map;
@@ -44,9 +45,10 @@ public class MyForumController extends BaseController {
      * @throws ServiceException
      */
     @RequestMapping("/delete")
-    public String delete(Integer postId) throws ServiceException {
+    public String delete(RedirectAttributes attr, Integer postId) throws ServiceException {
         informationService.deleteInfo(postId, getCurrentUserId());
-
-        return "redirect:/my/info.action";
+        // 设置重定向参数
+        attr.addAttribute("userId", getCurrentUserId());
+        return "redirect:/my/forum.action";
     }
 }

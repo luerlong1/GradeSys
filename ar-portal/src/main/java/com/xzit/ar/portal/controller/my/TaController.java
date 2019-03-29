@@ -44,7 +44,10 @@ public class TaController extends BaseController {
         if (userJobList.size() > 0) {
             model.addAttribute("userJobs", userJobList.get(0));
         }
-        model.addAttribute("classes", classService.loadMyClass(userId));
+        Page<Map<String, Object>> page1 = new Page<>(getPageIndex(), getPageSize());
+        classService.loadMyClassOrigin(page1, userId);
+        model.addAttribute("page1", page1);
+        model.addAttribute("userId", userId);
 
         // 查询用户发布的消息
         Page<Map<String, Object>> page = new Page<>(1, 5);

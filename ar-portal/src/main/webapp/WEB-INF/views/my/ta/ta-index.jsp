@@ -63,7 +63,7 @@
 
             <!-- Nav tabs -->
             <ul class="nav nav-tabs nav-justified nav-profile">
-                <li class="active"><a href="#activities" data-toggle="tab"><strong>他的班级</strong></a></li>
+                <li class="active"><a href="#activities" data-toggle="tab"><strong>他的班级组织</strong></a></li>
                 <li><a href="#followers" data-toggle="tab"><strong>他的论坛</strong></a></li>
                 <li><a href="#following" data-toggle="tab"><strong>TA关注的</strong></a></li>
                 <li><a href="#events" data-toggle="tab"><strong>TA的相关</strong></a></li>
@@ -72,8 +72,9 @@
             <!-- Tab panes -->
             <div class="tab-content">
                 <div class="tab-pane active" id="activities">
+                    <input hidden id="userId" value="${userId}">
 
-                        <c:forEach items="${classes}" var="clazz">
+                        <c:forEach items="${page1.beanList}" var="clazz">
                             <div class="col-md-6">
                                 <div class="people-item">
                                     <div class="media">
@@ -106,7 +107,10 @@
                             </div>
                             <!-- col-md-6 -->
                         </c:forEach>
+
+                <%@include file="/WEB-INF/views/portal-common/originPagination.jsp"%>
                 </div>
+
                 <div class="tab-pane" id="followers">
                             <table class="table table-hover mb20">
                                 <thead>
@@ -126,14 +130,12 @@
                                                             pattern="YYYY-MM-dd HH:mm"></fmt:formatDate></td>
                                         <td>
                                             <a class="btn btn-primary btn-xs" href="post/detail.action?postId=${post.infoId}">详情</a>
-                                            <button class="btn btn-danger btn-xs" onclick="deleteMyPost(${post.infoId})">删除
-                                            </button>
                                         </td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
                             </table>
-                            <%@include file="/WEB-INF/views/portal-common/pagination.jsp"%>
+                            <%@include file="/WEB-INF/views/portal-common/originPagination.jsp"%>
                 </div>
                 <div class="tab-pane" id="following">
 
@@ -153,5 +155,5 @@
 
 </body>
 <%@ include file="/WEB-INF/views/portal-common/portal-js.jsp" %>
-<script src="assets/script/ta/ta-index.js"></script>
+<script src="assets/script/my/ta/ta-index.js"></script>
 </html>
