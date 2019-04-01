@@ -6,10 +6,10 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title>益简单crm管理系统</title>
+		<title>轻大校友汇管理系统</title>
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="shortcut icon" href="${pageContext.request.contextPath }/images/favicon.ico" type="image/x-icon" />
+		<link rel="shortcut icon" href="${pageContext.request.contextPath }/images/zzuliLogo.png" type="image/x-icon" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath }/css/font.css">
 		<link rel="stylesheet" href="${pageContext.request.contextPath }/css/xadmin.css">
 		<script src="${pageContext.request.contextPath }/js/jquery.min.js"></script>
@@ -21,7 +21,7 @@
 		<!-- 顶部开始 111-->
 		<div class="container">
 			<div class="logo">
-				<a>益简单crm管理系统</a>
+				<a>轻大校友汇管理系统</a>
 			</div>
 			<div class="left_open">
 				<i title="展开左侧栏" class="iconfont">&#xe699;</i>
