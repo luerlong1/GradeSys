@@ -22,7 +22,7 @@ function loadMoreComment(pageIndex) {
     // 加载评论列表
     var postId = $("#postId").html();
     $.post("news/commentList.action", {
-        "postId" : postId,
+        "infoId" : postId,
         "pageIndex" : pageIndex
     }, function(data) {
         $("#btn-load-more").remove();

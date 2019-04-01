@@ -40,6 +40,7 @@
                         </c:if>
                         <p>${info.content}</p><%-- postId --%>
                     </div><!-- panel-body -->
+                    <p hidden id="postId">${info.infoId}</p>
                     <div class="widget-photoday">
                         <ul class="photo-meta">
                             <li><span><i class="fa fa-eye"></i> 浏览 (${info.views})</span></li>

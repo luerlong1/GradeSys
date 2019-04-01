@@ -11,6 +11,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
@@ -78,7 +79,7 @@ public class NewsController extends BaseController {
      * @return
      */
     @RequestMapping("/commentList")
-    public String commentList(Model model, @Param("infoId") Integer infoId) throws ServiceException {
+    public String commentList(Model model, @RequestParam("infoId") Integer infoId) throws ServiceException {
         // 构造 page 对象
         Page<Map<String, Object>> page = new Page<>(getPageIndex(), getPageSize());
         // 加载列表

@@ -6,7 +6,7 @@
     <div class="container">
         <div class="col-md-3 footer-grid">
             <h6>关于我们</h6>
-            <p><a href="http://www.zzuli.edu.cn/">郑州轻工业大学</a></p>
+            <p><a href="http://www.zzuli.edu.cn/" target="_blank">郑州轻工业大学</a></p>
         </div>
         <div class="col-md-3 footer-grid">
             <h6>信息</h6>
