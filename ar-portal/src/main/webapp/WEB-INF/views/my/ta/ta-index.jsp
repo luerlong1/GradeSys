@@ -53,7 +53,7 @@
             <div class="profile-header">
                 <h2 class="profile-name">${ta.trueName}</h2>
                 <div class="profile-location"><i class="fa fa-map-marker"></i> ${ta.address}</div>
-                <div class="profile-position"><i class="fa fa-briefcase"></i> ${userJobs.jobName} 任职于 <a href="">${userJobs.jobUnit}</a></div>
+                <div class="profile-position"><i class="fa fa-briefcase"></i> ${userJobs.jobName} 任职于 <a>${userJobs.jobUnit}</a></div>
                 
                 <div class="mb20"></div>
 

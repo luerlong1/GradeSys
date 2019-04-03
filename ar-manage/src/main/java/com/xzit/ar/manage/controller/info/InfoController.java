@@ -175,7 +175,7 @@ public class InfoController extends BaseController {
         //
         Information information = infoService.getInfoById(infoId);
         model.addAttribute("info", information);
-        System.out.println(information.getUserId());
+        System.out.println(information.getUserId()+"“+“1111111111111111111111”");
         model.addAttribute("publisher", infoService.findUserById(information.getUserId()).getTrueName());
 
         return "info/info-detail";

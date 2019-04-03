@@ -30,7 +30,7 @@
                     <div class="col-md-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title">招聘信息</h4>
+                                <h4 class="panel-title">发布论坛</h4>
                             </div>
                             <div class="panel-body panel-body-nopadding">
 
@@ -54,9 +54,9 @@
                                                 <label class="col-sm-4"><span class="asterisk">*
 														</span>帖子主题</label>
                                                 <div class="col-sm-4">
-                                                    <select class="select2-container select2" name="infoType"
+                                                    <select class="select2-container select2" name="theme"
                                                             id="infoType">
-                                                        <option value="">--</option>
+                                                        <option value="">===请选择主题===</option>
                                                         <c:forEach items="${themes}" var="theme">
                                                             <option value="${theme.value}">${theme.name}</option>
                                                         </c:forEach>

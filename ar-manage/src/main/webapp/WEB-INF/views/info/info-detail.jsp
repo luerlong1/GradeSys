@@ -8,7 +8,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>益简单业务管理平台-发布的活动详情</title>
+    <title></title>
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport"
@@ -88,7 +88,7 @@
             </div>
         </div>
         </c:if>
-        <c:if test="${info.infoType!='BBS' || info.infoType!='AN'}">
+        <c:if test="${info.infoType!='BBS' && info.infoType!='AN'}">
             <div class="layui-elem-quote overh">
                 <div class="fl">留言详情</div>
                 <a href="javascript:history.back(-1)" class="layui-btn layui-btn-normal fr" style="margin-left: 10px;"><img src="${pageContext.request.contextPath }/images/back.png">返回</a>
