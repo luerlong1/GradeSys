@@ -45,10 +45,17 @@
             <div class="layui-input-block" style="line-height: 38px;">
                 <select name="originType" id="originType" required>
                     <option value="">请选择...</option>
-                    <c:forEach items="${types}" var="type">
-                        <option value="${type.value}"
-                        <c:if test="${type.value == 'C'}">selected</c:if>>${type.name}</option>
-                    </c:forEach>
+                    <option value="C">班级</option>
+                    <option value="org">校友总会</option>
+                    <option value="orgi">院系分会</option>
+                    <option value="orgm">社团分会</option>
+                    <option value="orgu">学生协会</option>
+                    <option value="OI">校友组织</option>
+
+                    <%--<c:forEach items="${types}" var="type">--%>
+                        <%--<option value="${type.value}"--%>
+                        <%--<c:if test="${type.value == 'C'}">selected</c:if>>${type.name}${type.value}</option>--%>
+                    <%--</c:forEach>--%>
                 </select>
             </div>
             </div>
@@ -58,9 +65,13 @@
                 <div class="layui-input-block" style="line-height: 38px;">
                     <select name="originGrade" id="originGrade" required>
                         <option value="">请选择...</option>
-                        <c:forEach items="${grades}" var="grade">
-                        <option value="${grade.value}">${grade.value}</option>
-                        </c:forEach>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                        <%--<c:forEach items="${grades}" var="grade">--%>
+                        <%--<option value="${grade.value}">${grade.value}</option>--%>
+                        <%--</c:forEach>--%>
                     </select>
                 </div>
             </div>
