@@ -7,11 +7,10 @@
 		</a>
 	</div>
 	<div class="input-group col-sm-3">
-		<input type="hidden" name="ie" value="UTF-8"> <input
+		<input type="hidden" name="ie" value="UTF-8"/> <input
 			type="text" name="queryStr" id="queryStr"
 			class="form-control col-xs-3" size="10" width="100px"
-			value="${queryStr}" placeholder="帖子/作者"
-			onkeypress="if(event.keyCode==13){queryBtn.click();return false;}" />
+			value="${queryStr}" placeholder="请输入帖子名称"/>
 		<span class="input-group-btn">
 			<button type="submit" id="queryBtn" class="btn btn-default">搜帖子</button>
 		</span>

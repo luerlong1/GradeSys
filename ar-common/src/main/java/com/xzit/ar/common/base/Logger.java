@@ -13,9 +13,6 @@ import com.xzit.ar.common.util.CommonUtil;
 /**
 * @ClassName: Logger <br>
 * @Description: TODO <br>
-* @author Mr.Black <br>
-* @date 2015年12月21日 下午1:07:26 <br>
-* @version V1.0  <br> <br>
 */
 public class Logger {
 

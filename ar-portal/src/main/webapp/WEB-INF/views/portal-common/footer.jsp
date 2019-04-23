@@ -32,14 +32,14 @@
 <%--</div>--%>
 <div class="footer-copy"  style="background: #ff6602">
     <p>
-        <a href="javascript:return false;" style="text-decoration: none">联系我们 </a>
+        <a href="javascript:void(0);" style="text-decoration: none">联系我们 </a>
     </p>
     <p>
-        <a href="javascript:return false;" style="text-decoration: none">地址：河南省郑州市高新区科学大道136号&nbsp;&nbsp;|&nbsp;&nbsp;电话：0371-87651277&nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="javascript:void(0);" style="text-decoration: none">地址：河南省郑州市高新区科学大道136号&nbsp;&nbsp;|&nbsp;&nbsp;电话：0371-87651277&nbsp;&nbsp;|&nbsp;&nbsp;
             邮箱：zzuli@XIAOYOUHUI.com&nbsp;&nbsp;|&nbsp;&nbsp;手机：15636041224&nbsp;&nbsp;|&nbsp;&nbsp;邮编：475500</a>
     </p>
     <p>
-        <a href="javascript:return false;" style="text-decoration: none">Copyright @ 郑州轻工业大学 保留所有版权&nbsp;&nbsp;|&nbsp;&nbsp;鲁二龙 毕业设计</a>
+        <a href="javascript:void(0);" style="text-decoration: none">Copyright @ 郑州轻工业大学 保留所有版权&nbsp;&nbsp;|&nbsp;&nbsp;鲁二龙 毕业设计</a>
     </p>
 </div>
 <!-- //footer -->

@@ -29,14 +29,6 @@ import com.xzit.ar.common.exception.AssertException;
 import com.xzit.ar.common.util.Assert;
 import com.xzit.ar.common.util.CommonUtil;
 
-/**
- * @author Mr.Black <br>
- * @version V1.0 <br>
- *          <br>
- * @ClassName: BaseController <br>
- * @Description: TODO <br>
- * @date 2015年12月21日 上午11:08:45 <br>
- */
 public abstract class BaseController {
 
     /**
@@ -82,8 +74,6 @@ public abstract class BaseController {
      * @throws <br>
      * @Title: getParameter <br>
      * @Description: TODO 获取参数<br>
-     * @author Mr.Black <br>
-     * @date 2015年12月21日 下午1:28:56 <br>
      */
     protected String getParameter(String param, String errMsg) throws AssertException {
         String value = getRequest().getParameter(param);
@@ -97,8 +87,6 @@ public abstract class BaseController {
      * @throws <br>
      * @Title: getParameter <br>
      * @Description: TODO 获取参数<br>
-     * @author Mr.Black <br>
-     * @date 2015年12月21日 下午1:11:27 <br>
      */
     protected String getParameter(String param) {
         String value = getRequest().getParameter(param);
@@ -117,8 +105,6 @@ public abstract class BaseController {
      * @throws <br>
      * @Title: getLongParameter <br>
      * @Description: TODO getLongParameter<br>
-     * @author Mr.Black <br>
-     * @date 2015年12月21日 下午1:30:55 <br>
      */
     protected Long getLongParameter(String param, String errMsg) throws AssertException {
         String value = getParameter(param, errMsg);
@@ -129,8 +115,6 @@ public abstract class BaseController {
      * @throws <br>
      * @Title: getLongParameter <br>
      * @Description: TODO getLongParameter<br>
-     * @author Mr.Black <br>
-     * @date 2015年12月21日 下午1:31:34 <br>
      */
     protected Long getLongParameter(String param) {
         String value = getParameter(param);
@@ -140,8 +124,6 @@ public abstract class BaseController {
     /**
      * @return Integer <br>
      * @Description: TODO getIntegerParameter <br>
-     * @author Mr.Black <br>
-     * @date 2015年12月21日 下午1:32:44 <br>
      */
     protected Integer getIntegerParameter(String param, String errMsg) throws AssertException {
         String value = getParameter(param, errMsg);
@@ -151,8 +133,6 @@ public abstract class BaseController {
     /**
      * @return Integer <br>
      * @Description: TODO getIntegerParameter<br>
-     * @author Mr.Black <br>
-     * @date 2015年12月21日 下午1:33:23 <br>
      */
     protected Integer getIntegerParameter(String param) {
         String value = getParameter(param);
@@ -215,8 +195,6 @@ public abstract class BaseController {
      * @param @return <br>
      * @return int <br>
      * @Description: TODO getPageIndex<br>
-     * @author Mr.Black <br>
-     * @date 2015年12月21日 下午1:34:13 <br>
      */
     protected int getPageIndex() {
         Object temp = getIntegerParameter("pageIndex");
@@ -231,8 +209,6 @@ public abstract class BaseController {
      * @param @return <br>
      * @return int <br>
      * @Description: TODO getPageSize <br>
-     * @author Mr.Black <br>
-     * @date 2015年12月21日 下午1:34:22 <br>
      */
     protected int getPageSize() {
         Object temp = getIntegerParameter("pageSize");
@@ -246,8 +222,6 @@ public abstract class BaseController {
     /**
      * @return ModelAndView <br>
      * @Description: TODO 页面跳转成功处理<br>
-     * @author Mr.Black <br>
-     * @date 2015年12月23日 下午9:07:08 <br>
      */
     protected ModelAndView success(String message, String redirectUrl, Map<String, String> param) {
         ModelMap map = new ModelMap();
@@ -261,8 +235,6 @@ public abstract class BaseController {
     /**
      * @return ModelAndView <br>
      * @Description: TODO 页面跳转失败处理<br>
-     * @author Mr.Black <br>
-     * @date 2015年12月23日 下午9:06:44 <br>
      */
     protected ModelAndView fail(String errMessage, String redirectUrl, Map<String, String> param) {
         ModelMap map = new ModelMap();
@@ -280,8 +252,6 @@ public abstract class BaseController {
      * @param @return <br>
      * @return HttpServletRequest <br>
      * @Description: TODO 获取request<br>
-     * @author Mr.Black <br>
-     * @date 2015年12月21日 下午1:36:56 <br>
      */
     protected HttpServletRequest getRequest() {
         RequestAttributes requestAttr = RequestContextHolder.getRequestAttributes();
@@ -306,8 +276,6 @@ public abstract class BaseController {
 
     /**
      * @Description: TODO 添加页面操作说明<br>
-     * @author Mr.Black <br>
-     * @date 2015年12月26日 上午2:03:44 <br>
      */
     protected void setOperateRemarks(Model model, String operateRemarks) {
         model.addAttribute(OPERATE_REMARKS, operateRemarks);
@@ -324,8 +292,6 @@ public abstract class BaseController {
     /**
      * @Description: TODO 向页面返回操作结果信息 <br>
      * message 操作结果信息
-     * @author Mr.Black <br>
-     * @date 2015年12月27日 下午8:51:09 <br>
      */
     protected void setMessage(Model model, String message) {
         if (model != null) {

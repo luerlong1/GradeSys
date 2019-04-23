@@ -16,9 +16,6 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 /**
 * @ClassName: BaseEntity <br>
 * @Description: TODO <br>
-* @author Mr.Black <br>
-* @date 2015年12月21日 下午1:49:34 <br>
-* @version V1.0  <br> <br>
 */
 public abstract class BaseEntity implements Serializable {
 
