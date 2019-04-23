@@ -34,7 +34,7 @@
 				<div class="col-sm-6 col-sm-offset-3 form-box">
 					<div class="form-top">
 						<div class="form-top-left">
-							<h3 style="color: #969696;">轻院校友汇平台</h3>
+							<h3 style="color: #969696;">轻大校友汇系统</h3>
 							<%--<p>用户登录</p>--%>
 						</div>
 						<div class="pull-right-bottom">

@@ -4,14 +4,14 @@
 <%@ taglib uri="/ar-taglib" prefix="ar"%>
 
 <!-- header -->
-<div class="top_bg">
+<div class="" style="background: #ff6602">
 	<div class="container">
 		<div class="header_top-sec">
 			<div class="top_right">
 				<ul>
 					<li><a href="index.action"><i class="fa fa-home"></i>&nbsp;首页</a></li>
-					<li>|</li>
-					<li><a href="message/contactUs.action">联系我们</a></li>
+					<%--<li>|</li>--%>
+					<%--<li><a href="message/contactUs.action">联系我们</a></li>--%>
 				</ul>
 			</div>                      
 			<div class="top_left">

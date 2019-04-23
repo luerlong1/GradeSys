@@ -56,8 +56,12 @@
                 <div class="profile-position"><i class="fa fa-briefcase"></i> ${userJobs.jobName} 任职于 <a>${userJobs.jobUnit}</a></div>
                 
                 <div class="mb20"></div>
-
-                <button class="btn btn-success mr5"><i class="fa fa-user"></i> 关 注 </button>
+                <c:if test="${isAttention == 0}">
+                <button class="btn btn-success mr5" onclick="attention(${userId})"><i class="fa fa-user"></i> 关注 </button>
+                </c:if>
+                <c:if test="${isAttention == 1}">
+                <button class="btn btn-white mr5" onclick="disAttention(${userId})"><i class="fa fa-user"></i>取消关注 </button>
+                </c:if>
                 <button class="btn btn-white"><i class="fa fa-envelope-o"></i> 私 信 </button>
             </div><!-- profile-header -->
 
@@ -138,7 +142,28 @@
                             <%@include file="/WEB-INF/views/portal-common/originPagination.jsp"%>
                 </div>
                 <div class="tab-pane" id="following">
-
+                    <%--<div class="tab-content" style="background-color: #ddd;">--%>
+                        <%--<div class="tab-pane active" id="classroom-content">--%>
+                            <%--<div class="people-list">--%>
+                                <%--<c:forEach items="${page2.beanList}" var="member">--%>
+                                    <%--<div class="col-md-2">--%>
+                                        <%--<div class="people-item" style="text-align: center; min-height: 170px; max-height: 170px">--%>
+                                            <%--<a href="ta/show.action?userId=${member.userId}">--%>
+                                                <%--<div style="min-height: 125px;">--%>
+                                                    <%--<img src="${member.imagePath}" class="img-responsive center-block"--%>
+                                                         <%--style="max-height: 125px;">--%>
+                                                <%--</div>--%>
+                                                    <%--${member.trueName}--%>
+                                            <%--</a>--%>
+                                        <%--</div>--%>
+                                    <%--</div>--%>
+                                    <%--<!-- col-md-6 -->--%>
+                                <%--</c:forEach>--%>
+                            <%--</div>--%>
+                            <%--<input type="hidden" value="${classroom.classId}" id="classId">--%>
+                        <%--</div>--%>
+                        <%--<%@ include file="/WEB-INF/views/portal-common/pagination.jsp"%>--%>
+                    <%--</div>--%>
                 </div>
                 <div class="tab-pane" id="events">
 
@@ -155,5 +180,16 @@
 
 </body>
 <%@ include file="/WEB-INF/views/portal-common/portal-js.jsp" %>
+<script src="assets/script/class/classroom/classroom-member.js"></script>
 <script src="assets/script/my/ta/ta-index.js"></script>
+<script type="text/javascript">
+    function attention(id) {
+        post('ta/attention.action', {"attentionId": id});
+    }
+</script>
+<script type="text/javascript">
+    function disAttention(id) {
+        post('ta/disAttention.action', {"attentionId": id});
+    }
+</script>
 </html>
